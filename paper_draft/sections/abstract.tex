@@ -1,0 +1,26 @@
+LLM-based agents increasingly depend on correct tool selection for downstream success, yet
+the internal mechanisms that drive this behavior remain poorly understood.
+Existing work measures selection accuracy but cannot explain or predict failures.
+We present the first empirical mechanistic characterization of tool selection in \LLMs,
+combining behavioral analysis, semantic similarity probing, causal perturbation, and
+layer-wise representational probing across four complementary experiments.
+
+Using a custom dataset of 55 tool selection scenarios spanning five categories
+(weather, calculation, web search, code execution, translation),
+we find that cosine similarity between query and tool description embeddings predicts
+40\% of selections---64\% better than chance---yet falls short of fully explaining model
+behavior.  In controlled rotation experiments, selections remain stable across 90\% of
+tool orderings, demonstrating that semantic content, not position, primarily drives
+selection when descriptions are informative.  Causal perturbation confirms this:
+swapping tool descriptions causes the model to follow the description over the tool name
+in 67\% of cases.
+
+Mechanistically, we probe \gpttwo{}'s representations layer by layer and uncover a
+striking dissociation.  Tool \emph{category} is perfectly decodable from every layer
+(100\% probe accuracy from layer~1), suggesting it is largely encoded at the
+token--vocabulary level.  In contrast, information about \emph{which specific tool
+position} is semantically correct rises progressively from 35\% at layer~1 to 68\% at
+layer~9 (chance~=~25\%), peaking before the final layer.  These findings establish that
+semantic matching is a non-trivial computation distributed across the middle-to-late
+transformer layers---distinct from coarse category routing---with direct implications for
+debugging tool selection failures in deployed agents.

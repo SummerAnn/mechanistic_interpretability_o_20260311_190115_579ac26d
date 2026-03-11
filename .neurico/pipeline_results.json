@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "stages": {
+    "resource_finder": {
+      "success": true,
+      "completion_marker": "/workspaces/mechanistic_interpretability_o_20260311_190115_579ac26d/.resource_finder_complete",
+      "outputs": {
+        "literature_review": "/workspaces/mechanistic_interpretability_o_20260311_190115_579ac26d/literature_review.md",
+        "resources_catalog": "/workspaces/mechanistic_interpretability_o_20260311_190115_579ac26d/resources.md",
+        "papers_dir": "/workspaces/mechanistic_interpretability_o_20260311_190115_579ac26d/papers",
+        "datasets_dir": "/workspaces/mechanistic_interpretability_o_20260311_190115_579ac26d/datasets",
+        "code_dir": "/workspaces/mechanistic_interpretability_o_20260311_190115_579ac26d/code"
+      },
+      "log_file": "/workspaces/mechanistic_interpretability_o_20260311_190115_579ac26d/logs/resource_finder_claude.log",
+      "transcript_file": "/workspaces/mechanistic_interpretability_o_20260311_190115_579ac26d/logs/resource_finder_claude_transcript.jsonl",
+      "elapsed_time": 1235.3798260688782
+    },
+    "experiment_runner": {
+      "success": true,
+      "return_code": 0,
+      "elapsed_time": 1812.9230415821075,
+      "log_file": "/workspaces/mechanistic_interpretability_o_20260311_190115_579ac26d/logs/execution_claude.log",
+      "transcript_file": "/workspaces/mechanistic_interpretability_o_20260311_190115_579ac26d/logs/execution_claude_transcript.jsonl"
+    }
+  },
+  "work_dir": "/workspaces/mechanistic_interpretability_o_20260311_190115_579ac26d"
+}

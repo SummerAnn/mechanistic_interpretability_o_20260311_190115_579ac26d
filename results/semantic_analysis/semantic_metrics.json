@@ -1,0 +1,13 @@
+{
+  "top1_accuracy": 0.4,
+  "top1_accuracy_same_cat": 0.375,
+  "top1_accuracy_mixed_cat": 0.6,
+  "mean_rank_of_llm_choice": 2.088888888888889,
+  "median_rank_of_llm_choice": 2.0,
+  "chance_mean_rank": 2.5,
+  "n_examples": 45,
+  "mean_selected_sim": 0.21880339198849266,
+  "mean_top_sim": 0.2566611510184076,
+  "position_0_rate": 0.5777777777777777,
+  "expected_position_0_rate": 0.25
+}

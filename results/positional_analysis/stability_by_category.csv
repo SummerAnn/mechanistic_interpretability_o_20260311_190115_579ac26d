@@ -1,0 +1,11 @@
+base_id,category,stability,n_variants,always_same_tool
+mixed_001,weather,1.0,4,True
+mixed_002,calculator,1.0,4,True
+mixed_003,ambiguous_search_translation,1.0,4,True
+mixed_004,ambiguous_code_calculator,0.75,4,False
+mixed_005,translation,1.0,4,True
+same_000,weather,1.0,4,True
+same_001,weather,0.75,4,False
+same_002,weather,0.75,4,False
+same_003,weather,0.75,4,False
+same_004,weather,1.0,4,True

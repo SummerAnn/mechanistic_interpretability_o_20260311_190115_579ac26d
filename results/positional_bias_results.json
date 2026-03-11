@@ -1,0 +1,682 @@
+[
+  {
+    "base_id": "mixed_001",
+    "variant_id": "mixed_001_rot0",
+    "query": "What will the temperature be in Berlin tomorrow?",
+    "category": "weather",
+    "rotation": 0,
+    "tool_order": [
+      "openweathermap_api",
+      "google_search_api",
+      "wolfram_alpha_api",
+      "google_translate_api"
+    ],
+    "raw_response": "openweathermap_api",
+    "selected_tool": "openweathermap_api",
+    "selected_position": 0,
+    "correct_category": "weather"
+  },
+  {
+    "base_id": "mixed_001",
+    "variant_id": "mixed_001_rot1",
+    "query": "What will the temperature be in Berlin tomorrow?",
+    "category": "weather",
+    "rotation": 1,
+    "tool_order": [
+      "google_search_api",
+      "wolfram_alpha_api",
+      "google_translate_api",
+      "openweathermap_api"
+    ],
+    "raw_response": "openweathermap_api",
+    "selected_tool": "openweathermap_api",
+    "selected_position": 3,
+    "correct_category": "weather"
+  },
+  {
+    "base_id": "mixed_001",
+    "variant_id": "mixed_001_rot2",
+    "query": "What will the temperature be in Berlin tomorrow?",
+    "category": "weather",
+    "rotation": 2,
+    "tool_order": [
+      "wolfram_alpha_api",
+      "google_translate_api",
+      "openweathermap_api",
+      "google_search_api"
+    ],
+    "raw_response": "openweathermap_api",
+    "selected_tool": "openweathermap_api",
+    "selected_position": 2,
+    "correct_category": "weather"
+  },
+  {
+    "base_id": "mixed_001",
+    "variant_id": "mixed_001_rot3",
+    "query": "What will the temperature be in Berlin tomorrow?",
+    "category": "weather",
+    "rotation": 3,
+    "tool_order": [
+      "google_translate_api",
+      "openweathermap_api",
+      "google_search_api",
+      "wolfram_alpha_api"
+    ],
+    "raw_response": "openweathermap_api",
+    "selected_tool": "openweathermap_api",
+    "selected_position": 1,
+    "correct_category": "weather"
+  },
+  {
+    "base_id": "mixed_002",
+    "variant_id": "mixed_002_rot0",
+    "query": "Compute the integral of x^3 from 0 to 5",
+    "category": "calculator",
+    "rotation": 0,
+    "tool_order": [
+      "wolfram_alpha_api",
+      "openweathermap_api",
+      "bing_search_api",
+      "jupyter_kernel_api"
+    ],
+    "raw_response": "wolfram_alpha_api",
+    "selected_tool": "wolfram_alpha_api",
+    "selected_position": 0,
+    "correct_category": "calculator"
+  },
+  {
+    "base_id": "mixed_002",
+    "variant_id": "mixed_002_rot1",
+    "query": "Compute the integral of x^3 from 0 to 5",
+    "category": "calculator",
+    "rotation": 1,
+    "tool_order": [
+      "openweathermap_api",
+      "bing_search_api",
+      "jupyter_kernel_api",
+      "wolfram_alpha_api"
+    ],
+    "raw_response": "wolfram_alpha_api",
+    "selected_tool": "wolfram_alpha_api",
+    "selected_position": 3,
+    "correct_category": "calculator"
+  },
+  {
+    "base_id": "mixed_002",
+    "variant_id": "mixed_002_rot2",
+    "query": "Compute the integral of x^3 from 0 to 5",
+    "category": "calculator",
+    "rotation": 2,
+    "tool_order": [
+      "bing_search_api",
+      "jupyter_kernel_api",
+      "wolfram_alpha_api",
+      "openweathermap_api"
+    ],
+    "raw_response": "wolfram_alpha_api",
+    "selected_tool": "wolfram_alpha_api",
+    "selected_position": 2,
+    "correct_category": "calculator"
+  },
+  {
+    "base_id": "mixed_002",
+    "variant_id": "mixed_002_rot3",
+    "query": "Compute the integral of x^3 from 0 to 5",
+    "category": "calculator",
+    "rotation": 3,
+    "tool_order": [
+      "jupyter_kernel_api",
+      "wolfram_alpha_api",
+      "openweathermap_api",
+      "bing_search_api"
+    ],
+    "raw_response": "wolfram_alpha_api",
+    "selected_tool": "wolfram_alpha_api",
+    "selected_position": 1,
+    "correct_category": "calculator"
+  },
+  {
+    "base_id": "mixed_003",
+    "variant_id": "mixed_003_rot0",
+    "query": "Find information about French language idioms",
+    "category": "ambiguous_search_translation",
+    "rotation": 0,
+    "tool_order": [
+      "google_search_api",
+      "google_translate_api",
+      "wolfram_alpha_api",
+      "openweathermap_api"
+    ],
+    "raw_response": "google_search_api",
+    "selected_tool": "google_search_api",
+    "selected_position": 0,
+    "correct_category": "search"
+  },
+  {
+    "base_id": "mixed_003",
+    "variant_id": "mixed_003_rot1",
+    "query": "Find information about French language idioms",
+    "category": "ambiguous_search_translation",
+    "rotation": 1,
+    "tool_order": [
+      "google_translate_api",
+      "wolfram_alpha_api",
+      "openweathermap_api",
+      "google_search_api"
+    ],
+    "raw_response": "google_search_api",
+    "selected_tool": "google_search_api",
+    "selected_position": 3,
+    "correct_category": "search"
+  },
+  {
+    "base_id": "mixed_003",
+    "variant_id": "mixed_003_rot2",
+    "query": "Find information about French language idioms",
+    "category": "ambiguous_search_translation",
+    "rotation": 2,
+    "tool_order": [
+      "wolfram_alpha_api",
+      "openweathermap_api",
+      "google_search_api",
+      "google_translate_api"
+    ],
+    "raw_response": "google_search_api",
+    "selected_tool": "google_search_api",
+    "selected_position": 2,
+    "correct_category": "search"
+  },
+  {
+    "base_id": "mixed_003",
+    "variant_id": "mixed_003_rot3",
+    "query": "Find information about French language idioms",
+    "category": "ambiguous_search_translation",
+    "rotation": 3,
+    "tool_order": [
+      "openweathermap_api",
+      "google_search_api",
+      "google_translate_api",
+      "wolfram_alpha_api"
+    ],
+    "raw_response": "google_search_api",
+    "selected_tool": "google_search_api",
+    "selected_position": 1,
+    "correct_category": "search"
+  },
+  {
+    "base_id": "mixed_004",
+    "variant_id": "mixed_004_rot0",
+    "query": "Calculate the Fibonacci sequence up to the 50th number",
+    "category": "ambiguous_code_calculator",
+    "rotation": 0,
+    "tool_order": [
+      "wolfram_alpha_api",
+      "jupyter_kernel_api",
+      "duckduckgo_api",
+      "weatherapi_com"
+    ],
+    "raw_response": "jupyter_kernel_api",
+    "selected_tool": "jupyter_kernel_api",
+    "selected_position": 1,
+    "correct_category": "calculator"
+  },
+  {
+    "base_id": "mixed_004",
+    "variant_id": "mixed_004_rot1",
+    "query": "Calculate the Fibonacci sequence up to the 50th number",
+    "category": "ambiguous_code_calculator",
+    "rotation": 1,
+    "tool_order": [
+      "jupyter_kernel_api",
+      "duckduckgo_api",
+      "weatherapi_com",
+      "wolfram_alpha_api"
+    ],
+    "raw_response": "jupyter_kernel_api",
+    "selected_tool": "jupyter_kernel_api",
+    "selected_position": 0,
+    "correct_category": "calculator"
+  },
+  {
+    "base_id": "mixed_004",
+    "variant_id": "mixed_004_rot2",
+    "query": "Calculate the Fibonacci sequence up to the 50th number",
+    "category": "ambiguous_code_calculator",
+    "rotation": 2,
+    "tool_order": [
+      "duckduckgo_api",
+      "weatherapi_com",
+      "wolfram_alpha_api",
+      "jupyter_kernel_api"
+    ],
+    "raw_response": "wolfram_alpha_api",
+    "selected_tool": "wolfram_alpha_api",
+    "selected_position": 2,
+    "correct_category": "calculator"
+  },
+  {
+    "base_id": "mixed_004",
+    "variant_id": "mixed_004_rot3",
+    "query": "Calculate the Fibonacci sequence up to the 50th number",
+    "category": "ambiguous_code_calculator",
+    "rotation": 3,
+    "tool_order": [
+      "weatherapi_com",
+      "wolfram_alpha_api",
+      "jupyter_kernel_api",
+      "duckduckgo_api"
+    ],
+    "raw_response": "jupyter_kernel_api",
+    "selected_tool": "jupyter_kernel_api",
+    "selected_position": 2,
+    "correct_category": "calculator"
+  },
+  {
+    "base_id": "mixed_005",
+    "variant_id": "mixed_005_rot0",
+    "query": "Translate this legal document from English to Spanish",
+    "category": "translation",
+    "rotation": 0,
+    "tool_order": [
+      "deepl_api",
+      "google_search_api",
+      "calculator_api",
+      "e2b_code_interpreter"
+    ],
+    "raw_response": "deepl_api",
+    "selected_tool": "deepl_api",
+    "selected_position": 0,
+    "correct_category": "translation"
+  },
+  {
+    "base_id": "mixed_005",
+    "variant_id": "mixed_005_rot1",
+    "query": "Translate this legal document from English to Spanish",
+    "category": "translation",
+    "rotation": 1,
+    "tool_order": [
+      "google_search_api",
+      "calculator_api",
+      "e2b_code_interpreter",
+      "deepl_api"
+    ],
+    "raw_response": "deepl_api",
+    "selected_tool": "deepl_api",
+    "selected_position": 3,
+    "correct_category": "translation"
+  },
+  {
+    "base_id": "mixed_005",
+    "variant_id": "mixed_005_rot2",
+    "query": "Translate this legal document from English to Spanish",
+    "category": "translation",
+    "rotation": 2,
+    "tool_order": [
+      "calculator_api",
+      "e2b_code_interpreter",
+      "deepl_api",
+      "google_search_api"
+    ],
+    "raw_response": "deepl_api",
+    "selected_tool": "deepl_api",
+    "selected_position": 2,
+    "correct_category": "translation"
+  },
+  {
+    "base_id": "mixed_005",
+    "variant_id": "mixed_005_rot3",
+    "query": "Translate this legal document from English to Spanish",
+    "category": "translation",
+    "rotation": 3,
+    "tool_order": [
+      "e2b_code_interpreter",
+      "deepl_api",
+      "google_search_api",
+      "calculator_api"
+    ],
+    "raw_response": "deepl_api",
+    "selected_tool": "deepl_api",
+    "selected_position": 1,
+    "correct_category": "translation"
+  },
+  {
+    "base_id": "same_000",
+    "variant_id": "same_000_rot0",
+    "query": "What's the weather like in Paris today?",
+    "category": "weather",
+    "rotation": 0,
+    "tool_order": [
+      "world_weather_online",
+      "weatherapi_com",
+      "weather_gov_api",
+      "openweathermap_api"
+    ],
+    "raw_response": "openweathermap_api",
+    "selected_tool": "openweathermap_api",
+    "selected_position": 3,
+    "correct_category": "weather"
+  },
+  {
+    "base_id": "same_000",
+    "variant_id": "same_000_rot1",
+    "query": "What's the weather like in Paris today?",
+    "category": "weather",
+    "rotation": 1,
+    "tool_order": [
+      "weatherapi_com",
+      "weather_gov_api",
+      "openweathermap_api",
+      "world_weather_online"
+    ],
+    "raw_response": "openweathermap_api",
+    "selected_tool": "openweathermap_api",
+    "selected_position": 2,
+    "correct_category": "weather"
+  },
+  {
+    "base_id": "same_000",
+    "variant_id": "same_000_rot2",
+    "query": "What's the weather like in Paris today?",
+    "category": "weather",
+    "rotation": 2,
+    "tool_order": [
+      "weather_gov_api",
+      "openweathermap_api",
+      "world_weather_online",
+      "weatherapi_com"
+    ],
+    "raw_response": "openweathermap_api",
+    "selected_tool": "openweathermap_api",
+    "selected_position": 1,
+    "correct_category": "weather"
+  },
+  {
+    "base_id": "same_000",
+    "variant_id": "same_000_rot3",
+    "query": "What's the weather like in Paris today?",
+    "category": "weather",
+    "rotation": 3,
+    "tool_order": [
+      "openweathermap_api",
+      "world_weather_online",
+      "weatherapi_com",
+      "weather_gov_api"
+    ],
+    "raw_response": "openweathermap_api",
+    "selected_tool": "openweathermap_api",
+    "selected_position": 0,
+    "correct_category": "weather"
+  },
+  {
+    "base_id": "same_001",
+    "variant_id": "same_001_rot0",
+    "query": "Will it rain in New York this weekend?",
+    "category": "weather",
+    "rotation": 0,
+    "tool_order": [
+      "weather_gov_api",
+      "world_weather_online",
+      "openweathermap_api",
+      "weatherapi_com"
+    ],
+    "raw_response": "openweathermap_api",
+    "selected_tool": "openweathermap_api",
+    "selected_position": 2,
+    "correct_category": "weather"
+  },
+  {
+    "base_id": "same_001",
+    "variant_id": "same_001_rot1",
+    "query": "Will it rain in New York this weekend?",
+    "category": "weather",
+    "rotation": 1,
+    "tool_order": [
+      "world_weather_online",
+      "openweathermap_api",
+      "weatherapi_com",
+      "weather_gov_api"
+    ],
+    "raw_response": "openweathermap_api",
+    "selected_tool": "openweathermap_api",
+    "selected_position": 1,
+    "correct_category": "weather"
+  },
+  {
+    "base_id": "same_001",
+    "variant_id": "same_001_rot2",
+    "query": "Will it rain in New York this weekend?",
+    "category": "weather",
+    "rotation": 2,
+    "tool_order": [
+      "openweathermap_api",
+      "weatherapi_com",
+      "weather_gov_api",
+      "world_weather_online"
+    ],
+    "raw_response": "openweathermap_api",
+    "selected_tool": "openweathermap_api",
+    "selected_position": 0,
+    "correct_category": "weather"
+  },
+  {
+    "base_id": "same_001",
+    "variant_id": "same_001_rot3",
+    "query": "Will it rain in New York this weekend?",
+    "category": "weather",
+    "rotation": 3,
+    "tool_order": [
+      "weatherapi_com",
+      "weather_gov_api",
+      "world_weather_online",
+      "openweathermap_api"
+    ],
+    "raw_response": "weatherapi_com",
+    "selected_tool": "weatherapi_com",
+    "selected_position": 0,
+    "correct_category": "weather"
+  },
+  {
+    "base_id": "same_002",
+    "variant_id": "same_002_rot0",
+    "query": "What temperature should I expect in Tokyo tomorrow?",
+    "category": "weather",
+    "rotation": 0,
+    "tool_order": [
+      "weatherapi_com",
+      "weather_gov_api",
+      "world_weather_online",
+      "openweathermap_api"
+    ],
+    "raw_response": "weatherapi_com",
+    "selected_tool": "weatherapi_com",
+    "selected_position": 0,
+    "correct_category": "weather"
+  },
+  {
+    "base_id": "same_002",
+    "variant_id": "same_002_rot1",
+    "query": "What temperature should I expect in Tokyo tomorrow?",
+    "category": "weather",
+    "rotation": 1,
+    "tool_order": [
+      "weather_gov_api",
+      "world_weather_online",
+      "openweathermap_api",
+      "weatherapi_com"
+    ],
+    "raw_response": "openweathermap_api",
+    "selected_tool": "openweathermap_api",
+    "selected_position": 2,
+    "correct_category": "weather"
+  },
+  {
+    "base_id": "same_002",
+    "variant_id": "same_002_rot2",
+    "query": "What temperature should I expect in Tokyo tomorrow?",
+    "category": "weather",
+    "rotation": 2,
+    "tool_order": [
+      "world_weather_online",
+      "openweathermap_api",
+      "weatherapi_com",
+      "weather_gov_api"
+    ],
+    "raw_response": "openweathermap_api",
+    "selected_tool": "openweathermap_api",
+    "selected_position": 1,
+    "correct_category": "weather"
+  },
+  {
+    "base_id": "same_002",
+    "variant_id": "same_002_rot3",
+    "query": "What temperature should I expect in Tokyo tomorrow?",
+    "category": "weather",
+    "rotation": 3,
+    "tool_order": [
+      "openweathermap_api",
+      "weatherapi_com",
+      "weather_gov_api",
+      "world_weather_online"
+    ],
+    "raw_response": "openweathermap_api",
+    "selected_tool": "openweathermap_api",
+    "selected_position": 0,
+    "correct_category": "weather"
+  },
+  {
+    "base_id": "same_003",
+    "variant_id": "same_003_rot0",
+    "query": "Is it going to be sunny in London next week?",
+    "category": "weather",
+    "rotation": 0,
+    "tool_order": [
+      "weatherapi_com",
+      "world_weather_online",
+      "openweathermap_api",
+      "weather_gov_api"
+    ],
+    "raw_response": "weatherapi_com",
+    "selected_tool": "weatherapi_com",
+    "selected_position": 0,
+    "correct_category": "weather"
+  },
+  {
+    "base_id": "same_003",
+    "variant_id": "same_003_rot1",
+    "query": "Is it going to be sunny in London next week?",
+    "category": "weather",
+    "rotation": 1,
+    "tool_order": [
+      "world_weather_online",
+      "openweathermap_api",
+      "weather_gov_api",
+      "weatherapi_com"
+    ],
+    "raw_response": "openweathermap_api",
+    "selected_tool": "openweathermap_api",
+    "selected_position": 1,
+    "correct_category": "weather"
+  },
+  {
+    "base_id": "same_003",
+    "variant_id": "same_003_rot2",
+    "query": "Is it going to be sunny in London next week?",
+    "category": "weather",
+    "rotation": 2,
+    "tool_order": [
+      "openweathermap_api",
+      "weather_gov_api",
+      "weatherapi_com",
+      "world_weather_online"
+    ],
+    "raw_response": "openweathermap_api",
+    "selected_tool": "openweathermap_api",
+    "selected_position": 0,
+    "correct_category": "weather"
+  },
+  {
+    "base_id": "same_003",
+    "variant_id": "same_003_rot3",
+    "query": "Is it going to be sunny in London next week?",
+    "category": "weather",
+    "rotation": 3,
+    "tool_order": [
+      "weather_gov_api",
+      "weatherapi_com",
+      "world_weather_online",
+      "openweathermap_api"
+    ],
+    "raw_response": "openweathermap_api",
+    "selected_tool": "openweathermap_api",
+    "selected_position": 3,
+    "correct_category": "weather"
+  },
+  {
+    "base_id": "same_004",
+    "variant_id": "same_004_rot0",
+    "query": "What are the weather conditions in Sydney right now?",
+    "category": "weather",
+    "rotation": 0,
+    "tool_order": [
+      "weatherapi_com",
+      "world_weather_online",
+      "weather_gov_api",
+      "openweathermap_api"
+    ],
+    "raw_response": "openweathermap_api",
+    "selected_tool": "openweathermap_api",
+    "selected_position": 3,
+    "correct_category": "weather"
+  },
+  {
+    "base_id": "same_004",
+    "variant_id": "same_004_rot1",
+    "query": "What are the weather conditions in Sydney right now?",
+    "category": "weather",
+    "rotation": 1,
+    "tool_order": [
+      "world_weather_online",
+      "weather_gov_api",
+      "openweathermap_api",
+      "weatherapi_com"
+    ],
+    "raw_response": "openweathermap_api",
+    "selected_tool": "openweathermap_api",
+    "selected_position": 2,
+    "correct_category": "weather"
+  },
+  {
+    "base_id": "same_004",
+    "variant_id": "same_004_rot2",
+    "query": "What are the weather conditions in Sydney right now?",
+    "category": "weather",
+    "rotation": 2,
+    "tool_order": [
+      "weather_gov_api",
+      "openweathermap_api",
+      "weatherapi_com",
+      "world_weather_online"
+    ],
+    "raw_response": "openweathermap_api",
+    "selected_tool": "openweathermap_api",
+    "selected_position": 1,
+    "correct_category": "weather"
+  },
+  {
+    "base_id": "same_004",
+    "variant_id": "same_004_rot3",
+    "query": "What are the weather conditions in Sydney right now?",
+    "category": "weather",
+    "rotation": 3,
+    "tool_order": [
+      "openweathermap_api",
+      "weatherapi_com",
+      "world_weather_online",
+      "weather_gov_api"
+    ],
+    "raw_response": "openweathermap_api",
+    "selected_tool": "openweathermap_api",
+    "selected_position": 0,
+    "correct_category": "weather"
+  }
+]

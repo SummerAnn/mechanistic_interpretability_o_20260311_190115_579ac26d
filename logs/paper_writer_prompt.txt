@@ -1,0 +1,1132 @@
+You are an academic paper writer. Generate a complete NEURIPS style paper
+based on the experiment results provided.
+
+════════════════════════════════════════════════════════════════════════════════
+                         IMPORTANT: BEFORE YOU START
+════════════════════════════════════════════════════════════════════════════════
+
+Before writing any content, you MUST complete these steps:
+
+1. READ THE SKILL: Review the paper-writer skill at .claude/skills/paper-writer/SKILL.md
+2. READ THE STYLE GUIDE: Study templates/paper_writing/lab_style_guide.md carefully
+3. REVIEW EXAMPLES: Browse paper_examples/ for formatting and language patterns:
+   - Look at sections/1.introduction.tex for language style
+   - Look at tables/*.tex for table formatting
+   - Look at commands/*.tex for macro usage
+4. VERIFY COMMAND TEMPLATES: Command templates (math.tex, general.tex, macros.tex) are pre-copied to paper_draft/commands/
+
+CRITICAL: Reference example papers for FORMATTING and LANGUAGE STYLE only.
+Do NOT copy content, phrasing, or narrative structure from the example papers.
+The examples are in a different research domain - focus only on presentation style.
+
+════════════════════════════════════════════════════════════════════════════════
+                            EXPERIMENT REPORT
+════════════════════════════════════════════════════════════════════════════════
+
+# Research Report: Mechanistic Interpretability of Tool Selection in LLMs
+
+**Date**: March 11, 2026
+**Model Studied**: GPT-4.1-mini (behavioral), GPT-2-small (mechanistic)
+**Datasets**: Custom tool selection dataset (55 examples, 5 categories, 4 tools each)
+
+---
+
+## 1. Executive Summary
+
+This research investigates the mechanisms underlying tool selection in large language models (LLMs) — a critical but understudied component of modern AI agents. We conducted four empirical experiments: (1) semantic similarity analysis using sentence-transformer embeddings, (2) positional bias testing via tool ordering rotation, (3) causal description perturbation, and (4) layer-wise representational probing in GPT-2-small.
+
+**Key findings**: Tool selection is driven by a combination of semantic matching and strong positional biases. Semantic similarity between query and tool description achieves only 40% top-1 accuracy (vs. 25% chance), while position-0 selection rate in the main experiment reaches 57.8%. Mechanistically, GPT-2-small representations encode tool category information from layer 1 (100% probe accuracy across all layers), but encoding of *which tool position is semantically correct* develops gradually — rising from 35% at layer 1 to 68% at layer 9 using mean-pooled representations, confirming that semantic matching is computed progressively through the network.
+
+---
+
+## 2. Goal
+
+**Research Question**: What mechanisms drive tool selection in LLMs? Specifically:
+- Is selection driven by semantic matching between query and tool description?
+- How strongly does positional order bias selection?
+- At which layers does tool-selection-relevant information emerge in a transformer?
+
+**Why This Matters**: LLM-based agents increasingly depend on correct tool selection for downstream task success. Selection errors cascade — choosing the wrong tool produces wrong inputs, requiring re-planning or causing failures. Despite this, no prior work identifies the internal circuits responsible for tool selection. Behavioral benchmarks (ToolBench, Berkeley FCL) measure success/failure but cannot explain or predict selection errors. This work provides the first empirical mechanistic characterization.
+
+**Expected Impact**: Understanding the computational basis of tool selection will enable: (1) targeted debugging of selection failures, (2) reliable prediction of when LLMs will select the wrong tool, and (3) architectural design choices that make tool routing more robust.
+
+---
+
+## 3. Data Construction
+
+### Dataset Description
+
+We constructed a custom experimental dataset with four components:
+
+| Dataset | Examples | Purpose |
+|---------|----------|---------|
+| Main Tool Selection | 55 examples (40 same-category, 5 mixed) | Baseline behavioral analysis |
+| Positional Bias | 40 variants (10 base × 4 rotations) | Test order effects |
+| Description Perturbation | 7 examples (3 pairs across 3 conditions) | Causal description analysis |
+| Probing (GPT-2) | 100 examples (25/category × 4) | Mechanistic layer analysis |
+
+**Tool categories**: weather, calculator (math), web search, code execution, translation
+**Tools per example**: 4 candidates (matching descriptions in same-category; mixed in cross-category scenarios)
+
+### Example Samples
+
+**Same-category example** (tests fine-grained semantic matching):
+```
+Query: &#34;What&#39;s the forecast for Los Angeles this week?&#34;
+Tools: [openweathermap_api, weatherapi_com, world_weather_online, weather_gov_api]
+LLM Selected: openweathermap_api (position 0)
+```
+
+**Mixed-category example** (tests coarse category routing):
+```
+Query: &#34;Compute the integral of x^3 from 0 to 5&#34;
+Tools: [wolfram_alpha_api, openweathermap_api, google_search_api, jupyter_kernel_api]
+LLM Selected: wolfram_alpha_api (position 0)
+```
+
+**Perturbation example** (causal test):
+```
+Query: &#34;What&#39;s the forecast for London this weekend?&#34;
+Condition: adversarial (descriptions swapped — wolfram_alpha_api gets weather description)
+LLM Selected: wolfram_alpha_api (followed the description, not the tool name!)
+```
+
+### Data Quality
+- All examples have 4 tool options with realistic names and descriptions
+- Categories are balanced (10 queries × 5 categories for same-cat; 5 mixed-cat scenarios)
+- No data contamination: all queries and descriptions are novel (not from training benchmarks)
+- Position of &#34;correct&#34; tool randomized across examples
+
+### Preprocessing
+1. Tool descriptions drawn from real API documentation (OpenWeatherMap, WolframAlpha, Google APIs, etc.)
+2. Queries designed to be semantically clear but not contain exact tool names (to avoid trivial matching)
+3. For positional bias dataset: 4 rotations created by cyclic shifting of tool list
+4. For perturbation dataset: three conditions — original, generic (neutral descriptions), adversarial (descriptions swapped)
+
+---
+
+## 4. Experiment Description
+
+### Methodology
+
+#### High-Level Approach
+We used three complementary approaches:
+1. **Behavioral analysis via LLM API**: Collected 135+ LLM selections (45 examples × 3 runs) from GPT-4.1-mini via OpenRouter. This established behavioral ground truth for semantic correlation studies.
+2. **Embedding-based semantic analysis**: Used `all-MiniLM-L6-v2` (sentence-transformers) to compute cosine similarity between query and each tool description. Compared similarity predictions against LLM behavioral data.
+3. **Mechanistic probing (GPT-2-small)**: Extracted hidden states at each of 12 layers for 100 tool-selection prompts. Trained linear probes to predict (a) tool category and (b) which tool position is semantically correct.
+
+#### Why This Method?
+Behavioral analysis on a large API model (GPT-4.1-mini) establishes real-world relevance, while mechanistic probing on GPT-2-small is tractable on CPU and generalizable per the LLM Circuit Consistency paper (Tigges et al., 2024). Semantic similarity serves as an explicit, interpretable model of what &#34;semantic matching&#34; would look like — comparing it against actual LLM selections tests whether the LLM&#39;s decision can be explained by simple cosine similarity.
+
+### Implementation Details
+
+#### Tools and Libraries
+| Library | Version | Purpose |
+|---------|---------|---------|
+| openai | 2.26.0 | OpenRouter API client |
+| sentence-transformers | latest | Query-description embeddings |
+| transformers | 5.3.0 | GPT-2 model loading |
+| scikit-learn | 1.8.0 | Linear probing classifiers |
+| scipy | 1.17.1 | Statistical tests |
+| numpy | latest | Numerical computation |
+| matplotlib | latest | Visualization |
+
+**Hardware**: CPU only (Intel, no GPU)
+**Model**: GPT-4.1-mini via OpenRouter (`openai/gpt-4.1-mini`)
+**Embeddings**: `sentence-transformers/all-MiniLM-L6-v2` (22M parameters)
+**Probing model**: GPT-2-small (117M parameters, 12 layers, 768 hidden dim)
+
+#### Hyperparameters
+| Parameter | Value | Rationale |
+|-----------|-------|-----------|
+| LLM temperature | 0.0 | Deterministic selections |
+| LLM max_tokens | 50 | Tool name only |
+| n_runs per example | 3 | Consistency measurement |
+| Probe regularization C | 1.0 | Default; balanced |
+| Probe max_iterations | 2000 | Convergence |
+| Cross-validation folds | 5 | Standard; stratified |
+| GPT-2 max context | 512 tokens | Fits full tool-selection prompt |
+
+#### Evaluation Metrics
+- **Top-1 accuracy**: Does highest-similarity tool match LLM&#39;s selection?
+- **Mean rank of LLM&#39;s choice** in similarity ranking (chance = 2.5 for 4 tools)
+- **Position-0 selection rate**: Tests primacy bias (chance = 25%)
+- **Selection stability**: Fraction of rotations where same tool is selected
+- **Layer probe accuracy**: Cross-validated accuracy of linear probe at each layer
+- **Chi-square test**: Tests uniformity of position preference distribution
+
+### Experimental Protocol
+
+- **Runs for averaging**: 3 per example (LLM experiments), 5-fold CV (probing)
+- **Random seeds**: 42 throughout
+- **Hardware**: 1 CPU (no GPU)
+- **Execution time**: ~15 min API experiments, ~8 min probing
+
+---
+
+## 5. Raw Results
+
+### Semantic Similarity Analysis
+
+| Metric | Value | Chance |
+|--------|-------|--------|
+| Top-1 accuracy (overall) | **0.400** | 0.250 |
+| Top-1 accuracy (same-category) | 0.375 | 0.250 |
+| Top-1 accuracy (mixed-category) | **0.600** | 0.250 |
+| Mean rank of LLM choice | 2.09 | 2.50 |
+| Position-0 selection rate | **0.578** | 0.250 |
+| Mean similarity (selected tools) | 0.219 | — |
+| Mean similarity (top sim tool) | 0.257 | — |
+
+**Per-category semantic accuracy:**
+
+| Category | n | Semantic Top-1 Acc. | Position-0 Rate |
+|----------|---|---------------------|-----------------|
+| calculator | 9 | **0.667** | 0.667 |
+| weather | 9 | 0.556 | 0.556 |
+| code_execution | 8 | 0.375 | 0.500 |
+| search | 8 | 0.250 | 0.500 |
+| translation | 9 | 0.222 | 0.667 |
+
+### Positional Bias Analysis
+
+**Rotation experiment** (10 base examples × 4 rotations):
+
+| Position | Observed Rate | Expected Rate |
+|----------|--------------|---------------|
+| Position 0 | 0.325 | 0.250 |
+| Position 1 | 0.250 | 0.250 |
+| Position 2 | 0.250 | 0.250 |
+| Position 3 | 0.175 | 0.250 |
+
+- Chi-square statistic: 1.800 (p = 0.615)
+- Selection stability (same tool across 4 rotations): **mean = 0.900**
+- Total variation distance from uniform: 0.075
+
+**Main experiment** (45 examples, random tool ordering):
+- Position-0 selection rate: **57.8%** (expected: 25%)
+- This is consistent with semantic matching — the first-listed tool often has the best description
+
+### Description Perturbation Analysis
+
+| Query | Condition | Selected Tool | Changed? |
+|-------|-----------|---------------|----------|
+| London forecast | original | openweathermap_api | — |
+| London forecast | generic | openweathermap_api | No |
+| London forecast | adversarial | wolfram_alpha_api | **Yes** |
+| 25 × 48 | original | wolfram_alpha_api | — |
+| 25 × 48 | adversarial | openweathermap_api | **Yes** |
+| Translate to Spanish | original | google_translate_api | — |
+| Translate to Spanish | adversarial | google_translate_api | No |
+
+- **2/3 adversarial cases** caused selection to change (67%)
+- Generic descriptions (neutral, non-semantic) did NOT change selection
+- Selection stability under adversarial perturbation: 0.67 (vs. 1.0 for original)
+
+### Layer-wise Probing Results (GPT-2-small)
+
+**Task 1: Tool Category Probe (mean pooling)**
+
+| Layer Group | Mean Probe Accuracy |
+|-------------|---------------------|
+| Early (1-4) | 1.000 |
+| Middle (5-8) | 1.000 |
+| Late (9-12) | 0.998 |
+| Chance | 0.250 |
+
+**Task 2: Correct Tool Position Probe (mean pooling)**
+
+| Layer | Accuracy | Std |
+|-------|----------|-----|
+| 1 | 0.350 | 0.077 |
+| 2 | 0.360 | 0.058 |
+| 3 | 0.410 | 0.049 |
+| 4 | 0.440 | 0.058 |
+| 5 | 0.490 | 0.097 |
+| 6 | 0.560 | 0.066 |
+| 7 | 0.600 | 0.105 |
+| 8 | 0.600 | 0.089 |
+| **9** | **0.680** | 0.081 |
+| 10 | 0.680 | 0.075 |
+| 11 | 0.630 | 0.081 |
+| 12 | 0.450 | 0.130 |
+
+**Task 3: Correct Tool Position Probe (last-token representation)**
+
+| Layer Group | Mean Probe Accuracy |
+|-------------|---------------------|
+| Early (1-4) | 0.723 |
+| Middle (5-8) | 0.733 |
+| Late (9-12) | 0.730 |
+| Best layer (8 or 10) | **0.810** |
+| Chance | 0.250 |
+
+### Visualizations
+
+All figures saved to `figures/`:
+- `fig1_semantic_accuracy.png`: Semantic similarity vs. baselines
+- `fig2_positional_bias.png`: Position preference analysis
+- `fig3_stability.png`: Selection stability distribution
+- `fig4_perturbation.png`: Description perturbation causal analysis
+- `fig5_layer_probing.png`: Layer-wise probing curves
+- `fig6_similarity_distributions.png`: Query-tool similarity distributions
+- `fig7_summary.png`: Overall metrics summary
+
+---
+
+## 6. Result Analysis
+
+### Key Findings
+
+**Finding 1: Semantic matching is a significant but incomplete predictor of tool selection (H1: partially supported)**
+
+Semantic cosine similarity achieves 40% top-1 accuracy (vs. 25% chance), confirming that it is significantly better than random (64% improvement over chance). However, it falls short of being the dominant driver — the LLM&#39;s selected tool has a mean cosine similarity of 0.219, while the top-similar tool averages 0.257. This gap suggests the model does NOT simply select the most semantically similar tool by cosine distance alone. Mixed-category examples show higher accuracy (60%) than same-category (37.5%), which makes sense: when tools differ in category (weather vs. calculator), semantic differences are more pronounced.
+
+**Finding 2: Positional bias is real but weaker in controlled experiments (H2: partially supported)**
+
+In the main experiment (random tool ordering), position-0 selection rate is 57.8% — dramatically above chance (25%). However, this largely disappears in the controlled rotation experiment (position-0 rate = 32.5%, chi-square p = 0.615, not significant). The key reconciliation: in the main experiment, tools were presented in a random but fixed order per example — the high position-0 rate may reflect the correlation between position and description quality in our dataset rather than pure positional bias.
+
+**Finding 3: Semantic content (not position) drives selection when descriptions are informative (H3: supported)**
+
+In the rotation experiment, selection stability is 90% — the same tool is selected across 9 out of 10 orderings. This directly shows that position alone is not driving selection; the model tracks which tool is semantically relevant regardless of where it appears. However, the perturbation results confirm that description content is causal: swapping tool descriptions caused selection to follow the description rather than the tool name in 2/3 cases.
+
+**Finding 4: Tool category information is encoded throughout all GPT-2 layers; tool selection position emerges gradually in later layers (H4: supported)**
+
+The most striking mechanistic finding: tool category can be perfectly decoded (100% accuracy) from ANY layer of GPT-2-small, even layer 1. This suggests that semantic category information is primarily encoded at the token/vocabulary level and does not require deep processing. In contrast, the information about *which tool position is semantically correct* shows a clear progression: from 35% at layer 1 to 68% at layer 9 (chance = 25%), with the peak at layer 9. This dissociation between category encoding (immediate) and positional selection (computed) is a novel finding that suggests semantic matching is a non-trivial computation performed over the middle-to-late layers.
+
+The last-token probing results (mean 72-81% across all layers) suggest that the last token is a special information aggregation point — likely because in autoregressive generation, the model must produce the next token (&#34;which tool name to output&#34;) and the last token&#39;s representation naturally condenses the selection decision.
+
+### Hypothesis Testing Results
+
+| Hypothesis | Result | Evidence |
+|-----------|--------|---------|
+| H1: Semantic similarity predicts selection (&gt;65% accuracy) | **Partially Supported** | 40% overall (60% for mixed-category) |
+| H2: Significant positional bias in chi-square test | **Not Supported** (controlled) | χ²=1.8, p=0.615 in rotation experiment |
+| H3: Content &gt; position when semantic signal strong | **Supported** | 90% stability across rotations |
+| H4: Tool selection info emerges in later layers | **Supported** | Position probe rises from 35% → 68% (layers 1-9) |
+
+### Comparison to Prior Work
+
+Our results align with and extend BiasBusters (Blankenstein et al., 2025):
+- They found semantic alignment is the strongest predictor of tool choice; our 40% semantic accuracy (vs 25% chance) confirms this
+- They found positional bias in uncontrolled conditions; our controlled rotation experiment shows it is weaker than behavioral studies suggest
+
+Our probing results extend Healy et al. (2026):
+- They showed final-layer representations are discriminative for hallucination detection; our findings show tool category is discriminative at ALL layers, but the selection *position* (which encodes the comparison across tools) only becomes reliable in layers 8-10
+
+### Surprises and Insights
+
+1. **Perfect category encoding at layer 1**: We expected category information to emerge gradually. Instead, 100% accuracy from the first layer suggests this is primarily lexical — GPT-2&#39;s token embeddings directly encode semantic domain. This is consistent with the &#34;E-step&#34; hypothesis in MI literature (early layers = lexical/syntactic, late layers = semantic/pragmatic).
+
+2. **High last-token accuracy from layer 1 (73%)**: The last token immediately has strong position information. This is surprising and may reflect that the last token acts as a &#34;selection buffer&#34; — in autoregressive models, the representation at the generation point naturally integrates the full context. This is a potential mechanistic insight: the final token&#39;s hidden state is the computational site of tool selection.
+
+3. **Generic descriptions don&#39;t change selection**: When we replaced all descriptions with neutral text (&#34;An API service that processes requests and returns data&#34;), the model still selected the same tool as with original descriptions. This suggests tool NAME (not just description) carries strong priors — models may have learned to associate certain tool name patterns with domains during pretraining.
+
+4. **Adversarial perturbation works 2/3 times**: This confirms description content is causally important for 67% of cases. The 1/3 failure case (translate query: model still selected `google_translate_api` even when its description was swapped) suggests tool NAME provides a secondary signal that can override description content for highly distinctive names.
+
+### Error Analysis
+
+**Cases where semantic similarity fails:**
+- Translation category: 22% accuracy. The translations tools (google_translate_api, deepl_api, etc.) have very similar descriptions — all mention &#34;languages&#34;, &#34;text&#34;, &#34;translate&#34;. The model picks whichever appears first, not the one with highest similarity (since they&#39;re all similar).
+- Code execution: 37.5% accuracy. Queries like &#34;Run this Python script&#34; are ambiguous between code execution and search.
+
+**Cases where semantic similarity succeeds:**
+- Calculator category: 67% accuracy. Math queries have distinctive vocabulary (&#34;solve&#34;, &#34;compute&#34;, &#34;equation&#34;) that aligns well with &#34;computation&#34;, &#34;mathematical expressions&#34; in descriptions.
+- Mixed-category scenarios: 60% accuracy. Greater semantic contrast between categories makes similarity more discriminative.
+
+### Limitations
+
+1. **Small sample size**: 45 LLM examples limits statistical power; category-level analyses have n=8-9 per cell.
+2. **GPT-2 ≠ instruction-tuned models**: GPT-2-small is a base language model that has no tool-use training. The probing results reflect language model representations, not tool-selection-specific circuits. A fine-tuned tool-calling model might show different patterns.
+3. **Fixed tool descriptions**: In deployment, tool descriptions vary in length, style, and quality. Our curated descriptions may not represent real-world diversity.
+4. **Cosine similarity baseline**: We used `all-MiniLM-L6-v2` for embeddings. Different embedding models might show different accuracy patterns.
+5. **No circuit-level analysis**: The ACDC circuit discovery methodology (Conmy et al., 2023) was not applied. Our probing results identify WHERE information is encoded but not the specific computational circuits responsible.
+6. **Small perturbation set**: Only 3 query types were tested with adversarial perturbations; results may not generalize.
+
+---
+
+## 7. Conclusions
+
+### Summary
+
+LLM tool selection is driven by a combination of semantic content (description relevance) and position biases. **Semantic similarity predicts 40% of LLM selections** — significantly above chance but far from perfect, indicating that the LLM&#39;s internal semantic matching is more sophisticated than simple cosine similarity. **Selection is highly stable across tool orderings (90% stability)**, demonstrating that content drives selection more than position. Mechanistically, **tool category information is immediately available in GPT-2 layer 1 representations**, while **information about which specific tool position is semantically correct emerges progressively through layers 1-9** — providing the first evidence that semantic matching computation is distributed across the middle-to-late transformer layers.
+
+### Implications
+
+**Practical**: LLM tool selection can be improved by (1) ensuring tool descriptions are sufficiently distinctive — especially within-category, where current models struggle most (37.5% accuracy), and (2) being aware that tool name carries its own prior — descriptions alone cannot override strong name-based priors.
+
+**Theoretical**: The dissociation between layer-1 category encoding (trivial from lexical signal) and layers 8-10 position selection (complex semantic matching) is consistent with the &#34;processing hierarchy&#34; in transformers — early layers handle lexical features, later layers handle compositional/relational computations. Tool selection appears to be a &#34;relational comparison&#34; task (query vs. each tool description) that requires the full depth of the network.
+
+**For mechanistic interpretability**: This work demonstrates that probing for &#34;which position is correct&#34; is a non-trivial task that reveals meaningful architectural structure, distinct from probing for categories. Future work should combine this with activation patching to identify the specific heads responsible for cross-tool comparison.
+
+### Confidence in Findings
+
+- **High confidence**: Positional stability finding (90%) and last-token probing (73-81%); these are robust across all examples.
+- **Medium confidence**: Semantic similarity 40% accuracy; larger sample size would improve estimates.
+- **Lower confidence**: Layer emergence pattern for position probe; GPT-2 may not generalize to instruction-tuned models.
+
+---
+
+## 8. Next Steps
+
+### Immediate Follow-ups
+
+1. **ACDC circuit discovery** on GPT-2 tool-selection prompts: Apply the automated circuit discovery algorithm to identify the minimal faithful circuit for tool selection (estimated: 1-2 weeks, requires GPU).
+
+2. **Larger scale semantic analysis** (n=500): More examples would allow reliable per-category and per-model statistical comparisons, enabling Bonferroni-corrected significance testing.
+
+3. **Instruction-tuned model probing**: Repeat the layer-wise probing on GPT-2-finetuned or LLaMA-3.1-8B-Instruct, which have explicit tool-use training, to see if tool selection circuits are more specialized.
+
+### Alternative Approaches
+
+- **Sparse Autoencoder (SAE) feature analysis**: Use pre-trained SAEs (from dictionary_learning repo) to find monosemantic features that activate for tool-related concepts. This may reveal whether there are dedicated &#34;tool relevance&#34; features or whether the computation is distributed.
+- **Attention pattern visualization**: Examine which tokens each attention head attends to during tool selection — does any head specifically attend to the query when processing tool descriptions?
+- **Cross-model comparison**: Replicate with Claude-Haiku and GPT-4.1-mini fine-tuned on tool use to test whether selection representations generalize.
+
+### Open Questions
+
+1. **What specific attention heads implement cross-tool comparison?** The probing results suggest layers 7-9 are key; which attention heads within those layers perform the comparison?
+2. **Why does the adversarial perturbation fail for the translation case?** Tool name prior seems to dominate; how much does each factor (name vs. description) contribute?
+3. **Does tool selection use the same &#34;copy-name&#34; circuit as IOI?** The BiasBusters finding that earlier-listed tools are preferred echoes the &#34;first token&#34; bias in induction heads — is there a mechanistic connection?
+
+---
+
+## 9. References
+
+1. Healy et al. (2026). *Internal Representations as Indicators of Hallucinations in Agent Tool Selection*. AAAI Workshop. arXiv:2601.05214
+2. Blankenstein et al. (2025). *BiasBusters: Uncovering and Mitigating Tool Selection Bias in Large Language Models*. arXiv:2510.00307
+3. Conmy et al. (2023). *Towards Automated Circuit Discovery for Mechanistic Interpretability*. NeurIPS 2023. arXiv:2304.14997
+4. Sharkey et al. (2025). *Open Problems in Mechanistic Interpretability*. TMLR 2025. arXiv:2501.16496
+5. Merullo et al. (2024). *Circuit Component Reuse Across Tasks in Transformer Language Models*. ICLR 2024. arXiv:2310.08744
+6. Tigges et al. (2024). *LLM Circuit Analyses Are Consistent Across Training and Scale*. NeurIPS 2024. arXiv:2407.10827
+7. Qin et al. (2023). *ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs*. ICLR 2024. arXiv:2307.16789
+8. Schick et al. (2023). *Toolformer: Language Models Can Teach Themselves to Use Tools*. NeurIPS 2023. arXiv:2302.04761
+
+---
+
+## Appendix: File Structure
+
+```
+├── planning.md                    # Research plan
+├── REPORT.md                      # This document
+├── README.md                      # Project overview
+├── pyproject.toml                 # Project dependencies
+├── src/
+│   ├── create_dataset.py          # Dataset construction
+│   ├── llm_experiments.py         # LLM API experiments (main, positional, perturbation)
+│   ├── semantic_analysis.py       # Embedding similarity analysis
+│   ├── positional_analysis.py     # Positional bias statistics
+│   ├── probing_analysis_v2.py     # Layer-wise probing (GPT-2-small)
+│   └── generate_figures.py        # All visualization code
+├── datasets/experiment_datasets/
+│   ├── tool_selection_dataset.json      # Main 55-example dataset
+│   ├── positional_bias_dataset.json     # 40 rotation variants
+│   └── description_perturbation_dataset.json  # 7 perturbation examples
+├── results/
+│   ├── main_selection_results.json      # 45 LLM selections (3 runs each)
+│   ├── positional_bias_results.json     # 40 positional variants
+│   ├── perturbation_results.json        # 7 perturbation results
+│   ├── semantic_analysis/               # Embedding similarity results
+│   ├── positional_analysis/             # Statistical tests
+│   └── probing_analysis/                # Layer probe results + hidden states
+└── figures/
+    ├── fig1_semantic_accuracy.png
+    ├── fig2_positional_bias.png
+    ├── fig3_stability.png
+    ├── fig4_perturbation.png
+    ├── fig5_layer_probing.png
+    ├── fig6_similarity_distributions.png
+    └── fig7_summary.png
+```
+
+
+════════════════════════════════════════════════════════════════════════════════
+                            RESEARCH PLAN
+════════════════════════════════════════════════════════════════════════════════
+
+# Research Planning: Mechanistic Interpretability of Tool Selection in LLMs
+
+## Motivation &amp; Novelty Assessment
+
+### Why This Research Matters
+LLM-based agents are deployed in high-stakes settings (finance, healthcare, coding) where tool selection errors cause cascading failures. Yet we have no mechanistic understanding of *how* models decide which tool to call — behavioral benchmarks (ToolBench, Berkeley FCL) measure success/failure but cannot predict or debug failures. Understanding the circuits underlying tool selection enables targeted interventions: fixing selection bugs, making agents more reliable, and ultimately building safer autonomous systems.
+
+### Gap in Existing Work
+The literature review reveals three key gaps:
+1. **No circuit-level analysis**: 2601.05214 (Healy et al.) shows final-layer representations encode tool selection information, but does not identify which circuits perform the computation or how they work.
+2. **Semantic matching is correlational, not causal**: BiasBusters (2510.00307) shows semantic alignment predicts selection but cannot explain *how* the model computes that alignment internally.
+3. **No decomposition of semantic matching vs. routing**: Is selection a matter of matching query to tool description semantics (reusing existing entity-matching circuits), or is there dedicated &#34;routing&#34; logic?
+
+### Our Novel Contribution
+This work provides the first empirical characterization of tool selection representations across three complementary lenses: (1) semantic similarity analysis comparing query-tool embedding distances against actual LLM selections, (2) behavioral probing to identify which layer information is encoded, and (3) causal intervention analysis (positional bias, description perturbation) that goes beyond correlation to establish mechanistic hypotheses.
+
+### Experiment Justification
+- **Experiment 1 (Semantic Matching)**: Tests if cosine similarity between query and tool description embeddings predicts LLM selection → directly tests the &#34;semantic matching hypothesis&#34;
+- **Experiment 2 (LLM Tool Selection Baseline)**: Establishes what tools modern LLMs actually select → needed ground truth for all other analyses
+- **Experiment 3 (Positional Bias)**: Replicates BiasBusters finding; quantifies how much position vs. content drives selection
+- **Experiment 4 (Description Perturbation)**: Causal test — if perturbing semantic content changes selection, content (not just position) drives decisions
+- **Experiment 5 (Layer-wise Probing)**: With GPT-2-small, identifies which transformer layers encode tool selection information → locates the &#34;computation&#34; in the network
+
+---
+
+## Research Question
+What mechanisms drive tool selection in LLMs? Specifically: (a) Is selection driven by semantic matching between query and tool description, (b) how strongly does positional order affect selection, and (c) at which layers does tool-relevant information emerge in a transformer?
+
+## Background and Motivation
+LLMs are increasingly deployed as agents that select from available tools to answer queries. Behavioral benchmarks evaluate success/failure but treat selection as a black box. Two recent papers provide complementary evidence: (1) Healy et al. (2026) show internal representations contain tool-selection information, and (2) BiasBusters (2025) show semantic alignment and positional biases drive behavioral patterns. This project provides a mechanistic bridge: what computations produce these behavioral patterns?
+
+## Hypothesis Decomposition
+
+1. **H1 (Semantic Matching)**: Cosine similarity between query embedding and tool description embedding is a strong predictor of LLM tool selection (better than random, capturing ≥70% of variance in selection).
+2. **H2 (Positional Bias)**: LLMs show significant positional bias — earlier-listed tools are selected more often, even when semantically less relevant.
+3. **H3 (Content vs. Position)**: Semantic content (description text) is a stronger predictor than position when the semantic signal is strong; position dominates when semantic signals are weak/ambiguous.
+4. **H4 (Layer Emergence)**: In GPT-2-small, tool selection information emerges in later layers (layers 9-12 out of 12), consistent with 2601.05214 finding that final-layer representations are discriminative.
+
+## Proposed Methodology
+
+### Approach
+Three-phase empirical analysis:
+1. **Behavioral analysis**: Collect LLM tool selections via API across structured scenarios, establish ground truth
+2. **Semantic analysis**: Compare embedding-based predictions against actual selections
+3. **Mechanistic analysis**: Layer-wise probing on GPT-2-small to identify where tool selection is computed
+
+### Experimental Steps
+
+#### Phase A: Dataset Construction (2h)
+1. Create extended tool selection dataset (50+ examples across 5 tool categories)
+2. Create positional bias variants (same query, tools in different orders)
+3. Create description perturbation variants (perturbed/noisy descriptions)
+
+#### Phase B: LLM Behavioral Experiments via API (2h)
+1. Use OpenRouter API with GPT-4.1-mini or similar model
+2. Present tool selection prompts with 4 candidate tools
+3. Collect: selected tool, selection rationale (if chain-of-thought enabled)
+4. Run each prompt N=3 times to measure consistency
+
+#### Phase C: Semantic Similarity Analysis (1h)
+1. Embed queries and tool descriptions using sentence-transformers (all-MiniLM-L6-v2)
+2. Compute cosine similarities between each query and each tool description
+3. Compare similarity rankings against LLM selections
+4. Statistical analysis: Pearson correlation, ranking accuracy
+
+#### Phase D: Positional Bias Analysis (1h)
+1. Re-run same queries with different tool orderings (swap positions)
+2. Measure selection stability across orderings
+3. Compute positional preference score
+
+#### Phase E: Description Perturbation Analysis (1h)
+1. Create semantically neutral descriptions (generic), then perturb toward query
+2. Measure how selection probability changes with description relevance
+3. Estimate causal effect of description content
+
+#### Phase F: Layer-wise Probing with GPT-2-small (2h)
+1. Install TransformerLens
+2. Create simple tool selection prompts compatible with GPT-2 tokenization
+3. Extract hidden states at each layer (12 layers)
+4. Train linear probes on each layer to predict selected tool
+5. Plot accuracy by layer to reveal where selection information emerges
+
+### Baselines
+1. **Random selection**: Uniform random over tools (lower bound)
+2. **Positional baseline**: Always select first-listed tool
+3. **Semantic similarity oracle**: Select highest-cosine-similarity tool (tests if embedding similarity = selection)
+
+### Evaluation Metrics
+- **Top-1 accuracy**: Does semantic similarity predict the actual selected tool?
+- **Spearman rank correlation**: How well does similarity rank order match selection probability?
+- **Positional stability score**: Fraction of examples where selection is invariant to tool ordering
+- **Layer probe accuracy**: Accuracy of linear probe trained on layer-L representations
+- **Cohen&#39;s kappa**: Inter-run consistency of LLM selections
+
+### Statistical Analysis Plan
+- Chi-square test for positional bias (uniform vs. observed selection distribution over positions)
+- Paired t-test for semantic similarity vs. random baseline accuracy
+- Significance level: α = 0.05 with Bonferroni correction for multiple comparisons
+
+## Expected Outcomes
+- H1 supported if cosine similarity achieves &gt;65% top-1 accuracy on tool selection
+- H2 supported if chi-square test rejects uniform distribution (p &lt; 0.05) for position effects
+- H3 supported if interaction effect (description quality × position) is significant
+- H4 supported if probing accuracy rises sharply in layers 8-12 (vs. flat in early layers)
+
+## Timeline and Milestones
+| Phase | Time | Milestone |
+|-------|------|-----------|
+| Environment setup | 30min | .venv with all packages |
+| Dataset creation | 45min | 50+ examples created |
+| API experiments | 90min | 150+ LLM selections collected |
+| Semantic analysis | 45min | Correlation results |
+| Positional/perturbation | 60min | Bias analysis complete |
+| Probing | 90min | Layer-wise probe curves |
+| Analysis &amp; viz | 45min | 8+ figures saved |
+| Documentation | 45min | REPORT.md complete |
+
+## Potential Challenges
+1. **API rate limits**: Use retry logic with exponential backoff; cache results to JSON
+2. **GPT-2-small CPU performance**: ~30s per forward pass; limit to 100 examples
+3. **TransformerLens installation conflicts**: Pin compatible versions; fallback to raw PyTorch with huggingface transformers
+4. **Model not following tool format**: Use explicit function calling format; post-process responses
+
+## Success Criteria
+- At least 100 LLM tool selections collected and analyzed
+- Semantic similarity correlation reported with confidence intervals
+- Positional bias quantified with statistical significance
+- Layer-wise probing curve showing information emergence
+- REPORT.md with all results
+
+
+════════════════════════════════════════════════════════════════════════════════
+                          LITERATURE REVIEW
+════════════════════════════════════════════════════════════════════════════════
+
+# Literature Review: Mechanistic Interpretability of Tool Selection in LLMs
+
+**Research Hypothesis**: LLMs increasingly use tools (search, code execution, APIs), but we have no mechanistic understanding of how they decide which tool to call. What representations drive tool choice? Is it semantic matching between tool descriptions and queries, or learned heuristics? Do models have dedicated &#34;routing&#34; circuits, or is selection distributed?
+
+---
+
+## 1. Research Area Overview
+
+This research sits at the intersection of two major areas:
+1. **Mechanistic interpretability (MI)**: Reverse-engineering neural network algorithms by identifying circuits—computational subgraphs responsible for specific behaviors
+2. **LLM tool use / agents**: Training and evaluating LLMs to call external tools (APIs, functions, services)
+
+The core open question is: *what internal mechanisms drive tool selection in LLMs?* The field currently has excellent behavioral benchmarks (ToolBench, Berkeley FCL) measuring success/failure, and early evidence that internal representations carry discriminative information about tool selection (2601.05214), but no circuit-level mechanistic analysis exists.
+
+---
+
+## 2. Key Papers
+
+### 2.1 Most Directly Relevant
+
+#### Paper 1: Internal Representations as Indicators of Hallucinations in Agent Tool Selection
+- **Authors**: Kait Healy, Bharathi Srinivasan, Visakh Madathil, Jing Wu (Amazon)
+- **Year**: 2026 (January, AAAI Workshop)
+- **Source**: arXiv:2601.05214
+- **Key Contribution**: First paper to directly study internal LLM representations in the context of tool selection. Shows that final-layer hidden states contain discriminative information for detecting tool-calling hallucinations.
+- **Methodology**:
+  1. Collects tool-calling instances across 5 agent categories (calculator, finance, health, sustainability, commerce) from Glaive Function-Calling V2
+  2. Extracts final-layer hidden states at 3 positions: function name token, argument tokens (averaged), and closing delimiter
+  3. Trains lightweight 2-layer MLP classifiers to detect hallucinations
+  4. Evaluates on Qwen7B (7B), GPT-OSS-20B (20B), Llama-3.1-8B (8B)
+- **Results**: 72.7–86.4% accuracy in detecting tool-calling hallucinations using single forward pass
+  - GPT-OSS-20B: 86.4% accuracy, 86% precision on hallucination class
+  - Llama-3.1-8B: 73% accuracy
+  - Qwen-7B: 74% accuracy
+- **Ablation Study**: Mean pooling of final layer outperforms token-specific methods; simple &gt; complex aggregation
+- **Key Finding**: Internal representations of the final layer are sufficient for real-time hallucination detection with O(n·d) complexity
+- **Datasets Used**: Glaive Function-Calling V2 (2,411 instances per model)
+- **Limitations**: Single-domain reasoning tasks; future work needs cross-architecture unified detector
+- **Relevance**: Proof-of-concept that internal states encode tool-selection information. Our work extends this from hallucination detection to full circuit analysis — *where*, *when*, and *how* tool selection is computed.
+
+#### Paper 2: BiasBusters: Uncovering and Mitigating Tool Selection Bias in Large Language Models
+- **Authors**: Blankenstein, Yu, Li, Plachouras, Sengupta, Torr, Gal, Paren, Bibi (Oxford/Microsoft)
+- **Year**: 2025 (September)
+- **Source**: arXiv:2510.00307
+- **Key Contribution**: First empirical study of tool-selection bias across 7 LLMs using a benchmark of functionally equivalent API clusters
+- **Methodology**:
+  1. Builds on ToolLLM pipeline; clusters functionally equivalent APIs from RapidAPI
+  2. Measures selection imbalance using total variation distance from uniform: δ_API, δ_pos, δ_model
+  3. Controlled experiments manipulating tool metadata (name, description, parameters, position)
+  4. Regression analysis to identify bias predictors
+  5. Mitigation: filter-then-sample-uniformly strategy
+- **Key Findings**:
+  1. **Semantic alignment** between query and tool description is the **strongest predictor** of tool choice
+  2. Perturbing tool descriptions significantly shifts selections (causal effect of metadata)
+  3. Repeated pre-training exposure to a specific endpoint amplifies bias
+  4. All 7 models tested show systematic bias (fixating on one provider or preferring earlier-listed tools)
+- **Datasets Used**: ToolLLM/RapidAPI tool clusters (custom benchmark)
+- **Code Available**: Yes (public GitHub)
+- **Relevance**: Provides the behavioral data showing tool selection is driven by semantic matching — exactly what we want to study mechanistically. The &#34;strongest predictor&#34; finding directly motivates investigating semantic matching circuits.
+
+---
+
+### 2.2 Mechanistic Interpretability Foundations
+
+#### Paper 3: Towards Automated Circuit Discovery for Mechanistic Interpretability (ACDC)
+- **Authors**: Conmy, Mavor-Parker, Lynch, Heimersheim, Garriga-Alonso
+- **Year**: 2023 (NeurIPS)
+- **Source**: arXiv:2304.14997
+- **Key Contribution**: Systematic workflow and algorithm for circuit discovery — automates the &#34;find minimal faithful subgraph&#34; step
+- **Methodology**:
+  1. Define behavior: choose dataset + metric that elicits behavior
+  2. Represent model as DAG (nodes = attention heads + MLPs, edges = residual stream connections)
+  3. ACDC algorithm: iteratively remove edges while preserving ≥threshold% of model performance
+- **Key Results**: Rediscovered 5/5 component types in the Greater-Than circuit in GPT-2 Small; selected 68 of 32,000 edges
+- **Baselines**: Also adapts Subnetwork Probing (SP) and Head Importance Score for Pruning (HISP)
+- **Code Available**: https://github.com/ArthurConmy/Automatic-Circuit-Discovery
+- **Relevance**: This is the primary methodological tool we will adapt for tool selection circuit discovery. The three-step workflow (dataset → granularity → patching) applies directly.
+
+#### Paper 4: Open Problems in Mechanistic Interpretability
+- **Authors**: Sharkey, Chughtai et al. (30 authors, TMLR 2025)
+- **Year**: 2025
+- **Source**: arXiv:2501.16496
+- **Key Contribution**: Comprehensive 82-page review of open problems in MI, covering methods, applications, socio-technical challenges
+- **Relevant Sections for Our Research**:
+  - §2.1.2: Sparse dictionary learning (SAEs) for decomposing activations into interpretable features
+  - §2.1.3: Describing functional roles of components — both what causes activation and downstream effects
+  - §2.2: Concept-based probes — detecting when &#34;tool X is appropriate&#34; is encoded in activations
+  - §2.3: Circuit discovery pipelines
+  - §3.6: Mechanistic interpretability on broader model families
+- **Key Open Problems Relevant to Us**:
+  - How to validate that identified circuits faithfully explain behavior
+  - Moving from individual-task circuits to reusable circuit components
+  - Scaling circuit analysis to larger models
+- **Relevance**: Frames our research within the open problems of the field; identifies validation strategies we need to use.
+
+#### Paper 5: Mechanistic Interpretability for AI Safety: A Review
+- **Authors**: Nanda et al.
+- **Year**: 2024
+- **Source**: arXiv:2404.14082
+- **Key Contribution**: Overview of MI methods and their relationship to AI safety applications
+- **Covers**: Circuits, probing, SAEs, activation patching, logit lens, representation engineering
+- **Relevance**: Background/survey for understanding the full toolkit available.
+
+#### Paper 6: Circuit Component Reuse Across Tasks in Transformer Language Models
+- **Authors**: Merullo, Eickhoff, Pavlick (ICLR 2024 Spotlight)
+- **Year**: 2024
+- **Source**: arXiv:2310.08744
+- **Key Contribution**: Shows that circuits are not task-specific; 78% overlap between IOI and Colored Objects circuits in GPT-2 — same attention heads implement similar operations across tasks
+- **Methodology**: Studied IOI circuit on GPT-2-medium; measured head overlap on &#34;Colored Objects&#34; task
+- **Relevance**: If tool-selection uses similar &#34;copy-name&#34; or &#34;identify entity&#34; heads to other tasks, this supports the hypothesis that tool selection is not separate but reuses existing circuits. This is directly testable.
+
+#### Paper 7: LLM Circuit Analyses Are Consistent Across Training and Scale
+- **Authors**: Tigges, Hanna, Yu, Biderman (EleutherAI/NeurIPS 2024)
+- **Year**: 2024
+- **Source**: arXiv:2407.10827
+- **Key Contribution**: Tracks circuit emergence and evolution across 300B tokens in Pythia (70M–2.8B parameters)
+- **Key Results**:
+  - Task abilities and functional components emerge at similar token counts across model sizes
+  - Circuit algorithms remain stable despite component-level changes (different attention heads, same function)
+  - Circuit size correlates with model size
+  - Results suggest small-model circuit analyses generalize to large models
+- **Models**: Pythia suite (with training checkpoints) using EAP-IG (Edge Attribution Patching with Integrated Gradients)
+- **Datasets Used**: IOI, Greater-Than, Docstring, Induction tasks
+- **Relevance**: Justifies using smaller models (GPT-2, Pythia-70M) for initial circuit discovery — findings should generalize. Also provides the EAP-IG methodology for scalable circuit finding.
+
+---
+
+### 2.3 Tool Use Foundations
+
+#### Paper 8: Toolformer: Language Models Can Teach Themselves to Use Tools
+- **Authors**: Schick, Dwivedi-Yu et al. (NeurIPS 2023)
+- **Year**: 2023
+- **Source**: arXiv:2302.04761
+- **Key Contribution**: Self-supervised approach for teaching LLMs to use APIs (calculator, QA, search, translation, calendar) via minimal demonstrations
+- **Methodology**: Annotates corpus with API calls using few-shot prompting; filters by whether calls reduce loss; fine-tunes on annotated data
+- **Key Finding**: Models learn to decide *when* and *how* to call APIs — not just which one
+- **Relevance**: Foundational paper showing LLMs can learn tool selection internally. The learned representations are what we want to interpret.
+
+#### Paper 9: ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs
+- **Authors**: Qin, Liang, Ye et al. (Tsinghua/ICLR 2024)
+- **Year**: 2023
+- **Source**: arXiv:2307.16789
+- **Key Contribution**: ToolBench dataset (16K APIs, 126K instruction-solution pairs), DFSDT reasoning algorithm, ToolEval automatic evaluator
+- **Methodology**: 3-stage pipeline: API collection from RapidAPI → ChatGPT-generated instructions → DFSDT solution annotation
+- **Key Results**: ToolLLaMA performs on par with ChatGPT; DFSDT outperforms ReACT
+- **Evaluation Metrics**: Pass rate (% successfully completed), Win rate (vs. ChatGPT baseline)
+- **Datasets Used**: RapidAPI (16K APIs), ToolBench (126K pairs)
+- **Code Available**: https://github.com/OpenBMB/ToolBench
+- **Relevance**: Primary benchmark for tool selection research. The API retrieval component (neural retriever for tool selection) is a black-box approach — our work provides the mechanistic explanation.
+
+#### Paper 10: StableToolBench
+- **Authors**: Multiple
+- **Year**: 2024
+- **Source**: arXiv:2403.07714
+- **Key Contribution**: Stabilized version of ToolBench with virtual server for reproducibility
+- **Relevance**: Updated benchmark for reliable evaluation.
+
+---
+
+### 2.4 LLM Routing
+
+#### Paper 11: FrugalGPT
+- **Authors**: Chen, Zaharia, Zou (Stanford)
+- **Year**: 2023
+- **Source**: arXiv:2305.05176
+- **Key Contribution**: LLM cascade framework — selects LLMs based on query to balance cost and performance (98% cost reduction, 4% accuracy improvement over GPT-4)
+- **Relevance**: Related routing paradigm — routes *between LLMs* rather than *between tools*, but same black-box nature as tool routing. Provides context.
+
+#### Paper 12: AutoTool: Efficient Tool Selection for Large Language Model Agents
+- **Authors**: Multiple
+- **Year**: 2025
+- **Source**: arXiv:2511.14650
+- **Key Contribution**: Graph-based framework exploiting &#34;tool usage inertia&#34; (predictable sequential patterns in tool calls)
+- **Relevance**: Black-box behavioral approach — contrasts with our mechanistic approach; shows there are predictable patterns we should be able to find mechanistically.
+
+---
+
+## 3. Common Methodologies
+
+### 3.1 Circuit Discovery Pipeline
+Standard across papers (ACDC, Circuit Reuse, LLM Circuit Consistency):
+1. **Define task**: Prompt format + metric (e.g., logit difference between tool A and tool B)
+2. **Create corrupted dataset**: Prompts that elicit different tool selections
+3. **Activation patching**: Run model on clean input, replace activations with corrupted-run activations
+4. **Identify minimal circuit**: Keep only edges that maintain &gt;threshold% of behavior
+5. **Interpret components**: Assign human-interpretable roles to circuit nodes
+
+### 3.2 Probing / Linear Probe Approach
+Used in 2601.05214 and referenced throughout:
+1. Cache hidden states h^(L) at each layer L for a set of inputs
+2. Train linear/MLP classifier on h^(L) to predict a binary label (e.g., &#34;correct tool&#34; vs. &#34;wrong tool&#34;)
+3. Accuracy as function of layer reveals *where* information is encoded
+4. Caution: probes detect correlations, not necessarily causal variables (Open Problems §2.2.3)
+
+### 3.3 Sparse Autoencoder (SAE) Analysis
+1. Train SAE on residual stream activations
+2. Each SAE feature = a potentially monosemantic direction in activation space
+3. Identify features active for tool-related concepts
+4. Steer model by activating/deactivating specific features
+
+### 3.4 Semantic Matching Analysis (BiasBusters approach)
+1. Compute embedding similarity between query and tool descriptions
+2. Regress tool selection on embedding similarity + positional/metadata features
+3. Permutation importance to rank features
+4. Intervention: perturb descriptions → measure selection change
+
+---
+
+## 4. Standard Baselines
+
+| Baseline | Description | Used In |
+|---------|-------------|---------|
+| Non-Contradiction Probability (NCP) | Multi-sample consistency check for hallucination detection | 2601.05214 |
+| Semantic Similarity | Cosine similarity between tool call samples | 2601.05214 |
+| ReACT | Reasoning + Acting with tool calls | ToolLLM |
+| DFSDT | Depth-first search decision tree for multi-step reasoning | ToolLLM |
+| Uniform random selection | Unbiased baseline for fairness measurement | BiasBusters |
+| IOI circuit | Indirect Object Identification — standard MI circuit baseline | ACDC, Circuit Reuse |
+| Greater-Than circuit | Arithmetic comparison circuit in GPT-2 | ACDC, LLM Circuit Consistency |
+
+---
+
+## 5. Evaluation Metrics
+
+| Metric | Description | Used For |
+|--------|-------------|---------|
+| Pass Rate | % of tool-use instructions successfully completed | ToolBench |
+| Win Rate | % win vs. ChatGPT baseline | ToolBench |
+| Precision/Recall/F1/Accuracy | Classification metrics for hallucination detection | 2601.05214 |
+| Total Variation Distance (δ) | Distance from uniform selection distribution | BiasBusters |
+| Circuit faithfulness | % of model performance retained by circuit | ACDC, all MI |
+| AUC | Area under ROC curve | 2601.05214 ablations |
+
+---
+
+## 6. Datasets in the Literature
+
+| Dataset | Source | Size | Task | Key Papers |
+|---------|--------|------|------|------------|
+| Glaive Function Calling V2 | HuggingFace (glaiveai) | ~110K | Function calling | 2601.05214 |
+| ToolBench | OpenBMB/RapidAPI | 126K+ | Multi-tool API calling | ToolLLM, BiasBusters |
+| Berkeley FCL | Gorilla/HuggingFace | ~2K | Function calling eval | Gorilla |
+| IOI Dataset | Synthetic | ~1K | Indirect object identification | ACDC, MI circuit papers |
+| Greater-Than | Synthetic | ~100 | Arithmetic comparison | ACDC, Hanna et al. |
+| Hermes Function Calling | NousResearch | ~12K | Multi-turn function calling | Tool LLM fine-tuning |
+| APIBench | Gorilla/Patil et al. | 17K | API call accuracy | ToolLLM (OOD eval) |
+
+---
+
+## 7. Gaps and Opportunities
+
+### Gap 1: No Circuit-Level Analysis of Tool Selection
+The most directly relevant paper (2601.05214) shows *that* internal representations encode tool selection information but does not identify *which* circuits or *how* the computation is organized. This is the primary research gap we address.
+
+### Gap 2: Semantic Matching vs. Learned Heuristics
+BiasBusters shows semantic alignment is the &#34;strongest predictor&#34; of tool choice but doesn&#39;t explain *how* this alignment is computed internally. Is there a dedicated matching circuit, or does it piggyback on existing entity-matching circuits (like those in IOI)?
+
+### Gap 3: Tool Description Encoding
+How does the model encode tool descriptions (name, description, parameters) into its context representation? Is there dedicated processing for API documentation, or is it treated as generic text?
+
+### Gap 4: Position/Order Effects vs. Content Effects
+BiasBusters shows models prefer earlier-listed tools. Is this a positional attention pattern (like positional heads in IOI circuits) or something else?
+
+### Gap 5: Hallucination Mechanism
+2601.05214 shows representations differ between correct and hallucinated tool calls but doesn&#39;t explain *why* hallucinations occur. What fails in the circuit?
+
+### Gap 6: Cross-model Generalization
+2407.10827 shows circuits generalize across model scales, but all existing MI tool research uses one model snapshot. Does the tool-selection circuit look the same across GPT-2, Pythia-2.8B, and LLaMA-3.1-8B?
+
+---
+
+## 8. Recommendations for Experiment Design
+
+### Recommended Approach
+Based on the literature, we recommend a staged approach:
+
+**Stage 1: Establish Behavioral Baseline**
+- Use TransformerLens to cache activations during tool-call generation on glaive/ToolBench data
+- Train probes at each layer to predict: (a) which tool is selected, (b) correct vs. hallucinated
+- Map where tool-identity information is encoded (expected: later layers, final layer is best per 2601.05214)
+
+**Stage 2: Circuit Discovery**
+- Design tool-selection prompts with 2-4 equivalent candidate tools
+- Create &#34;corrupted&#34; prompts (swap tool descriptions, change semantics)
+- Apply ACDC to find minimal faithful circuit for tool selection
+- Compare circuit structure to known circuits (IOI, Greater-Than) — check for reuse (2310.08744)
+
+**Stage 3: Feature-Level Analysis (if time permits)**
+- Use pre-trained SAEs (from dictionary_learning) to find features active during tool selection
+- Identify if any SAE feature represents &#34;tool relevance&#34; or &#34;semantic match&#34;
+- Test activation steering: can we force a different tool selection by activating/deactivating features?
+
+### Recommended Primary Dataset
+**Glaive Function Calling V2** (already downloaded) — has diverse tool types, multi-domain coverage, and is the dataset used by the most relevant paper (2601.05214).
+
+### Recommended Models
+1. **GPT-2-Small** (117M params): Standard MI benchmark model; ACDC and most circuits work uses it; fastest to run
+2. **Pythia-2.8B** (from EleutherAI): Used in LLM Circuit Consistency paper; has training checkpoints for developmental analysis
+
+### Recommended Baselines
+1. **Probing at random layers** (to show layer-wise information emergence)
+2. **NCP / Semantic Similarity** baselines (per 2601.05214)
+3. **Uniform random tool selection** (lower bound, per BiasBusters)
+4. **Embedding similarity matching** (upper bound — how well does simple cosine similarity predict tool selection?)
+
+### Key Metrics
+1. **Circuit faithfulness**: Does the identified circuit reproduce model behavior on tool selection tasks?
+2. **Probe accuracy by layer**: Where is tool identity encoded?
+3. **Feature specificity**: Are SAE features monosemantic for specific tools/categories?
+4. **Counterfactual accuracy**: When we patch the circuit, does tool selection change predictably?
+
+
+════════════════════════════════════════════════════════════════════════════════
+                          PAPER REQUIREMENTS
+════════════════════════════════════════════════════════════════════════════════
+
+Generate a complete academic paper with the following structure:
+
+1. TITLE
+   - Clear, specific, informative
+   - Should convey main finding or contribution
+
+2. AUTHOR
+   - Use this exact author line in the \author{} block: Alex Baumgartner and NeuriCo
+
+3. ABSTRACT (150-250 words)
+   - Problem statement
+   - Approach
+   - Key results
+   - Significance
+
+4. INTRODUCTION
+   - Research problem and motivation
+   - Gap in existing work
+   - Our contribution (be specific)
+   - Paper organization
+
+5. RELATED WORK
+   - Organized by theme/approach
+   - Position our work relative to prior work
+   - Cite papers from literature review
+
+6. METHODOLOGY
+   - Clear description of approach
+   - Experimental setup
+   - Datasets used
+   - Evaluation metrics
+   - Baselines
+
+7. RESULTS
+   - Present results with tables and figures
+   - Statistical analysis
+   - Comparison to baselines
+   - Ablation studies (if applicable)
+
+8. DISCUSSION
+   - Interpretation of results
+   - Limitations
+   - Broader implications
+
+9. CONCLUSION
+   - Summary of contributions
+   - Key findings
+   - Future work
+
+10. REFERENCES
+   - BibTeX format
+   - All cited papers
+
+════════════════════════════════════════════════════════════════════════════════
+                          OUTPUT FORMAT
+════════════════════════════════════════════════════════════════════════════════
+
+Create a MODULAR LaTeX project with the following directory structure:
+
+paper_draft/
+├── main.tex              # Main file that imports all sections
+├── references.bib        # BibTeX references
+├── sections/
+│   ├── abstract.tex      # Abstract content
+│   ├── introduction.tex  # Introduction section
+│   ├── related_work.tex  # Related work section
+│   ├── methodology.tex   # Methodology section
+│   ├── results.tex       # Results section
+│   ├── discussion.tex    # Discussion section
+│   └── conclusion.tex    # Conclusion section
+├── figures/              # Directory for any generated figures
+├── tables/               # Directory for complex standalone tables
+└── appendix/             # Directory for appendix sections (if needed)
+
+INSTRUCTIONS:
+1. First, create the directory structure above (mkdir -p paper_draft/sections paper_draft/figures paper_draft/tables paper_draft/appendix)
+2. Write main.tex using the EXACT preamble for NEURIPS:
+
+   \documentclass{article}
+   \usepackage[final]{neurips_2025}  % NEURIPS style (neurips_2025.sty is in paper_draft/)
+   \usepackage[hidelinks]{hyperref}  % REQUIRED: clickable links
+   \usepackage{booktabs}  % REQUIRED: professional tables
+   \usepackage{graphicx}
+   \usepackage{amsmath,amssymb}
+
+   % Import command files
+   \input{commands/math}
+   \input{commands/general}
+   \input{commands/macros}
+
+   % Use this bibliography style:
+   \bibliographystyle{plainnat}
+
+   \author{Alex Baumgartner and NeuriCo}
+
+   - Use \input{sections/...} to include each section
+   - Use \bibliography{references} for references
+3. Write each section file with COMPLETE content (no placeholders)
+4. Each section file should include its \section{} command
+5. Write references.bib with all citations in BibTeX format
+6. After writing all files, compile the paper:
+   cd paper_draft && pdflatex -interaction=nonstopmode main.tex && bibtex main && pdflatex -interaction=nonstopmode main.tex && pdflatex -interaction=nonstopmode main.tex
+
+This modular structure allows humans to easily:
+- Edit individual sections without navigating a large file
+- Track changes per section
+- Reuse sections across different paper versions
+
+════════════════════════════════════════════════════════════════════════════════
+                          QUALITY REQUIREMENTS
+════════════════════════════════════════════════════════════════════════════════
+
+- Academic tone throughout
+- All claims must be supported by data from the experiment report
+- Proper citations using \cite{} commands
+- Clear figures and tables with proper captions
+- NO placeholder text - every section must have real content
+- The paper MUST compile without errors
+- If compilation fails, debug and fix the LaTeX errors
+
+════════════════════════════════════════════════════════════════════════════════
+                          LAB WRITING STYLE
+════════════════════════════════════════════════════════════════════════════════
+
+Follow these lab-specific conventions to match our paper style:
+
+1. LANGUAGE STYLE:
+   - Use active voice: "We propose", "We examine", "We focus on"
+   - Be direct and confident: "Our main question is...", "We hypothesize that..."
+   - State things clearly and simply - prefer plain language over jargon
+   - Use bold questions as paragraph organizers: {\bf what is X?}
+   - Include specific quantitative claims: "8.97% over baseline"
+   - Avoid fancy wording: "utilize" → "use", "facilitate" → "help"
+
+2. INTRODUCTION STRUCTURE:
+   - Engaging hook (get to the point quickly)
+   - Problem importance
+   - Gap identification
+   - Your approach with method figure reference
+   - Quantitative preview of results
+   - Contribution bullets (3-4 items, action verbs)
+
+3. CONTRIBUTION LISTS:
+   \begin{itemize}[leftmargin=*,itemsep=0pt,topsep=0pt]
+       \item We propose...
+       \item We conduct...
+       \item We complement...
+   \end{itemize}
+
+4. MODULAR COMMANDS STRUCTURE:
+   Command templates are pre-copied to paper_draft/commands/:
+   - math.tex: Math notation macros
+   - general.tex: Formatting macros
+   - macros.tex: Project-specific term definitions (customize this for your paper)
+
+   In main.tex, include:
+   \input{commands/math}
+   \input{commands/general}
+   \input{commands/macros}
+
+5. REFERENCE CONVENTIONS:
+   Use reference macros from math.tex:
+   - \figref{fig:name} for "figure 1" (lowercase, in-sentence)
+   - \Figref{fig:name} for "Figure 1" (capitalized, start of sentence)
+   - \secref{sec:name} for "section 2"
+
+6. TEXT FORMATTING:
+   - Use \para{Header text} for bold paragraph headers
+   - Define method/dataset names with \textsc and \xspace:
+     \newcommand{\methodname}{\textsc{MethodName}\xspace}
+
+7. TABLE FORMATTING:
+   - Use booktabs package (no vertical lines)
+   - Use \resizebox{\textwidth}{!}{...} for wide tables
+   - Use @{} to remove padding at table edges
+   - Use \cmidrule(lr){x-y} for sub-headers
+   - Use \textsc{} for dataset/method names in headers
+   - Bold best results with {\bf ...}
+
+8. FIGURE FORMATTING:
+   - Use 0.32\textwidth for 3-column subfigures
+   - Use 0.95\linewidth for full-width figures
+   - Use \input{figures/legend} for shared legends
+   - Write self-contained captions explaining key observations
+
+9. RESULTS PRESENTATION:
+   - Define \increase and \decrease for colored arrows (green up, red down)
+   - Bold best results in tables
+   - Report confidence intervals when available
+
+10. ALGORITHM STYLING:
+    - Use algpseudocode with [noend]
+    - Use \triangleright for comments
+
+11. HYPERLINKS (REQUIRED):
+    - Always use \usepackage[hidelinks]{hyperref} or with colored links
+    - All citations, section refs, figure refs, table refs must be clickable
+    - This is essential for reader navigation
+
+════════════════════════════════════════════════════════════════════════════════
+                          WORKFLOW: REVIEW AND REFLECT
+════════════════════════════════════════════════════════════════════════════════
+
+Before calling finish, you MUST complete these review steps:
+
+1. REVIEW RESOURCES (at the start):
+   - Read .claude/skills/paper-writer/SKILL.md for detailed guidance
+   - Study templates/paper_writing/lab_style_guide.md for style conventions
+   - Browse paper_examples/ for formatting and language patterns
+
+2. SELF-REFLECTION (before finishing):
+   After writing all sections, review your work against these criteria:
+
+   LANGUAGE CHECK:
+   - [ ] Is the writing clear and jargon-free?
+   - [ ] Are claims specific with quantitative support?
+   - [ ] Is active voice used throughout?
+
+   FORMATTING CHECK:
+   - [ ] Does main.tex include \input{commands/math}, \input{commands/general}, \input{commands/macros}?
+   - [ ] Is hyperref package included for clickable references?
+   - [ ] Do tables use booktabs (no vertical lines)?
+   - [ ] Are best results bolded in tables?
+   - [ ] Are figures/tables properly captioned?
+
+   STRUCTURE CHECK:
+   - [ ] Does introduction follow: hook → importance → gap → approach → preview → contributions?
+   - [ ] Are contribution bullets specific with action verbs?
+   - [ ] Does the paper compile without errors?
+
+3. FIX ISSUES:
+   - Address any issues found in the self-reflection
+   - Re-compile and verify the PDF looks correct
+
+Only after completing this review should you consider the paper finished.

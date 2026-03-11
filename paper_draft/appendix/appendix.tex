@@ -1,0 +1,82 @@
+\section{Appendix}
+\label{sec:appendix}
+
+\subsection{Dataset Examples}
+\label{app:examples}
+
+\para{Same-category example} (fine-grained semantic matching):
+\begin{quote}
+\textbf{Query}: ``What's the forecast for Los Angeles this week?'' \\
+\textbf{Tools}: \texttt{[openweathermap\_api, weatherapi\_com, world\_weather\_online, weather\_gov\_api]} \\
+\textbf{LLM selection}: \texttt{openweathermap\_api} (position~0)
+\end{quote}
+
+\para{Mixed-category example} (coarse routing):
+\begin{quote}
+\textbf{Query}: ``Compute the integral of $x^3$ from 0 to 5.'' \\
+\textbf{Tools}: \texttt{[wolfram\_alpha\_api, openweathermap\_api, google\_search\_api, jupyter\_kernel\_api]} \\
+\textbf{LLM selection}: \texttt{wolfram\_alpha\_api} (position~0)
+\end{quote}
+
+\para{Adversarial perturbation example}:
+\begin{quote}
+\textbf{Query}: ``What's the forecast for London this weekend?'' \\
+\textbf{Condition}: Adversarial --- \texttt{wolfram\_alpha\_api} carries the weather description \\
+\textbf{LLM selection}: \texttt{wolfram\_alpha\_api} (model follows the description, not the name)
+\end{quote}
+
+\subsection{Implementation Details}
+\label{app:implementation}
+
+\Tabref{tab:hyperparams} summarizes all key hyperparameters used across experiments.
+
+\begin{table}[h]
+\centering
+\caption{Hyperparameters used across all experiments.}
+\label{tab:hyperparams}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Parameter} & \textbf{Value} & \textbf{Rationale} \\
+\midrule
+LLM temperature            & 0.0    & Deterministic selections \\
+LLM max tokens             & 50     & Tool name only \\
+Runs per example           & 3      & Consistency measurement \\
+Probe regularization $C$   & 1.0    & Default; balanced \\
+Probe max iterations       & 2000   & Convergence \\
+Cross-validation folds     & 5      & Standard; stratified \\
+GPT-2 max context          & 512    & Fits full prompt \\
+Random seed                & 42     & Reproducibility \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Software and Hardware}
+\label{app:software}
+
+All experiments ran on a single CPU (no GPU).  LLM experiments took approximately 15 minutes;
+probing experiments took approximately 8 minutes.  Key library versions:
+sentence-transformers (latest), transformers~5.3.0, scikit-learn~1.8.0, scipy~1.17.1,
+openai~2.26.0.
+
+\subsection{Last-token Probe Accuracy by Layer Group}
+\label{app:lasttoken}
+
+\begin{table}[h]
+\centering
+\caption{Correct tool position probe accuracy using the last-token representation
+         (\gpttwo, 5-fold CV).  Last-token accuracy is high from layer~1, supporting
+         the hypothesis that the last-token position aggregates selection-relevant context
+         from the beginning of processing.  Chance is 0.25.}
+\label{tab:probe_lasttoken}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\textbf{Layer Group} & \textbf{Mean Accuracy} & \textbf{Chance} \\
+\midrule
+Early (1--4)       & 0.723 & 0.25 \\
+Middle (5--8)      & 0.733 & 0.25 \\
+Late (9--12)       & 0.730 & 0.25 \\
+Best (layer 8/10)  & \textbf{0.810} & 0.25 \\
+\bottomrule
+\end{tabular}
+\end{table}

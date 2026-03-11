@@ -1,0 +1,21 @@
+{
+  "position_counts": {
+    "0": 13,
+    "1": 10,
+    "2": 10,
+    "3": 7
+  },
+  "position_rates": {
+    "0": 0.325,
+    "1": 0.25,
+    "2": 0.25,
+    "3": 0.175
+  },
+  "total_examples": 40,
+  "chi2_statistic": 1.8,
+  "chi2_pvalue": 0.6149349357825376,
+  "position_0_rate": 0.325,
+  "mean_stability": 0.9,
+  "total_variation_distance": 0.07500000000000001,
+  "n_base_examples": 10
+}

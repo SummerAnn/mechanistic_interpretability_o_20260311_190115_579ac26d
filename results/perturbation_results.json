@@ -1,0 +1,254 @@
+[
+  {
+    "id": "pert_001_original",
+    "query": "What's the forecast for London this weekend?",
+    "condition": "original",
+    "tool_names": [
+      "openweathermap_api",
+      "wolfram_alpha_api",
+      "google_search_api",
+      "google_translate_api"
+    ],
+    "tool_descriptions": {
+      "openweathermap_api": "Access current weather data, forecasts, and historical weather for any location worldwide",
+      "wolfram_alpha_api": "Computational intelligence engine for math, science, and data computation",
+      "google_search_api": "Search the web using Google Search API for information and web pages",
+      "google_translate_api": "Translate text between 100+ languages using Google Translation"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "openweathermap_api",
+        "selected_tool": "openweathermap_api"
+      },
+      {
+        "run": 1,
+        "raw_response": "openweathermap_api",
+        "selected_tool": "openweathermap_api"
+      },
+      {
+        "run": 2,
+        "raw_response": "openweathermap_api",
+        "selected_tool": "openweathermap_api"
+      }
+    ],
+    "consensus_selection": "openweathermap_api",
+    "consistency": 1.0
+  },
+  {
+    "id": "pert_001_generic",
+    "query": "What's the forecast for London this weekend?",
+    "condition": "generic",
+    "tool_names": [
+      "openweathermap_api",
+      "wolfram_alpha_api",
+      "google_search_api",
+      "google_translate_api"
+    ],
+    "tool_descriptions": {
+      "openweathermap_api": "An API service that processes requests and returns data",
+      "wolfram_alpha_api": "A service that accepts inputs and produces outputs",
+      "google_search_api": "A tool that handles queries and provides responses",
+      "google_translate_api": "A system that processes text and returns transformed results"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "openweathermap_api",
+        "selected_tool": "openweathermap_api"
+      },
+      {
+        "run": 1,
+        "raw_response": "openweathermap_api",
+        "selected_tool": "openweathermap_api"
+      },
+      {
+        "run": 2,
+        "raw_response": "openweathermap_api",
+        "selected_tool": "openweathermap_api"
+      }
+    ],
+    "consensus_selection": "openweathermap_api",
+    "consistency": 1.0
+  },
+  {
+    "id": "pert_001_adversarial",
+    "query": "What's the forecast for London this weekend?",
+    "condition": "adversarial",
+    "tool_names": [
+      "openweathermap_api",
+      "wolfram_alpha_api",
+      "google_search_api",
+      "google_translate_api"
+    ],
+    "tool_descriptions": {
+      "openweathermap_api": "An API service for mathematical computations and symbolic algebra",
+      "wolfram_alpha_api": "Get current weather data, forecasts, and meteorological information for any location",
+      "google_search_api": "Language translation service for converting text between languages",
+      "google_translate_api": "Execute code and run programming scripts in a sandboxed environment"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "wolfram_alpha_api",
+        "selected_tool": "wolfram_alpha_api"
+      },
+      {
+        "run": 1,
+        "raw_response": "openweathermap_api",
+        "selected_tool": "openweathermap_api"
+      },
+      {
+        "run": 2,
+        "raw_response": "wolfram_alpha_api",
+        "selected_tool": "wolfram_alpha_api"
+      }
+    ],
+    "consensus_selection": "wolfram_alpha_api",
+    "consistency": 0.6666666666666666
+  },
+  {
+    "id": "pert_002_original",
+    "query": "What is the result of 25 multiplied by 48?",
+    "condition": "original",
+    "tool_names": [
+      "wolfram_alpha_api",
+      "openweathermap_api",
+      "google_translate_api",
+      "google_search_api"
+    ],
+    "tool_descriptions": {
+      "wolfram_alpha_api": "Computational intelligence engine for mathematical calculations with step-by-step solutions",
+      "openweathermap_api": "Access current weather data, forecasts, and climate information worldwide",
+      "google_translate_api": "Translate text between 100+ languages using neural machine translation",
+      "google_search_api": "Search the web to find information, web pages, and relevant resources"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "wolfram_alpha_api",
+        "selected_tool": "wolfram_alpha_api"
+      },
+      {
+        "run": 1,
+        "raw_response": "wolfram_alpha_api",
+        "selected_tool": "wolfram_alpha_api"
+      },
+      {
+        "run": 2,
+        "raw_response": "wolfram_alpha_api",
+        "selected_tool": "wolfram_alpha_api"
+      }
+    ],
+    "consensus_selection": "wolfram_alpha_api",
+    "consistency": 1.0
+  },
+  {
+    "id": "pert_002_adversarial",
+    "query": "What is the result of 25 multiplied by 48?",
+    "condition": "adversarial",
+    "tool_names": [
+      "wolfram_alpha_api",
+      "openweathermap_api",
+      "google_translate_api",
+      "google_search_api"
+    ],
+    "tool_descriptions": {
+      "wolfram_alpha_api": "Search the web to find information about current events and trending topics",
+      "openweathermap_api": "Perform mathematical calculations, solve equations, and evaluate numerical expressions",
+      "google_translate_api": "Retrieve weather forecasts and meteorological data for locations worldwide",
+      "google_search_api": "Translate text between multiple languages using advanced neural models"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "openweathermap_api",
+        "selected_tool": "openweathermap_api"
+      },
+      {
+        "run": 1,
+        "raw_response": "openweathermap_api",
+        "selected_tool": "openweathermap_api"
+      },
+      {
+        "run": 2,
+        "raw_response": "openweathermap_api",
+        "selected_tool": "openweathermap_api"
+      }
+    ],
+    "consensus_selection": "openweathermap_api",
+    "consistency": 1.0
+  },
+  {
+    "id": "pert_003_original",
+    "query": "Translate 'How much does this cost?' into Spanish",
+    "condition": "original",
+    "tool_names": [
+      "google_translate_api",
+      "calculator_api",
+      "openweathermap_api",
+      "e2b_code_interpreter"
+    ],
+    "tool_descriptions": {
+      "google_translate_api": "Translate text and documents between 100+ languages using Google Cloud Translation",
+      "calculator_api": "Simple calculator for basic arithmetic: add, subtract, multiply, divide numbers",
+      "openweathermap_api": "Access weather data and forecasts for any location on Earth",
+      "e2b_code_interpreter": "Execute Python, JavaScript, and other programming code in a sandbox"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "google_translate_api",
+        "selected_tool": "google_translate_api"
+      },
+      {
+        "run": 1,
+        "raw_response": "google_translate_api",
+        "selected_tool": "google_translate_api"
+      },
+      {
+        "run": 2,
+        "raw_response": "google_translate_api",
+        "selected_tool": "google_translate_api"
+      }
+    ],
+    "consensus_selection": "google_translate_api",
+    "consistency": 1.0
+  },
+  {
+    "id": "pert_003_adversarial",
+    "query": "Translate 'How much does this cost?' into Spanish",
+    "condition": "adversarial",
+    "tool_names": [
+      "google_translate_api",
+      "calculator_api",
+      "openweathermap_api",
+      "e2b_code_interpreter"
+    ],
+    "tool_descriptions": {
+      "google_translate_api": "Execute mathematical computations and solve algebraic equations numerically",
+      "calculator_api": "Convert text between different languages and dialects using neural translation models",
+      "openweathermap_api": "Run code scripts and execute programming tasks in a cloud environment",
+      "e2b_code_interpreter": "Retrieve current weather conditions and multi-day forecasts for cities"
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "google_translate_api",
+        "selected_tool": "google_translate_api"
+      },
+      {
+        "run": 1,
+        "raw_response": "google_translate_api",
+        "selected_tool": "google_translate_api"
+      },
+      {
+        "run": 2,
+        "raw_response": "google_translate_api",
+        "selected_tool": "google_translate_api"
+      }
+    ],
+    "consensus_selection": "google_translate_api",
+    "consistency": 1.0
+  }
+]

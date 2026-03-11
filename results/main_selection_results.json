@@ -1,0 +1,1892 @@
+[
+  {
+    "id": "same_000",
+    "query": "What's the weather like in Paris today?",
+    "scenario_type": "same_category",
+    "category": "weather",
+    "correct_category": "weather",
+    "tool_names": [
+      "world_weather_online",
+      "weatherapi_com",
+      "weather_gov_api",
+      "openweathermap_api"
+    ],
+    "tool_positions": {
+      "world_weather_online": 0,
+      "weatherapi_com": 1,
+      "weather_gov_api": 2,
+      "openweathermap_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "openweathermap_api",
+        "selected_tool": "openweathermap_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "weatherapi_com",
+        "selected_tool": "weatherapi_com",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "openweathermap_api",
+        "selected_tool": "openweathermap_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "openweathermap_api",
+    "consistency": 0.6666666666666666,
+    "selected_position": 3
+  },
+  {
+    "id": "same_001",
+    "query": "Will it rain in New York this weekend?",
+    "scenario_type": "same_category",
+    "category": "weather",
+    "correct_category": "weather",
+    "tool_names": [
+      "weather_gov_api",
+      "world_weather_online",
+      "openweathermap_api",
+      "weatherapi_com"
+    ],
+    "tool_positions": {
+      "weather_gov_api": 0,
+      "world_weather_online": 1,
+      "openweathermap_api": 2,
+      "weatherapi_com": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "openweathermap_api",
+        "selected_tool": "openweathermap_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "openweathermap_api",
+        "selected_tool": "openweathermap_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "openweathermap_api",
+        "selected_tool": "openweathermap_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "openweathermap_api",
+    "consistency": 1.0,
+    "selected_position": 2
+  },
+  {
+    "id": "same_002",
+    "query": "What temperature should I expect in Tokyo tomorrow?",
+    "scenario_type": "same_category",
+    "category": "weather",
+    "correct_category": "weather",
+    "tool_names": [
+      "weatherapi_com",
+      "weather_gov_api",
+      "world_weather_online",
+      "openweathermap_api"
+    ],
+    "tool_positions": {
+      "weatherapi_com": 0,
+      "weather_gov_api": 1,
+      "world_weather_online": 2,
+      "openweathermap_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "weatherapi_com",
+        "selected_tool": "weatherapi_com",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "weatherapi_com",
+        "selected_tool": "weatherapi_com",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "weatherapi_com",
+        "selected_tool": "weatherapi_com",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "weatherapi_com",
+    "consistency": 1.0,
+    "selected_position": 0
+  },
+  {
+    "id": "same_003",
+    "query": "Is it going to be sunny in London next week?",
+    "scenario_type": "same_category",
+    "category": "weather",
+    "correct_category": "weather",
+    "tool_names": [
+      "weatherapi_com",
+      "world_weather_online",
+      "openweathermap_api",
+      "weather_gov_api"
+    ],
+    "tool_positions": {
+      "weatherapi_com": 0,
+      "world_weather_online": 1,
+      "openweathermap_api": 2,
+      "weather_gov_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "weatherapi_com",
+        "selected_tool": "weatherapi_com",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "weatherapi_com",
+        "selected_tool": "weatherapi_com",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "weatherapi_com",
+        "selected_tool": "weatherapi_com",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "weatherapi_com",
+    "consistency": 1.0,
+    "selected_position": 0
+  },
+  {
+    "id": "same_004",
+    "query": "What are the weather conditions in Sydney right now?",
+    "scenario_type": "same_category",
+    "category": "weather",
+    "correct_category": "weather",
+    "tool_names": [
+      "weatherapi_com",
+      "world_weather_online",
+      "weather_gov_api",
+      "openweathermap_api"
+    ],
+    "tool_positions": {
+      "weatherapi_com": 0,
+      "world_weather_online": 1,
+      "weather_gov_api": 2,
+      "openweathermap_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "openweathermap_api",
+        "selected_tool": "openweathermap_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "openweathermap_api",
+        "selected_tool": "openweathermap_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "openweathermap_api",
+        "selected_tool": "openweathermap_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "openweathermap_api",
+    "consistency": 1.0,
+    "selected_position": 3
+  },
+  {
+    "id": "same_005",
+    "query": "Should I bring an umbrella to Chicago today?",
+    "scenario_type": "same_category",
+    "category": "weather",
+    "correct_category": "weather",
+    "tool_names": [
+      "weatherapi_com",
+      "weather_gov_api",
+      "world_weather_online",
+      "openweathermap_api"
+    ],
+    "tool_positions": {
+      "weatherapi_com": 0,
+      "weather_gov_api": 1,
+      "world_weather_online": 2,
+      "openweathermap_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "weatherapi_com",
+        "selected_tool": "weatherapi_com",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "weatherapi_com",
+        "selected_tool": "weatherapi_com",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "weatherapi_com",
+        "selected_tool": "weatherapi_com",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "weatherapi_com",
+    "consistency": 1.0,
+    "selected_position": 0
+  },
+  {
+    "id": "same_006",
+    "query": "What's the forecast for Los Angeles this week?",
+    "scenario_type": "same_category",
+    "category": "weather",
+    "correct_category": "weather",
+    "tool_names": [
+      "world_weather_online",
+      "weatherapi_com",
+      "openweathermap_api",
+      "weather_gov_api"
+    ],
+    "tool_positions": {
+      "world_weather_online": 0,
+      "weatherapi_com": 1,
+      "openweathermap_api": 2,
+      "weather_gov_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "weatherapi_com",
+        "selected_tool": "weatherapi_com",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "weatherapi_com",
+        "selected_tool": "weatherapi_com",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "weatherapi_com",
+        "selected_tool": "weatherapi_com",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "weatherapi_com",
+    "consistency": 1.0,
+    "selected_position": 1
+  },
+  {
+    "id": "same_007",
+    "query": "How cold will it be in Moscow tomorrow morning?",
+    "scenario_type": "same_category",
+    "category": "weather",
+    "correct_category": "weather",
+    "tool_names": [
+      "weatherapi_com",
+      "weather_gov_api",
+      "openweathermap_api",
+      "world_weather_online"
+    ],
+    "tool_positions": {
+      "weatherapi_com": 0,
+      "weather_gov_api": 1,
+      "openweathermap_api": 2,
+      "world_weather_online": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "weatherapi_com",
+        "selected_tool": "weatherapi_com",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "weatherapi_com",
+        "selected_tool": "weatherapi_com",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "openweathermap_api",
+        "selected_tool": "openweathermap_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "weatherapi_com",
+    "consistency": 0.6666666666666666,
+    "selected_position": 0
+  },
+  {
+    "id": "same_010",
+    "query": "What is 15% of 240?",
+    "scenario_type": "same_category",
+    "category": "calculator",
+    "correct_category": "calculator",
+    "tool_names": [
+      "calculator_api",
+      "mathjs_api",
+      "sympy_api",
+      "wolfram_alpha_api"
+    ],
+    "tool_positions": {
+      "calculator_api": 0,
+      "mathjs_api": 1,
+      "sympy_api": 2,
+      "wolfram_alpha_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "calculator_api",
+        "selected_tool": "calculator_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "calculator_api",
+        "selected_tool": "calculator_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "calculator_api",
+        "selected_tool": "calculator_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "calculator_api",
+    "consistency": 1.0,
+    "selected_position": 0
+  },
+  {
+    "id": "same_011",
+    "query": "Calculate the area of a circle with radius 7cm",
+    "scenario_type": "same_category",
+    "category": "calculator",
+    "correct_category": "calculator",
+    "tool_names": [
+      "sympy_api",
+      "calculator_api",
+      "mathjs_api",
+      "wolfram_alpha_api"
+    ],
+    "tool_positions": {
+      "sympy_api": 0,
+      "calculator_api": 1,
+      "mathjs_api": 2,
+      "wolfram_alpha_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "calculator_api",
+        "selected_tool": "calculator_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "calculator_api",
+        "selected_tool": "calculator_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "calculator_api",
+        "selected_tool": "calculator_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "calculator_api",
+    "consistency": 1.0,
+    "selected_position": 1
+  },
+  {
+    "id": "same_012",
+    "query": "Solve x^2 - 5x + 6 = 0",
+    "scenario_type": "same_category",
+    "category": "calculator",
+    "correct_category": "calculator",
+    "tool_names": [
+      "sympy_api",
+      "mathjs_api",
+      "wolfram_alpha_api",
+      "calculator_api"
+    ],
+    "tool_positions": {
+      "sympy_api": 0,
+      "mathjs_api": 1,
+      "wolfram_alpha_api": 2,
+      "calculator_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "sympy_api",
+        "selected_tool": "sympy_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "sympy_api",
+        "selected_tool": "sympy_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "sympy_api",
+        "selected_tool": "sympy_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "sympy_api",
+    "consistency": 1.0,
+    "selected_position": 0
+  },
+  {
+    "id": "same_013",
+    "query": "What is 2^32?",
+    "scenario_type": "same_category",
+    "category": "calculator",
+    "correct_category": "calculator",
+    "tool_names": [
+      "calculator_api",
+      "sympy_api",
+      "mathjs_api",
+      "wolfram_alpha_api"
+    ],
+    "tool_positions": {
+      "calculator_api": 0,
+      "sympy_api": 1,
+      "mathjs_api": 2,
+      "wolfram_alpha_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "calculator_api",
+        "selected_tool": "calculator_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "calculator_api",
+        "selected_tool": "calculator_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "calculator_api",
+        "selected_tool": "calculator_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "calculator_api",
+    "consistency": 1.0,
+    "selected_position": 0
+  },
+  {
+    "id": "same_014",
+    "query": "Convert 100 Fahrenheit to Celsius",
+    "scenario_type": "same_category",
+    "category": "calculator",
+    "correct_category": "calculator",
+    "tool_names": [
+      "wolfram_alpha_api",
+      "mathjs_api",
+      "sympy_api",
+      "calculator_api"
+    ],
+    "tool_positions": {
+      "wolfram_alpha_api": 0,
+      "mathjs_api": 1,
+      "sympy_api": 2,
+      "calculator_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "wolfram_alpha_api",
+        "selected_tool": "wolfram_alpha_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "wolfram_alpha_api",
+        "selected_tool": "wolfram_alpha_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "wolfram_alpha_api",
+        "selected_tool": "wolfram_alpha_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "wolfram_alpha_api",
+    "consistency": 1.0,
+    "selected_position": 0
+  },
+  {
+    "id": "same_015",
+    "query": "What is the square root of 144?",
+    "scenario_type": "same_category",
+    "category": "calculator",
+    "correct_category": "calculator",
+    "tool_names": [
+      "sympy_api",
+      "wolfram_alpha_api",
+      "calculator_api",
+      "mathjs_api"
+    ],
+    "tool_positions": {
+      "sympy_api": 0,
+      "wolfram_alpha_api": 1,
+      "calculator_api": 2,
+      "mathjs_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "calculator_api",
+        "selected_tool": "calculator_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "calculator_api",
+        "selected_tool": "calculator_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "calculator_api",
+        "selected_tool": "calculator_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "calculator_api",
+    "consistency": 1.0,
+    "selected_position": 2
+  },
+  {
+    "id": "same_016",
+    "query": "Calculate 15 factorial",
+    "scenario_type": "same_category",
+    "category": "calculator",
+    "correct_category": "calculator",
+    "tool_names": [
+      "mathjs_api",
+      "sympy_api",
+      "calculator_api",
+      "wolfram_alpha_api"
+    ],
+    "tool_positions": {
+      "mathjs_api": 0,
+      "sympy_api": 1,
+      "calculator_api": 2,
+      "wolfram_alpha_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "mathjs_api",
+        "selected_tool": "mathjs_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "mathjs_api",
+        "selected_tool": "mathjs_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "mathjs_api",
+        "selected_tool": "mathjs_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "mathjs_api",
+    "consistency": 1.0,
+    "selected_position": 0
+  },
+  {
+    "id": "same_017",
+    "query": "What is the derivative of sin(x)?",
+    "scenario_type": "same_category",
+    "category": "calculator",
+    "correct_category": "calculator",
+    "tool_names": [
+      "mathjs_api",
+      "sympy_api",
+      "wolfram_alpha_api",
+      "calculator_api"
+    ],
+    "tool_positions": {
+      "mathjs_api": 0,
+      "sympy_api": 1,
+      "wolfram_alpha_api": 2,
+      "calculator_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "sympy_api",
+        "selected_tool": "sympy_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "sympy_api",
+        "selected_tool": "sympy_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "sympy_api",
+        "selected_tool": "sympy_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "sympy_api",
+    "consistency": 1.0,
+    "selected_position": 1
+  },
+  {
+    "id": "same_020",
+    "query": "Find information about the history of the Roman Empire",
+    "scenario_type": "same_category",
+    "category": "search",
+    "correct_category": "search",
+    "tool_names": [
+      "google_search_api",
+      "duckduckgo_api",
+      "serper_api",
+      "bing_search_api"
+    ],
+    "tool_positions": {
+      "google_search_api": 0,
+      "duckduckgo_api": 1,
+      "serper_api": 2,
+      "bing_search_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "google_search_api",
+        "selected_tool": "google_search_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "google_search_api",
+        "selected_tool": "google_search_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "google_search_api",
+        "selected_tool": "google_search_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "google_search_api",
+    "consistency": 1.0,
+    "selected_position": 0
+  },
+  {
+    "id": "same_021",
+    "query": "Search for recent news about artificial intelligence",
+    "scenario_type": "same_category",
+    "category": "search",
+    "correct_category": "search",
+    "tool_names": [
+      "google_search_api",
+      "serper_api",
+      "duckduckgo_api",
+      "bing_search_api"
+    ],
+    "tool_positions": {
+      "google_search_api": 0,
+      "serper_api": 1,
+      "duckduckgo_api": 2,
+      "bing_search_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "bing_search_api",
+        "selected_tool": "bing_search_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "bing_search_api",
+        "selected_tool": "bing_search_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "bing_search_api",
+        "selected_tool": "bing_search_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "bing_search_api",
+    "consistency": 1.0,
+    "selected_position": 3
+  },
+  {
+    "id": "same_022",
+    "query": "Look up recipes for chocolate chip cookies",
+    "scenario_type": "same_category",
+    "category": "search",
+    "correct_category": "search",
+    "tool_names": [
+      "bing_search_api",
+      "serper_api",
+      "duckduckgo_api",
+      "google_search_api"
+    ],
+    "tool_positions": {
+      "bing_search_api": 0,
+      "serper_api": 1,
+      "duckduckgo_api": 2,
+      "google_search_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "google_search_api",
+        "selected_tool": "google_search_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "serper_api",
+        "selected_tool": "serper_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "google_search_api",
+        "selected_tool": "google_search_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "google_search_api",
+    "consistency": 0.6666666666666666,
+    "selected_position": 3
+  },
+  {
+    "id": "same_023",
+    "query": "Find the latest research papers on climate change",
+    "scenario_type": "same_category",
+    "category": "search",
+    "correct_category": "search",
+    "tool_names": [
+      "duckduckgo_api",
+      "serper_api",
+      "google_search_api",
+      "bing_search_api"
+    ],
+    "tool_positions": {
+      "duckduckgo_api": 0,
+      "serper_api": 1,
+      "google_search_api": 2,
+      "bing_search_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "serper_api",
+        "selected_tool": "serper_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "serper_api",
+        "selected_tool": "serper_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "serper_api",
+        "selected_tool": "serper_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "serper_api",
+    "consistency": 1.0,
+    "selected_position": 1
+  },
+  {
+    "id": "same_024",
+    "query": "Search for information about Python programming best practices",
+    "scenario_type": "same_category",
+    "category": "search",
+    "correct_category": "search",
+    "tool_names": [
+      "duckduckgo_api",
+      "google_search_api",
+      "bing_search_api",
+      "serper_api"
+    ],
+    "tool_positions": {
+      "duckduckgo_api": 0,
+      "google_search_api": 1,
+      "bing_search_api": 2,
+      "serper_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "google_search_api",
+        "selected_tool": "google_search_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "google_search_api",
+        "selected_tool": "google_search_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "google_search_api",
+        "selected_tool": "google_search_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "google_search_api",
+    "consistency": 1.0,
+    "selected_position": 1
+  },
+  {
+    "id": "same_025",
+    "query": "Look up the population of Brazil",
+    "scenario_type": "same_category",
+    "category": "search",
+    "correct_category": "search",
+    "tool_names": [
+      "bing_search_api",
+      "serper_api",
+      "google_search_api",
+      "duckduckgo_api"
+    ],
+    "tool_positions": {
+      "bing_search_api": 0,
+      "serper_api": 1,
+      "google_search_api": 2,
+      "duckduckgo_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "bing_search_api",
+        "selected_tool": "bing_search_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "bing_search_api",
+        "selected_tool": "bing_search_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "bing_search_api",
+        "selected_tool": "bing_search_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "bing_search_api",
+    "consistency": 1.0,
+    "selected_position": 0
+  },
+  {
+    "id": "same_026",
+    "query": "Find reviews of the latest iPhone model",
+    "scenario_type": "same_category",
+    "category": "search",
+    "correct_category": "search",
+    "tool_names": [
+      "serper_api",
+      "duckduckgo_api",
+      "bing_search_api",
+      "google_search_api"
+    ],
+    "tool_positions": {
+      "serper_api": 0,
+      "duckduckgo_api": 1,
+      "bing_search_api": 2,
+      "google_search_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "serper_api",
+        "selected_tool": "serper_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "serper_api",
+        "selected_tool": "serper_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "serper_api",
+        "selected_tool": "serper_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "serper_api",
+    "consistency": 1.0,
+    "selected_position": 0
+  },
+  {
+    "id": "same_027",
+    "query": "Search for travel guides to Japan",
+    "scenario_type": "same_category",
+    "category": "search",
+    "correct_category": "search",
+    "tool_names": [
+      "bing_search_api",
+      "serper_api",
+      "google_search_api",
+      "duckduckgo_api"
+    ],
+    "tool_positions": {
+      "bing_search_api": 0,
+      "serper_api": 1,
+      "google_search_api": 2,
+      "duckduckgo_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "bing_search_api",
+        "selected_tool": "bing_search_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "google_search_api",
+        "selected_tool": "google_search_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "bing_search_api",
+        "selected_tool": "bing_search_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "bing_search_api",
+    "consistency": 0.6666666666666666,
+    "selected_position": 0
+  },
+  {
+    "id": "same_030",
+    "query": "Run this Python script to analyze data",
+    "scenario_type": "same_category",
+    "category": "code_execution",
+    "correct_category": "code_execution",
+    "tool_names": [
+      "colab_runtime_api",
+      "jupyter_kernel_api",
+      "e2b_code_interpreter",
+      "replit_api"
+    ],
+    "tool_positions": {
+      "colab_runtime_api": 0,
+      "jupyter_kernel_api": 1,
+      "e2b_code_interpreter": 2,
+      "replit_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "e2b_code_interpreter",
+        "selected_tool": "e2b_code_interpreter",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "e2b_code_interpreter",
+        "selected_tool": "e2b_code_interpreter",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "e2b_code_interpreter",
+        "selected_tool": "e2b_code_interpreter",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "e2b_code_interpreter",
+    "consistency": 1.0,
+    "selected_position": 2
+  },
+  {
+    "id": "same_031",
+    "query": "Execute this code to generate a matplotlib plot",
+    "scenario_type": "same_category",
+    "category": "code_execution",
+    "correct_category": "code_execution",
+    "tool_names": [
+      "jupyter_kernel_api",
+      "e2b_code_interpreter",
+      "colab_runtime_api",
+      "replit_api"
+    ],
+    "tool_positions": {
+      "jupyter_kernel_api": 0,
+      "e2b_code_interpreter": 1,
+      "colab_runtime_api": 2,
+      "replit_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "jupyter_kernel_api",
+        "selected_tool": "jupyter_kernel_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "jupyter_kernel_api",
+        "selected_tool": "jupyter_kernel_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "jupyter_kernel_api",
+        "selected_tool": "jupyter_kernel_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "jupyter_kernel_api",
+    "consistency": 1.0,
+    "selected_position": 0
+  },
+  {
+    "id": "same_032",
+    "query": "Test this function with unit tests",
+    "scenario_type": "same_category",
+    "category": "code_execution",
+    "correct_category": "code_execution",
+    "tool_names": [
+      "jupyter_kernel_api",
+      "replit_api",
+      "colab_runtime_api",
+      "e2b_code_interpreter"
+    ],
+    "tool_positions": {
+      "jupyter_kernel_api": 0,
+      "replit_api": 1,
+      "colab_runtime_api": 2,
+      "e2b_code_interpreter": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "e2b_code_interpreter",
+        "selected_tool": "e2b_code_interpreter",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "e2b_code_interpreter",
+        "selected_tool": "e2b_code_interpreter",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "e2b_code_interpreter",
+        "selected_tool": "e2b_code_interpreter",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "e2b_code_interpreter",
+    "consistency": 1.0,
+    "selected_position": 3
+  },
+  {
+    "id": "same_033",
+    "query": "Run this data processing pipeline",
+    "scenario_type": "same_category",
+    "category": "code_execution",
+    "correct_category": "code_execution",
+    "tool_names": [
+      "replit_api",
+      "e2b_code_interpreter",
+      "jupyter_kernel_api",
+      "colab_runtime_api"
+    ],
+    "tool_positions": {
+      "replit_api": 0,
+      "e2b_code_interpreter": 1,
+      "jupyter_kernel_api": 2,
+      "colab_runtime_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "replit_api",
+        "selected_tool": "replit_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "replit_api",
+        "selected_tool": "replit_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "replit_api",
+        "selected_tool": "replit_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "replit_api",
+    "consistency": 1.0,
+    "selected_position": 0
+  },
+  {
+    "id": "same_034",
+    "query": "Execute this machine learning training script",
+    "scenario_type": "same_category",
+    "category": "code_execution",
+    "correct_category": "code_execution",
+    "tool_names": [
+      "replit_api",
+      "colab_runtime_api",
+      "jupyter_kernel_api",
+      "e2b_code_interpreter"
+    ],
+    "tool_positions": {
+      "replit_api": 0,
+      "colab_runtime_api": 1,
+      "jupyter_kernel_api": 2,
+      "e2b_code_interpreter": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "colab_runtime_api",
+        "selected_tool": "colab_runtime_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "colab_runtime_api",
+        "selected_tool": "colab_runtime_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "replit_api",
+        "selected_tool": "replit_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "colab_runtime_api",
+    "consistency": 0.6666666666666666,
+    "selected_position": 1
+  },
+  {
+    "id": "same_035",
+    "query": "Run this web scraping code",
+    "scenario_type": "same_category",
+    "category": "code_execution",
+    "correct_category": "code_execution",
+    "tool_names": [
+      "replit_api",
+      "colab_runtime_api",
+      "e2b_code_interpreter",
+      "jupyter_kernel_api"
+    ],
+    "tool_positions": {
+      "replit_api": 0,
+      "colab_runtime_api": 1,
+      "e2b_code_interpreter": 2,
+      "jupyter_kernel_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "replit_api",
+        "selected_tool": "replit_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "replit_api",
+        "selected_tool": "replit_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "replit_api",
+        "selected_tool": "replit_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "replit_api",
+    "consistency": 1.0,
+    "selected_position": 0
+  },
+  {
+    "id": "same_036",
+    "query": "Execute this SQL query against a database",
+    "scenario_type": "same_category",
+    "category": "code_execution",
+    "correct_category": "code_execution",
+    "tool_names": [
+      "replit_api",
+      "jupyter_kernel_api",
+      "colab_runtime_api",
+      "e2b_code_interpreter"
+    ],
+    "tool_positions": {
+      "replit_api": 0,
+      "jupyter_kernel_api": 1,
+      "colab_runtime_api": 2,
+      "e2b_code_interpreter": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "replit_api",
+        "selected_tool": "replit_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "replit_api",
+        "selected_tool": "replit_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "replit_api",
+        "selected_tool": "replit_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "replit_api",
+    "consistency": 1.0,
+    "selected_position": 0
+  },
+  {
+    "id": "same_037",
+    "query": "Test this API integration code",
+    "scenario_type": "same_category",
+    "category": "code_execution",
+    "correct_category": "code_execution",
+    "tool_names": [
+      "jupyter_kernel_api",
+      "colab_runtime_api",
+      "replit_api",
+      "e2b_code_interpreter"
+    ],
+    "tool_positions": {
+      "jupyter_kernel_api": 0,
+      "colab_runtime_api": 1,
+      "replit_api": 2,
+      "e2b_code_interpreter": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "e2b_code_interpreter",
+        "selected_tool": "e2b_code_interpreter",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "e2b_code_interpreter",
+        "selected_tool": "e2b_code_interpreter",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "e2b_code_interpreter",
+        "selected_tool": "e2b_code_interpreter",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "e2b_code_interpreter",
+    "consistency": 1.0,
+    "selected_position": 3
+  },
+  {
+    "id": "same_040",
+    "query": "Translate 'Hello, how are you?' from English to French",
+    "scenario_type": "same_category",
+    "category": "translation",
+    "correct_category": "translation",
+    "tool_names": [
+      "libretranslate_api",
+      "deepl_api",
+      "google_translate_api",
+      "microsoft_translator"
+    ],
+    "tool_positions": {
+      "libretranslate_api": 0,
+      "deepl_api": 1,
+      "google_translate_api": 2,
+      "microsoft_translator": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "google_translate_api",
+        "selected_tool": "google_translate_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "google_translate_api",
+        "selected_tool": "google_translate_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "google_translate_api",
+        "selected_tool": "google_translate_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "google_translate_api",
+    "consistency": 1.0,
+    "selected_position": 2
+  },
+  {
+    "id": "same_041",
+    "query": "What does 'Bonjour' mean in English?",
+    "scenario_type": "same_category",
+    "category": "translation",
+    "correct_category": "translation",
+    "tool_names": [
+      "microsoft_translator",
+      "deepl_api",
+      "google_translate_api",
+      "libretranslate_api"
+    ],
+    "tool_positions": {
+      "microsoft_translator": 0,
+      "deepl_api": 1,
+      "google_translate_api": 2,
+      "libretranslate_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "microsoft_translator",
+        "selected_tool": "microsoft_translator",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "microsoft_translator",
+        "selected_tool": "microsoft_translator",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "microsoft_translator",
+        "selected_tool": "microsoft_translator",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "microsoft_translator",
+    "consistency": 1.0,
+    "selected_position": 0
+  },
+  {
+    "id": "same_042",
+    "query": "Translate this paragraph from Spanish to English",
+    "scenario_type": "same_category",
+    "category": "translation",
+    "correct_category": "translation",
+    "tool_names": [
+      "libretranslate_api",
+      "deepl_api",
+      "microsoft_translator",
+      "google_translate_api"
+    ],
+    "tool_positions": {
+      "libretranslate_api": 0,
+      "deepl_api": 1,
+      "microsoft_translator": 2,
+      "google_translate_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "google_translate_api",
+        "selected_tool": "google_translate_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "google_translate_api",
+        "selected_tool": "google_translate_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "google_translate_api",
+        "selected_tool": "google_translate_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "google_translate_api",
+    "consistency": 1.0,
+    "selected_position": 3
+  },
+  {
+    "id": "same_043",
+    "query": "How do you say 'Thank you' in Japanese?",
+    "scenario_type": "same_category",
+    "category": "translation",
+    "correct_category": "translation",
+    "tool_names": [
+      "libretranslate_api",
+      "google_translate_api",
+      "microsoft_translator",
+      "deepl_api"
+    ],
+    "tool_positions": {
+      "libretranslate_api": 0,
+      "google_translate_api": 1,
+      "microsoft_translator": 2,
+      "deepl_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "libretranslate_api",
+        "selected_tool": "libretranslate_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "libretranslate_api",
+        "selected_tool": "libretranslate_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "google_translate_api",
+        "selected_tool": "google_translate_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "libretranslate_api",
+    "consistency": 0.6666666666666666,
+    "selected_position": 0
+  },
+  {
+    "id": "same_044",
+    "query": "Translate this business email to German",
+    "scenario_type": "same_category",
+    "category": "translation",
+    "correct_category": "translation",
+    "tool_names": [
+      "deepl_api",
+      "google_translate_api",
+      "libretranslate_api",
+      "microsoft_translator"
+    ],
+    "tool_positions": {
+      "deepl_api": 0,
+      "google_translate_api": 1,
+      "libretranslate_api": 2,
+      "microsoft_translator": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "deepl_api",
+        "selected_tool": "deepl_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "deepl_api",
+        "selected_tool": "deepl_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "deepl_api",
+        "selected_tool": "deepl_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "deepl_api",
+    "consistency": 1.0,
+    "selected_position": 0
+  },
+  {
+    "id": "same_045",
+    "query": "What is the Chinese translation of 'apple'?",
+    "scenario_type": "same_category",
+    "category": "translation",
+    "correct_category": "translation",
+    "tool_names": [
+      "microsoft_translator",
+      "google_translate_api",
+      "libretranslate_api",
+      "deepl_api"
+    ],
+    "tool_positions": {
+      "microsoft_translator": 0,
+      "google_translate_api": 1,
+      "libretranslate_api": 2,
+      "deepl_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "microsoft_translator",
+        "selected_tool": "microsoft_translator",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "microsoft_translator",
+        "selected_tool": "microsoft_translator",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "microsoft_translator",
+        "selected_tool": "microsoft_translator",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "microsoft_translator",
+    "consistency": 1.0,
+    "selected_position": 0
+  },
+  {
+    "id": "same_046",
+    "query": "Convert this text from Portuguese to Italian",
+    "scenario_type": "same_category",
+    "category": "translation",
+    "correct_category": "translation",
+    "tool_names": [
+      "libretranslate_api",
+      "deepl_api",
+      "microsoft_translator",
+      "google_translate_api"
+    ],
+    "tool_positions": {
+      "libretranslate_api": 0,
+      "deepl_api": 1,
+      "microsoft_translator": 2,
+      "google_translate_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "deepl_api",
+        "selected_tool": "deepl_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "deepl_api",
+        "selected_tool": "deepl_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "deepl_api",
+        "selected_tool": "deepl_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "deepl_api",
+    "consistency": 1.0,
+    "selected_position": 1
+  },
+  {
+    "id": "same_047",
+    "query": "Translate this technical document from English to Russian",
+    "scenario_type": "same_category",
+    "category": "translation",
+    "correct_category": "translation",
+    "tool_names": [
+      "deepl_api",
+      "microsoft_translator",
+      "google_translate_api",
+      "libretranslate_api"
+    ],
+    "tool_positions": {
+      "deepl_api": 0,
+      "microsoft_translator": 1,
+      "google_translate_api": 2,
+      "libretranslate_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "deepl_api",
+        "selected_tool": "deepl_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "deepl_api",
+        "selected_tool": "deepl_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "deepl_api",
+        "selected_tool": "deepl_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "deepl_api",
+    "consistency": 1.0,
+    "selected_position": 0
+  },
+  {
+    "id": "mixed_001",
+    "query": "What will the temperature be in Berlin tomorrow?",
+    "scenario_type": "mixed_category",
+    "category": "weather",
+    "correct_category": "weather",
+    "tool_names": [
+      "openweathermap_api",
+      "google_search_api",
+      "wolfram_alpha_api",
+      "google_translate_api"
+    ],
+    "tool_positions": {
+      "openweathermap_api": 0,
+      "google_search_api": 1,
+      "wolfram_alpha_api": 2,
+      "google_translate_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "openweathermap_api",
+        "selected_tool": "openweathermap_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "openweathermap_api",
+        "selected_tool": "openweathermap_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "openweathermap_api",
+        "selected_tool": "openweathermap_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "openweathermap_api",
+    "consistency": 1.0,
+    "selected_position": 0
+  },
+  {
+    "id": "mixed_002",
+    "query": "Compute the integral of x^3 from 0 to 5",
+    "scenario_type": "mixed_category",
+    "category": "calculator",
+    "correct_category": "calculator",
+    "tool_names": [
+      "wolfram_alpha_api",
+      "openweathermap_api",
+      "bing_search_api",
+      "jupyter_kernel_api"
+    ],
+    "tool_positions": {
+      "wolfram_alpha_api": 0,
+      "openweathermap_api": 1,
+      "bing_search_api": 2,
+      "jupyter_kernel_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "wolfram_alpha_api",
+        "selected_tool": "wolfram_alpha_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "wolfram_alpha_api",
+        "selected_tool": "wolfram_alpha_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "wolfram_alpha_api",
+        "selected_tool": "wolfram_alpha_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "wolfram_alpha_api",
+    "consistency": 1.0,
+    "selected_position": 0
+  },
+  {
+    "id": "mixed_003",
+    "query": "Find information about French language idioms",
+    "scenario_type": "mixed_category",
+    "category": "ambiguous_search_translation",
+    "correct_category": "search",
+    "tool_names": [
+      "google_search_api",
+      "google_translate_api",
+      "wolfram_alpha_api",
+      "openweathermap_api"
+    ],
+    "tool_positions": {
+      "google_search_api": 0,
+      "google_translate_api": 1,
+      "wolfram_alpha_api": 2,
+      "openweathermap_api": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "google_search_api",
+        "selected_tool": "google_search_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "google_search_api",
+        "selected_tool": "google_search_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "google_search_api",
+        "selected_tool": "google_search_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "google_search_api",
+    "consistency": 1.0,
+    "selected_position": 0
+  },
+  {
+    "id": "mixed_004",
+    "query": "Calculate the Fibonacci sequence up to the 50th number",
+    "scenario_type": "mixed_category",
+    "category": "ambiguous_code_calculator",
+    "correct_category": "calculator",
+    "tool_names": [
+      "wolfram_alpha_api",
+      "jupyter_kernel_api",
+      "duckduckgo_api",
+      "weatherapi_com"
+    ],
+    "tool_positions": {
+      "wolfram_alpha_api": 0,
+      "jupyter_kernel_api": 1,
+      "duckduckgo_api": 2,
+      "weatherapi_com": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "jupyter_kernel_api",
+        "selected_tool": "jupyter_kernel_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "jupyter_kernel_api",
+        "selected_tool": "jupyter_kernel_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "jupyter_kernel_api",
+        "selected_tool": "jupyter_kernel_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "jupyter_kernel_api",
+    "consistency": 1.0,
+    "selected_position": 1
+  },
+  {
+    "id": "mixed_005",
+    "query": "Translate this legal document from English to Spanish",
+    "scenario_type": "mixed_category",
+    "category": "translation",
+    "correct_category": "translation",
+    "tool_names": [
+      "deepl_api",
+      "google_search_api",
+      "calculator_api",
+      "e2b_code_interpreter"
+    ],
+    "tool_positions": {
+      "deepl_api": 0,
+      "google_search_api": 1,
+      "calculator_api": 2,
+      "e2b_code_interpreter": 3
+    },
+    "runs": [
+      {
+        "run": 0,
+        "raw_response": "deepl_api",
+        "selected_tool": "deepl_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 1,
+        "raw_response": "deepl_api",
+        "selected_tool": "deepl_api",
+        "is_valid_tool": true
+      },
+      {
+        "run": 2,
+        "raw_response": "deepl_api",
+        "selected_tool": "deepl_api",
+        "is_valid_tool": true
+      }
+    ],
+    "consensus_selection": "deepl_api",
+    "consistency": 1.0,
+    "selected_position": 0
+  }
+]

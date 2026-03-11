@@ -1,0 +1,1442 @@
+[
+  {
+    "id": "same_000",
+    "query": "What's the weather like in Paris today?",
+    "scenario_type": "same_category",
+    "category": "weather",
+    "tool_names": [
+      "world_weather_online",
+      "weatherapi_com",
+      "weather_gov_api",
+      "openweathermap_api"
+    ],
+    "tool_descriptions": [
+      "Get weather forecasts and historical climate data using World Weather Online service",
+      "Retrieve real-time weather conditions, 14-day forecasts, and astronomy data",
+      "Fetch official US National Weather Service forecasts and alerts for US locations",
+      "Access current weather data, forecasts, and historical weather for any location worldwide"
+    ],
+    "similarities": [
+      0.3525524139404297,
+      0.42388492822647095,
+      0.33015674352645874,
+      0.3877164125442505
+    ],
+    "similarity_ranking": [
+      1,
+      3,
+      0,
+      2
+    ],
+    "predicted_tool": "weatherapi_com",
+    "correct_category": "weather"
+  },
+  {
+    "id": "same_001",
+    "query": "Will it rain in New York this weekend?",
+    "scenario_type": "same_category",
+    "category": "weather",
+    "tool_names": [
+      "weather_gov_api",
+      "world_weather_online",
+      "openweathermap_api",
+      "weatherapi_com"
+    ],
+    "tool_descriptions": [
+      "Fetch official US National Weather Service forecasts and alerts for US locations",
+      "Get weather forecasts and historical climate data using World Weather Online service",
+      "Access current weather data, forecasts, and historical weather for any location worldwide",
+      "Retrieve real-time weather conditions, 14-day forecasts, and astronomy data"
+    ],
+    "similarities": [
+      0.4049092233181,
+      0.30327677726745605,
+      0.2929011285305023,
+      0.3343127965927124
+    ],
+    "similarity_ranking": [
+      0,
+      3,
+      1,
+      2
+    ],
+    "predicted_tool": "weather_gov_api",
+    "correct_category": "weather"
+  },
+  {
+    "id": "same_002",
+    "query": "What temperature should I expect in Tokyo tomorrow?",
+    "scenario_type": "same_category",
+    "category": "weather",
+    "tool_names": [
+      "weatherapi_com",
+      "weather_gov_api",
+      "world_weather_online",
+      "openweathermap_api"
+    ],
+    "tool_descriptions": [
+      "Retrieve real-time weather conditions, 14-day forecasts, and astronomy data",
+      "Fetch official US National Weather Service forecasts and alerts for US locations",
+      "Get weather forecasts and historical climate data using World Weather Online service",
+      "Access current weather data, forecasts, and historical weather for any location worldwide"
+    ],
+    "similarities": [
+      0.32861852645874023,
+      0.27439796924591064,
+      0.28247690200805664,
+      0.29971709847450256
+    ],
+    "similarity_ranking": [
+      0,
+      3,
+      2,
+      1
+    ],
+    "predicted_tool": "weatherapi_com",
+    "correct_category": "weather"
+  },
+  {
+    "id": "same_003",
+    "query": "Is it going to be sunny in London next week?",
+    "scenario_type": "same_category",
+    "category": "weather",
+    "tool_names": [
+      "weatherapi_com",
+      "world_weather_online",
+      "openweathermap_api",
+      "weather_gov_api"
+    ],
+    "tool_descriptions": [
+      "Retrieve real-time weather conditions, 14-day forecasts, and astronomy data",
+      "Get weather forecasts and historical climate data using World Weather Online service",
+      "Access current weather data, forecasts, and historical weather for any location worldwide",
+      "Fetch official US National Weather Service forecasts and alerts for US locations"
+    ],
+    "similarities": [
+      0.35836291313171387,
+      0.2918977737426758,
+      0.3105829358100891,
+      0.25863146781921387
+    ],
+    "similarity_ranking": [
+      0,
+      2,
+      1,
+      3
+    ],
+    "predicted_tool": "weatherapi_com",
+    "correct_category": "weather"
+  },
+  {
+    "id": "same_004",
+    "query": "What are the weather conditions in Sydney right now?",
+    "scenario_type": "same_category",
+    "category": "weather",
+    "tool_names": [
+      "weatherapi_com",
+      "world_weather_online",
+      "weather_gov_api",
+      "openweathermap_api"
+    ],
+    "tool_descriptions": [
+      "Retrieve real-time weather conditions, 14-day forecasts, and astronomy data",
+      "Get weather forecasts and historical climate data using World Weather Online service",
+      "Fetch official US National Weather Service forecasts and alerts for US locations",
+      "Access current weather data, forecasts, and historical weather for any location worldwide"
+    ],
+    "similarities": [
+      0.5087977647781372,
+      0.4097750186920166,
+      0.38068535923957825,
+      0.43858712911605835
+    ],
+    "similarity_ranking": [
+      0,
+      3,
+      1,
+      2
+    ],
+    "predicted_tool": "weatherapi_com",
+    "correct_category": "weather"
+  },
+  {
+    "id": "same_005",
+    "query": "Should I bring an umbrella to Chicago today?",
+    "scenario_type": "same_category",
+    "category": "weather",
+    "tool_names": [
+      "weatherapi_com",
+      "weather_gov_api",
+      "world_weather_online",
+      "openweathermap_api"
+    ],
+    "tool_descriptions": [
+      "Retrieve real-time weather conditions, 14-day forecasts, and astronomy data",
+      "Fetch official US National Weather Service forecasts and alerts for US locations",
+      "Get weather forecasts and historical climate data using World Weather Online service",
+      "Access current weather data, forecasts, and historical weather for any location worldwide"
+    ],
+    "similarities": [
+      0.15425610542297363,
+      0.22147123515605927,
+      0.09841430187225342,
+      0.09960132837295532
+    ],
+    "similarity_ranking": [
+      1,
+      0,
+      3,
+      2
+    ],
+    "predicted_tool": "weather_gov_api",
+    "correct_category": "weather"
+  },
+  {
+    "id": "same_006",
+    "query": "What's the forecast for Los Angeles this week?",
+    "scenario_type": "same_category",
+    "category": "weather",
+    "tool_names": [
+      "world_weather_online",
+      "weatherapi_com",
+      "openweathermap_api",
+      "weather_gov_api"
+    ],
+    "tool_descriptions": [
+      "Get weather forecasts and historical climate data using World Weather Online service",
+      "Retrieve real-time weather conditions, 14-day forecasts, and astronomy data",
+      "Access current weather data, forecasts, and historical weather for any location worldwide",
+      "Fetch official US National Weather Service forecasts and alerts for US locations"
+    ],
+    "similarities": [
+      0.31928113102912903,
+      0.4505188763141632,
+      0.3706333637237549,
+      0.4274314045906067
+    ],
+    "similarity_ranking": [
+      1,
+      3,
+      2,
+      0
+    ],
+    "predicted_tool": "weatherapi_com",
+    "correct_category": "weather"
+  },
+  {
+    "id": "same_007",
+    "query": "How cold will it be in Moscow tomorrow morning?",
+    "scenario_type": "same_category",
+    "category": "weather",
+    "tool_names": [
+      "weatherapi_com",
+      "weather_gov_api",
+      "openweathermap_api",
+      "world_weather_online"
+    ],
+    "tool_descriptions": [
+      "Retrieve real-time weather conditions, 14-day forecasts, and astronomy data",
+      "Fetch official US National Weather Service forecasts and alerts for US locations",
+      "Access current weather data, forecasts, and historical weather for any location worldwide",
+      "Get weather forecasts and historical climate data using World Weather Online service"
+    ],
+    "similarities": [
+      0.35211214423179626,
+      0.32961612939834595,
+      0.3461182117462158,
+      0.29914960265159607
+    ],
+    "similarity_ranking": [
+      0,
+      2,
+      1,
+      3
+    ],
+    "predicted_tool": "weatherapi_com",
+    "correct_category": "weather"
+  },
+  {
+    "id": "same_010",
+    "query": "What is 15% of 240?",
+    "scenario_type": "same_category",
+    "category": "calculator",
+    "tool_names": [
+      "calculator_api",
+      "mathjs_api",
+      "sympy_api",
+      "wolfram_alpha_api"
+    ],
+    "tool_descriptions": [
+      "Simple calculator service for basic arithmetic operations: addition, subtraction, multiplication, division",
+      "JavaScript math library API for evaluating mathematical expressions and algebraic computations",
+      "Symbolic mathematics API for algebraic manipulation, calculus, and equation solving",
+      "Computational intelligence engine for math, science, and data computation with step-by-step solutions"
+    ],
+    "similarities": [
+      0.20587171614170074,
+      0.07532965391874313,
+      0.04567497596144676,
+      0.08978936076164246
+    ],
+    "similarity_ranking": [
+      0,
+      3,
+      1,
+      2
+    ],
+    "predicted_tool": "calculator_api",
+    "correct_category": "calculator"
+  },
+  {
+    "id": "same_011",
+    "query": "Calculate the area of a circle with radius 7cm",
+    "scenario_type": "same_category",
+    "category": "calculator",
+    "tool_names": [
+      "sympy_api",
+      "calculator_api",
+      "mathjs_api",
+      "wolfram_alpha_api"
+    ],
+    "tool_descriptions": [
+      "Symbolic mathematics API for algebraic manipulation, calculus, and equation solving",
+      "Simple calculator service for basic arithmetic operations: addition, subtraction, multiplication, division",
+      "JavaScript math library API for evaluating mathematical expressions and algebraic computations",
+      "Computational intelligence engine for math, science, and data computation with step-by-step solutions"
+    ],
+    "similarities": [
+      0.1841665506362915,
+      0.19965128600597382,
+      0.11015032231807709,
+      0.026626024395227432
+    ],
+    "similarity_ranking": [
+      1,
+      0,
+      2,
+      3
+    ],
+    "predicted_tool": "calculator_api",
+    "correct_category": "calculator"
+  },
+  {
+    "id": "same_012",
+    "query": "Solve x^2 - 5x + 6 = 0",
+    "scenario_type": "same_category",
+    "category": "calculator",
+    "tool_names": [
+      "sympy_api",
+      "mathjs_api",
+      "wolfram_alpha_api",
+      "calculator_api"
+    ],
+    "tool_descriptions": [
+      "Symbolic mathematics API for algebraic manipulation, calculus, and equation solving",
+      "JavaScript math library API for evaluating mathematical expressions and algebraic computations",
+      "Computational intelligence engine for math, science, and data computation with step-by-step solutions",
+      "Simple calculator service for basic arithmetic operations: addition, subtraction, multiplication, division"
+    ],
+    "similarities": [
+      0.19406655430793762,
+      0.09804558753967285,
+      0.07375584542751312,
+      0.15666867792606354
+    ],
+    "similarity_ranking": [
+      0,
+      3,
+      1,
+      2
+    ],
+    "predicted_tool": "sympy_api",
+    "correct_category": "calculator"
+  },
+  {
+    "id": "same_013",
+    "query": "What is 2^32?",
+    "scenario_type": "same_category",
+    "category": "calculator",
+    "tool_names": [
+      "calculator_api",
+      "sympy_api",
+      "mathjs_api",
+      "wolfram_alpha_api"
+    ],
+    "tool_descriptions": [
+      "Simple calculator service for basic arithmetic operations: addition, subtraction, multiplication, division",
+      "Symbolic mathematics API for algebraic manipulation, calculus, and equation solving",
+      "JavaScript math library API for evaluating mathematical expressions and algebraic computations",
+      "Computational intelligence engine for math, science, and data computation with step-by-step solutions"
+    ],
+    "similarities": [
+      0.26621609926223755,
+      0.10364347696304321,
+      0.19170716404914856,
+      0.1311274617910385
+    ],
+    "similarity_ranking": [
+      0,
+      2,
+      3,
+      1
+    ],
+    "predicted_tool": "calculator_api",
+    "correct_category": "calculator"
+  },
+  {
+    "id": "same_014",
+    "query": "Convert 100 Fahrenheit to Celsius",
+    "scenario_type": "same_category",
+    "category": "calculator",
+    "tool_names": [
+      "wolfram_alpha_api",
+      "mathjs_api",
+      "sympy_api",
+      "calculator_api"
+    ],
+    "tool_descriptions": [
+      "Computational intelligence engine for math, science, and data computation with step-by-step solutions",
+      "JavaScript math library API for evaluating mathematical expressions and algebraic computations",
+      "Symbolic mathematics API for algebraic manipulation, calculus, and equation solving",
+      "Simple calculator service for basic arithmetic operations: addition, subtraction, multiplication, division"
+    ],
+    "similarities": [
+      0.1307971179485321,
+      0.09325921535491943,
+      0.0548623651266098,
+      0.16488271951675415
+    ],
+    "similarity_ranking": [
+      3,
+      0,
+      1,
+      2
+    ],
+    "predicted_tool": "calculator_api",
+    "correct_category": "calculator"
+  },
+  {
+    "id": "same_015",
+    "query": "What is the square root of 144?",
+    "scenario_type": "same_category",
+    "category": "calculator",
+    "tool_names": [
+      "sympy_api",
+      "wolfram_alpha_api",
+      "calculator_api",
+      "mathjs_api"
+    ],
+    "tool_descriptions": [
+      "Symbolic mathematics API for algebraic manipulation, calculus, and equation solving",
+      "Computational intelligence engine for math, science, and data computation with step-by-step solutions",
+      "Simple calculator service for basic arithmetic operations: addition, subtraction, multiplication, division",
+      "JavaScript math library API for evaluating mathematical expressions and algebraic computations"
+    ],
+    "similarities": [
+      0.130269393324852,
+      0.04440611973404884,
+      0.1489863097667694,
+      0.13915738463401794
+    ],
+    "similarity_ranking": [
+      2,
+      3,
+      0,
+      1
+    ],
+    "predicted_tool": "calculator_api",
+    "correct_category": "calculator"
+  },
+  {
+    "id": "same_016",
+    "query": "Calculate 15 factorial",
+    "scenario_type": "same_category",
+    "category": "calculator",
+    "tool_names": [
+      "mathjs_api",
+      "sympy_api",
+      "calculator_api",
+      "wolfram_alpha_api"
+    ],
+    "tool_descriptions": [
+      "JavaScript math library API for evaluating mathematical expressions and algebraic computations",
+      "Symbolic mathematics API for algebraic manipulation, calculus, and equation solving",
+      "Simple calculator service for basic arithmetic operations: addition, subtraction, multiplication, division",
+      "Computational intelligence engine for math, science, and data computation with step-by-step solutions"
+    ],
+    "similarities": [
+      0.10672029852867126,
+      0.10159315168857574,
+      0.1955692172050476,
+      0.0980689749121666
+    ],
+    "similarity_ranking": [
+      2,
+      0,
+      1,
+      3
+    ],
+    "predicted_tool": "calculator_api",
+    "correct_category": "calculator"
+  },
+  {
+    "id": "same_017",
+    "query": "What is the derivative of sin(x)?",
+    "scenario_type": "same_category",
+    "category": "calculator",
+    "tool_names": [
+      "mathjs_api",
+      "sympy_api",
+      "wolfram_alpha_api",
+      "calculator_api"
+    ],
+    "tool_descriptions": [
+      "JavaScript math library API for evaluating mathematical expressions and algebraic computations",
+      "Symbolic mathematics API for algebraic manipulation, calculus, and equation solving",
+      "Computational intelligence engine for math, science, and data computation with step-by-step solutions",
+      "Simple calculator service for basic arithmetic operations: addition, subtraction, multiplication, division"
+    ],
+    "similarities": [
+      0.18209128081798553,
+      0.17418019473552704,
+      -0.00029741227626800537,
+      0.09651969373226166
+    ],
+    "similarity_ranking": [
+      0,
+      1,
+      3,
+      2
+    ],
+    "predicted_tool": "mathjs_api",
+    "correct_category": "calculator"
+  },
+  {
+    "id": "same_020",
+    "query": "Find information about the history of the Roman Empire",
+    "scenario_type": "same_category",
+    "category": "search",
+    "tool_names": [
+      "google_search_api",
+      "duckduckgo_api",
+      "serper_api",
+      "bing_search_api"
+    ],
+    "tool_descriptions": [
+      "Search the web using Google Search API and retrieve relevant web pages and information",
+      "Privacy-preserving web search using DuckDuckGo, returns web results without tracking",
+      "Google Search Results API for web scraping and retrieving structured search data",
+      "Microsoft Bing web search for finding web pages, news, and information online"
+    ],
+    "similarities": [
+      0.2595565617084503,
+      0.10303595662117004,
+      0.146224707365036,
+      0.21942219138145447
+    ],
+    "similarity_ranking": [
+      0,
+      3,
+      2,
+      1
+    ],
+    "predicted_tool": "google_search_api",
+    "correct_category": "search"
+  },
+  {
+    "id": "same_021",
+    "query": "Search for recent news about artificial intelligence",
+    "scenario_type": "same_category",
+    "category": "search",
+    "tool_names": [
+      "google_search_api",
+      "serper_api",
+      "duckduckgo_api",
+      "bing_search_api"
+    ],
+    "tool_descriptions": [
+      "Search the web using Google Search API and retrieve relevant web pages and information",
+      "Google Search Results API for web scraping and retrieving structured search data",
+      "Privacy-preserving web search using DuckDuckGo, returns web results without tracking",
+      "Microsoft Bing web search for finding web pages, news, and information online"
+    ],
+    "similarities": [
+      0.32446590065956116,
+      0.19188272953033447,
+      0.1486121565103531,
+      0.4127156734466553
+    ],
+    "similarity_ranking": [
+      3,
+      0,
+      1,
+      2
+    ],
+    "predicted_tool": "bing_search_api",
+    "correct_category": "search"
+  },
+  {
+    "id": "same_022",
+    "query": "Look up recipes for chocolate chip cookies",
+    "scenario_type": "same_category",
+    "category": "search",
+    "tool_names": [
+      "bing_search_api",
+      "serper_api",
+      "duckduckgo_api",
+      "google_search_api"
+    ],
+    "tool_descriptions": [
+      "Microsoft Bing web search for finding web pages, news, and information online",
+      "Google Search Results API for web scraping and retrieving structured search data",
+      "Privacy-preserving web search using DuckDuckGo, returns web results without tracking",
+      "Search the web using Google Search API and retrieve relevant web pages and information"
+    ],
+    "similarities": [
+      0.20267872512340546,
+      0.20870095491409302,
+      0.11831094324588776,
+      0.19271749258041382
+    ],
+    "similarity_ranking": [
+      1,
+      0,
+      3,
+      2
+    ],
+    "predicted_tool": "serper_api",
+    "correct_category": "search"
+  },
+  {
+    "id": "same_023",
+    "query": "Find the latest research papers on climate change",
+    "scenario_type": "same_category",
+    "category": "search",
+    "tool_names": [
+      "duckduckgo_api",
+      "serper_api",
+      "google_search_api",
+      "bing_search_api"
+    ],
+    "tool_descriptions": [
+      "Privacy-preserving web search using DuckDuckGo, returns web results without tracking",
+      "Google Search Results API for web scraping and retrieving structured search data",
+      "Search the web using Google Search API and retrieve relevant web pages and information",
+      "Microsoft Bing web search for finding web pages, news, and information online"
+    ],
+    "similarities": [
+      0.08769051730632782,
+      0.1424277126789093,
+      0.20528195798397064,
+      0.20606370270252228
+    ],
+    "similarity_ranking": [
+      3,
+      2,
+      1,
+      0
+    ],
+    "predicted_tool": "bing_search_api",
+    "correct_category": "search"
+  },
+  {
+    "id": "same_024",
+    "query": "Search for information about Python programming best practices",
+    "scenario_type": "same_category",
+    "category": "search",
+    "tool_names": [
+      "duckduckgo_api",
+      "google_search_api",
+      "bing_search_api",
+      "serper_api"
+    ],
+    "tool_descriptions": [
+      "Privacy-preserving web search using DuckDuckGo, returns web results without tracking",
+      "Search the web using Google Search API and retrieve relevant web pages and information",
+      "Microsoft Bing web search for finding web pages, news, and information online",
+      "Google Search Results API for web scraping and retrieving structured search data"
+    ],
+    "similarities": [
+      0.08930899947881699,
+      0.24285311996936798,
+      0.2345443069934845,
+      0.24331329762935638
+    ],
+    "similarity_ranking": [
+      3,
+      1,
+      2,
+      0
+    ],
+    "predicted_tool": "serper_api",
+    "correct_category": "search"
+  },
+  {
+    "id": "same_025",
+    "query": "Look up the population of Brazil",
+    "scenario_type": "same_category",
+    "category": "search",
+    "tool_names": [
+      "bing_search_api",
+      "serper_api",
+      "google_search_api",
+      "duckduckgo_api"
+    ],
+    "tool_descriptions": [
+      "Microsoft Bing web search for finding web pages, news, and information online",
+      "Google Search Results API for web scraping and retrieving structured search data",
+      "Search the web using Google Search API and retrieve relevant web pages and information",
+      "Privacy-preserving web search using DuckDuckGo, returns web results without tracking"
+    ],
+    "similarities": [
+      0.030770502984523773,
+      -0.0032672611996531487,
+      0.1437833458185196,
+      0.053023405373096466
+    ],
+    "similarity_ranking": [
+      2,
+      3,
+      0,
+      1
+    ],
+    "predicted_tool": "google_search_api",
+    "correct_category": "search"
+  },
+  {
+    "id": "same_026",
+    "query": "Find reviews of the latest iPhone model",
+    "scenario_type": "same_category",
+    "category": "search",
+    "tool_names": [
+      "serper_api",
+      "duckduckgo_api",
+      "bing_search_api",
+      "google_search_api"
+    ],
+    "tool_descriptions": [
+      "Google Search Results API for web scraping and retrieving structured search data",
+      "Privacy-preserving web search using DuckDuckGo, returns web results without tracking",
+      "Microsoft Bing web search for finding web pages, news, and information online",
+      "Search the web using Google Search API and retrieve relevant web pages and information"
+    ],
+    "similarities": [
+      0.05684953182935715,
+      0.0679909735918045,
+      0.14053227007389069,
+      0.1502874195575714
+    ],
+    "similarity_ranking": [
+      3,
+      2,
+      1,
+      0
+    ],
+    "predicted_tool": "google_search_api",
+    "correct_category": "search"
+  },
+  {
+    "id": "same_027",
+    "query": "Search for travel guides to Japan",
+    "scenario_type": "same_category",
+    "category": "search",
+    "tool_names": [
+      "bing_search_api",
+      "serper_api",
+      "google_search_api",
+      "duckduckgo_api"
+    ],
+    "tool_descriptions": [
+      "Microsoft Bing web search for finding web pages, news, and information online",
+      "Google Search Results API for web scraping and retrieving structured search data",
+      "Search the web using Google Search API and retrieve relevant web pages and information",
+      "Privacy-preserving web search using DuckDuckGo, returns web results without tracking"
+    ],
+    "similarities": [
+      0.2025831937789917,
+      0.1432345062494278,
+      0.25975698232650757,
+      0.20587044954299927
+    ],
+    "similarity_ranking": [
+      2,
+      3,
+      0,
+      1
+    ],
+    "predicted_tool": "google_search_api",
+    "correct_category": "search"
+  },
+  {
+    "id": "same_030",
+    "query": "Run this Python script to analyze data",
+    "scenario_type": "same_category",
+    "category": "code_execution",
+    "tool_names": [
+      "colab_runtime_api",
+      "jupyter_kernel_api",
+      "e2b_code_interpreter",
+      "replit_api"
+    ],
+    "tool_descriptions": [
+      "Execute Python notebooks in Google Colab runtime with GPU/TPU support",
+      "Execute Python code in a Jupyter kernel environment with full scientific computing stack",
+      "Sandboxed code interpreter for safely executing Python, JavaScript, and other languages",
+      "Run code in multiple programming languages using Replit's cloud execution environment"
+    ],
+    "similarities": [
+      0.21225856244564056,
+      0.35898885130882263,
+      0.1882697343826294,
+      0.0795191153883934
+    ],
+    "similarity_ranking": [
+      1,
+      0,
+      2,
+      3
+    ],
+    "predicted_tool": "jupyter_kernel_api",
+    "correct_category": "code_execution"
+  },
+  {
+    "id": "same_031",
+    "query": "Execute this code to generate a matplotlib plot",
+    "scenario_type": "same_category",
+    "category": "code_execution",
+    "tool_names": [
+      "jupyter_kernel_api",
+      "e2b_code_interpreter",
+      "colab_runtime_api",
+      "replit_api"
+    ],
+    "tool_descriptions": [
+      "Execute Python code in a Jupyter kernel environment with full scientific computing stack",
+      "Sandboxed code interpreter for safely executing Python, JavaScript, and other languages",
+      "Execute Python notebooks in Google Colab runtime with GPU/TPU support",
+      "Run code in multiple programming languages using Replit's cloud execution environment"
+    ],
+    "similarities": [
+      0.43105223774909973,
+      0.3110348880290985,
+      0.25100359320640564,
+      0.13802075386047363
+    ],
+    "similarity_ranking": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "predicted_tool": "jupyter_kernel_api",
+    "correct_category": "code_execution"
+  },
+  {
+    "id": "same_032",
+    "query": "Test this function with unit tests",
+    "scenario_type": "same_category",
+    "category": "code_execution",
+    "tool_names": [
+      "jupyter_kernel_api",
+      "replit_api",
+      "colab_runtime_api",
+      "e2b_code_interpreter"
+    ],
+    "tool_descriptions": [
+      "Execute Python code in a Jupyter kernel environment with full scientific computing stack",
+      "Run code in multiple programming languages using Replit's cloud execution environment",
+      "Execute Python notebooks in Google Colab runtime with GPU/TPU support",
+      "Sandboxed code interpreter for safely executing Python, JavaScript, and other languages"
+    ],
+    "similarities": [
+      0.017797838896512985,
+      0.005517382174730301,
+      -0.008256767876446247,
+      0.04410067945718765
+    ],
+    "similarity_ranking": [
+      3,
+      0,
+      1,
+      2
+    ],
+    "predicted_tool": "e2b_code_interpreter",
+    "correct_category": "code_execution"
+  },
+  {
+    "id": "same_033",
+    "query": "Run this data processing pipeline",
+    "scenario_type": "same_category",
+    "category": "code_execution",
+    "tool_names": [
+      "replit_api",
+      "e2b_code_interpreter",
+      "jupyter_kernel_api",
+      "colab_runtime_api"
+    ],
+    "tool_descriptions": [
+      "Run code in multiple programming languages using Replit's cloud execution environment",
+      "Sandboxed code interpreter for safely executing Python, JavaScript, and other languages",
+      "Execute Python code in a Jupyter kernel environment with full scientific computing stack",
+      "Execute Python notebooks in Google Colab runtime with GPU/TPU support"
+    ],
+    "similarities": [
+      0.25860780477523804,
+      0.08298246562480927,
+      0.24780693650245667,
+      0.29498520493507385
+    ],
+    "similarity_ranking": [
+      3,
+      0,
+      2,
+      1
+    ],
+    "predicted_tool": "colab_runtime_api",
+    "correct_category": "code_execution"
+  },
+  {
+    "id": "same_034",
+    "query": "Execute this machine learning training script",
+    "scenario_type": "same_category",
+    "category": "code_execution",
+    "tool_names": [
+      "replit_api",
+      "colab_runtime_api",
+      "jupyter_kernel_api",
+      "e2b_code_interpreter"
+    ],
+    "tool_descriptions": [
+      "Run code in multiple programming languages using Replit's cloud execution environment",
+      "Execute Python notebooks in Google Colab runtime with GPU/TPU support",
+      "Execute Python code in a Jupyter kernel environment with full scientific computing stack",
+      "Sandboxed code interpreter for safely executing Python, JavaScript, and other languages"
+    ],
+    "similarities": [
+      0.20962873101234436,
+      0.2292567938566208,
+      0.3006206452846527,
+      0.258155882358551
+    ],
+    "similarity_ranking": [
+      2,
+      3,
+      1,
+      0
+    ],
+    "predicted_tool": "jupyter_kernel_api",
+    "correct_category": "code_execution"
+  },
+  {
+    "id": "same_035",
+    "query": "Run this web scraping code",
+    "scenario_type": "same_category",
+    "category": "code_execution",
+    "tool_names": [
+      "replit_api",
+      "colab_runtime_api",
+      "e2b_code_interpreter",
+      "jupyter_kernel_api"
+    ],
+    "tool_descriptions": [
+      "Run code in multiple programming languages using Replit's cloud execution environment",
+      "Execute Python notebooks in Google Colab runtime with GPU/TPU support",
+      "Sandboxed code interpreter for safely executing Python, JavaScript, and other languages",
+      "Execute Python code in a Jupyter kernel environment with full scientific computing stack"
+    ],
+    "similarities": [
+      0.10806018114089966,
+      0.10983175039291382,
+      0.19820693135261536,
+      0.1522684246301651
+    ],
+    "similarity_ranking": [
+      2,
+      3,
+      1,
+      0
+    ],
+    "predicted_tool": "e2b_code_interpreter",
+    "correct_category": "code_execution"
+  },
+  {
+    "id": "same_036",
+    "query": "Execute this SQL query against a database",
+    "scenario_type": "same_category",
+    "category": "code_execution",
+    "tool_names": [
+      "replit_api",
+      "jupyter_kernel_api",
+      "colab_runtime_api",
+      "e2b_code_interpreter"
+    ],
+    "tool_descriptions": [
+      "Run code in multiple programming languages using Replit's cloud execution environment",
+      "Execute Python code in a Jupyter kernel environment with full scientific computing stack",
+      "Execute Python notebooks in Google Colab runtime with GPU/TPU support",
+      "Sandboxed code interpreter for safely executing Python, JavaScript, and other languages"
+    ],
+    "similarities": [
+      0.12188971042633057,
+      0.05483508110046387,
+      0.05740588158369064,
+      0.09853288531303406
+    ],
+    "similarity_ranking": [
+      0,
+      3,
+      2,
+      1
+    ],
+    "predicted_tool": "replit_api",
+    "correct_category": "code_execution"
+  },
+  {
+    "id": "same_037",
+    "query": "Test this API integration code",
+    "scenario_type": "same_category",
+    "category": "code_execution",
+    "tool_names": [
+      "jupyter_kernel_api",
+      "colab_runtime_api",
+      "replit_api",
+      "e2b_code_interpreter"
+    ],
+    "tool_descriptions": [
+      "Execute Python code in a Jupyter kernel environment with full scientific computing stack",
+      "Execute Python notebooks in Google Colab runtime with GPU/TPU support",
+      "Run code in multiple programming languages using Replit's cloud execution environment",
+      "Sandboxed code interpreter for safely executing Python, JavaScript, and other languages"
+    ],
+    "similarities": [
+      0.07967867702245712,
+      0.061783045530319214,
+      0.17307621240615845,
+      0.14177009463310242
+    ],
+    "similarity_ranking": [
+      2,
+      3,
+      0,
+      1
+    ],
+    "predicted_tool": "replit_api",
+    "correct_category": "code_execution"
+  },
+  {
+    "id": "same_040",
+    "query": "Translate 'Hello, how are you?' from English to French",
+    "scenario_type": "same_category",
+    "category": "translation",
+    "tool_names": [
+      "libretranslate_api",
+      "deepl_api",
+      "google_translate_api",
+      "microsoft_translator"
+    ],
+    "tool_descriptions": [
+      "Free and open-source machine translation API supporting major European languages",
+      "High-quality neural machine translation supporting 31 languages with DeepL Pro API",
+      "Translate text between 100+ languages using Google Cloud Translation API",
+      "Microsoft Azure Cognitive Services text translation supporting 100+ languages"
+    ],
+    "similarities": [
+      0.2646891474723816,
+      0.28428328037261963,
+      0.2518153786659241,
+      0.20912815630435944
+    ],
+    "similarity_ranking": [
+      1,
+      0,
+      2,
+      3
+    ],
+    "predicted_tool": "deepl_api",
+    "correct_category": "translation"
+  },
+  {
+    "id": "same_041",
+    "query": "What does 'Bonjour' mean in English?",
+    "scenario_type": "same_category",
+    "category": "translation",
+    "tool_names": [
+      "microsoft_translator",
+      "deepl_api",
+      "google_translate_api",
+      "libretranslate_api"
+    ],
+    "tool_descriptions": [
+      "Microsoft Azure Cognitive Services text translation supporting 100+ languages",
+      "High-quality neural machine translation supporting 31 languages with DeepL Pro API",
+      "Translate text between 100+ languages using Google Cloud Translation API",
+      "Free and open-source machine translation API supporting major European languages"
+    ],
+    "similarities": [
+      0.09292802214622498,
+      0.049120865762233734,
+      0.12064417451620102,
+      0.16634996235370636
+    ],
+    "similarity_ranking": [
+      3,
+      2,
+      0,
+      1
+    ],
+    "predicted_tool": "libretranslate_api",
+    "correct_category": "translation"
+  },
+  {
+    "id": "same_042",
+    "query": "Translate this paragraph from Spanish to English",
+    "scenario_type": "same_category",
+    "category": "translation",
+    "tool_names": [
+      "libretranslate_api",
+      "deepl_api",
+      "microsoft_translator",
+      "google_translate_api"
+    ],
+    "tool_descriptions": [
+      "Free and open-source machine translation API supporting major European languages",
+      "High-quality neural machine translation supporting 31 languages with DeepL Pro API",
+      "Microsoft Azure Cognitive Services text translation supporting 100+ languages",
+      "Translate text between 100+ languages using Google Cloud Translation API"
+    ],
+    "similarities": [
+      0.10519275814294815,
+      0.11213875561952591,
+      0.11213578283786774,
+      0.15063150227069855
+    ],
+    "similarity_ranking": [
+      3,
+      1,
+      2,
+      0
+    ],
+    "predicted_tool": "google_translate_api",
+    "correct_category": "translation"
+  },
+  {
+    "id": "same_043",
+    "query": "How do you say 'Thank you' in Japanese?",
+    "scenario_type": "same_category",
+    "category": "translation",
+    "tool_names": [
+      "libretranslate_api",
+      "google_translate_api",
+      "microsoft_translator",
+      "deepl_api"
+    ],
+    "tool_descriptions": [
+      "Free and open-source machine translation API supporting major European languages",
+      "Translate text between 100+ languages using Google Cloud Translation API",
+      "Microsoft Azure Cognitive Services text translation supporting 100+ languages",
+      "High-quality neural machine translation supporting 31 languages with DeepL Pro API"
+    ],
+    "similarities": [
+      0.21687425673007965,
+      0.253110408782959,
+      0.21040508151054382,
+      0.21895642578601837
+    ],
+    "similarity_ranking": [
+      1,
+      3,
+      0,
+      2
+    ],
+    "predicted_tool": "google_translate_api",
+    "correct_category": "translation"
+  },
+  {
+    "id": "same_044",
+    "query": "Translate this business email to German",
+    "scenario_type": "same_category",
+    "category": "translation",
+    "tool_names": [
+      "deepl_api",
+      "google_translate_api",
+      "libretranslate_api",
+      "microsoft_translator"
+    ],
+    "tool_descriptions": [
+      "High-quality neural machine translation supporting 31 languages with DeepL Pro API",
+      "Translate text between 100+ languages using Google Cloud Translation API",
+      "Free and open-source machine translation API supporting major European languages",
+      "Microsoft Azure Cognitive Services text translation supporting 100+ languages"
+    ],
+    "similarities": [
+      0.24085800349712372,
+      0.3168833255767822,
+      0.3000982105731964,
+      0.2950689196586609
+    ],
+    "similarity_ranking": [
+      1,
+      2,
+      3,
+      0
+    ],
+    "predicted_tool": "google_translate_api",
+    "correct_category": "translation"
+  },
+  {
+    "id": "same_045",
+    "query": "What is the Chinese translation of 'apple'?",
+    "scenario_type": "same_category",
+    "category": "translation",
+    "tool_names": [
+      "microsoft_translator",
+      "google_translate_api",
+      "libretranslate_api",
+      "deepl_api"
+    ],
+    "tool_descriptions": [
+      "Microsoft Azure Cognitive Services text translation supporting 100+ languages",
+      "Translate text between 100+ languages using Google Cloud Translation API",
+      "Free and open-source machine translation API supporting major European languages",
+      "High-quality neural machine translation supporting 31 languages with DeepL Pro API"
+    ],
+    "similarities": [
+      0.2673850655555725,
+      0.29270362854003906,
+      0.19652554392814636,
+      0.2192532867193222
+    ],
+    "similarity_ranking": [
+      1,
+      0,
+      3,
+      2
+    ],
+    "predicted_tool": "google_translate_api",
+    "correct_category": "translation"
+  },
+  {
+    "id": "same_046",
+    "query": "Convert this text from Portuguese to Italian",
+    "scenario_type": "same_category",
+    "category": "translation",
+    "tool_names": [
+      "libretranslate_api",
+      "deepl_api",
+      "microsoft_translator",
+      "google_translate_api"
+    ],
+    "tool_descriptions": [
+      "Free and open-source machine translation API supporting major European languages",
+      "High-quality neural machine translation supporting 31 languages with DeepL Pro API",
+      "Microsoft Azure Cognitive Services text translation supporting 100+ languages",
+      "Translate text between 100+ languages using Google Cloud Translation API"
+    ],
+    "similarities": [
+      0.3581327795982361,
+      0.273276150226593,
+      0.2987513542175293,
+      0.33519160747528076
+    ],
+    "similarity_ranking": [
+      0,
+      3,
+      2,
+      1
+    ],
+    "predicted_tool": "libretranslate_api",
+    "correct_category": "translation"
+  },
+  {
+    "id": "same_047",
+    "query": "Translate this technical document from English to Russian",
+    "scenario_type": "same_category",
+    "category": "translation",
+    "tool_names": [
+      "deepl_api",
+      "microsoft_translator",
+      "google_translate_api",
+      "libretranslate_api"
+    ],
+    "tool_descriptions": [
+      "High-quality neural machine translation supporting 31 languages with DeepL Pro API",
+      "Microsoft Azure Cognitive Services text translation supporting 100+ languages",
+      "Translate text between 100+ languages using Google Cloud Translation API",
+      "Free and open-source machine translation API supporting major European languages"
+    ],
+    "similarities": [
+      0.22131474316120148,
+      0.28993844985961914,
+      0.3337595462799072,
+      0.27836835384368896
+    ],
+    "similarity_ranking": [
+      2,
+      1,
+      3,
+      0
+    ],
+    "predicted_tool": "google_translate_api",
+    "correct_category": "translation"
+  },
+  {
+    "id": "mixed_001",
+    "query": "What will the temperature be in Berlin tomorrow?",
+    "scenario_type": "mixed_category",
+    "category": "weather",
+    "tool_names": [
+      "openweathermap_api",
+      "google_search_api",
+      "wolfram_alpha_api",
+      "google_translate_api"
+    ],
+    "tool_descriptions": [
+      "Access current weather data, forecasts, and historical weather for any location worldwide",
+      "Search the web using Google Search API and retrieve relevant web pages and information",
+      "Computational intelligence engine for math, science, and data computation with step-by-step solutions",
+      "Translate text between 100+ languages using Google Cloud Translation API"
+    ],
+    "similarities": [
+      0.3576880097389221,
+      0.027442313730716705,
+      0.10014335811138153,
+      0.13401730358600616
+    ],
+    "similarity_ranking": [
+      0,
+      3,
+      2,
+      1
+    ],
+    "predicted_tool": "openweathermap_api",
+    "correct_category": "weather"
+  },
+  {
+    "id": "mixed_002",
+    "query": "Compute the integral of x^3 from 0 to 5",
+    "scenario_type": "mixed_category",
+    "category": "calculator",
+    "tool_names": [
+      "wolfram_alpha_api",
+      "openweathermap_api",
+      "bing_search_api",
+      "jupyter_kernel_api"
+    ],
+    "tool_descriptions": [
+      "Computational intelligence engine for math, science, and data computation with step-by-step solutions",
+      "Access current weather data, forecasts, and historical weather for any location worldwide",
+      "Microsoft Bing web search for finding web pages, news, and information online",
+      "Execute Python code in a Jupyter kernel environment with full scientific computing stack"
+    ],
+    "similarities": [
+      0.1391240507364273,
+      0.03900652378797531,
+      0.061339396983385086,
+      0.051524948328733444
+    ],
+    "similarity_ranking": [
+      0,
+      2,
+      3,
+      1
+    ],
+    "predicted_tool": "wolfram_alpha_api",
+    "correct_category": "calculator"
+  },
+  {
+    "id": "mixed_003",
+    "query": "Find information about French language idioms",
+    "scenario_type": "mixed_category",
+    "category": "ambiguous_search_translation",
+    "tool_names": [
+      "google_search_api",
+      "google_translate_api",
+      "wolfram_alpha_api",
+      "openweathermap_api"
+    ],
+    "tool_descriptions": [
+      "Search the web using Google Search API and retrieve relevant web pages and information",
+      "Translate text between 100+ languages using Google Cloud Translation API",
+      "Computational intelligence engine for math, science, and data computation with step-by-step solutions",
+      "Access current weather data, forecasts, and historical weather for any location worldwide"
+    ],
+    "similarities": [
+      0.20622006058692932,
+      0.22854730486869812,
+      0.02994658797979355,
+      0.08156412839889526
+    ],
+    "similarity_ranking": [
+      1,
+      0,
+      3,
+      2
+    ],
+    "predicted_tool": "google_translate_api",
+    "correct_category": "search"
+  },
+  {
+    "id": "mixed_004",
+    "query": "Calculate the Fibonacci sequence up to the 50th number",
+    "scenario_type": "mixed_category",
+    "category": "ambiguous_code_calculator",
+    "tool_names": [
+      "wolfram_alpha_api",
+      "jupyter_kernel_api",
+      "duckduckgo_api",
+      "weatherapi_com"
+    ],
+    "tool_descriptions": [
+      "Computational intelligence engine for math, science, and data computation with step-by-step solutions",
+      "Execute Python code in a Jupyter kernel environment with full scientific computing stack",
+      "Privacy-preserving web search using DuckDuckGo, returns web results without tracking",
+      "Retrieve real-time weather conditions, 14-day forecasts, and astronomy data"
+    ],
+    "similarities": [
+      0.08821767568588257,
+      0.007782442960888147,
+      0.04799402505159378,
+      -0.032536767423152924
+    ],
+    "similarity_ranking": [
+      0,
+      2,
+      1,
+      3
+    ],
+    "predicted_tool": "wolfram_alpha_api",
+    "correct_category": "calculator"
+  },
+  {
+    "id": "mixed_005",
+    "query": "Translate this legal document from English to Spanish",
+    "scenario_type": "mixed_category",
+    "category": "translation",
+    "tool_names": [
+      "deepl_api",
+      "google_search_api",
+      "calculator_api",
+      "e2b_code_interpreter"
+    ],
+    "tool_descriptions": [
+      "High-quality neural machine translation supporting 31 languages with DeepL Pro API",
+      "Search the web using Google Search API and retrieve relevant web pages and information",
+      "Simple calculator service for basic arithmetic operations: addition, subtraction, multiplication, division",
+      "Sandboxed code interpreter for safely executing Python, JavaScript, and other languages"
+    ],
+    "similarities": [
+      0.16721111536026,
+      0.012234598398208618,
+      0.10505585372447968,
+      0.09872680902481079
+    ],
+    "similarity_ranking": [
+      0,
+      2,
+      3,
+      1
+    ],
+    "predicted_tool": "deepl_api",
+    "correct_category": "translation"
+  }
+]

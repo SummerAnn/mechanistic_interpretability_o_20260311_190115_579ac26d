@@ -1,0 +1,53 @@
+\section{Related Work}
+\label{sec:related}
+
+\para{Tool use in LLMs.}
+\citet{schick2023toolformer} introduced \textsc{Toolformer}, showing that LLMs can learn
+\emph{when} and \emph{how} to call APIs in a self-supervised manner.  \citet{qin2023toolllm}
+scaled this to 16{,}000 real-world APIs with the \toolbench dataset, demonstrating strong
+selection accuracy when models are fine-tuned on diverse function-calling data.  These
+works focus on training procedures and end-to-end success rates; they treat selection as a
+black box and provide no mechanism for understanding \emph{how} a model matches a query to
+a tool.  We complement this line by studying the internal representations that underlie
+selection decisions.
+
+\para{Tool selection bias.}
+\citet{blankenstein2025biasbust} conduct the most direct behavioral predecessor to our
+work.  Across seven LLMs, they show that semantic alignment between a query and a tool's
+description is the strongest predictor of tool choice, while repeated exposure to specific
+API endpoints during pretraining amplifies selection imbalance.  They also find positional
+biases---models tend to prefer earlier-listed tools---and propose a
+filter-then-sample mitigation strategy.  Unlike their purely behavioral analysis, we move
+inside the model: we test the causal role of description content through controlled
+perturbation and use layer-wise probing to identify \emph{where} semantic matching is
+computed.
+
+\para{Internal representations for hallucination detection.}
+\citet{healy2026internal} demonstrate that the final-layer hidden state of models such as
+Qwen-7B and LLaMA-3.1-8B contains enough information to detect hallucinated tool calls
+with 72--86\% accuracy using a lightweight MLP classifier.  Their key finding---that mean
+pooling over the final layer outperforms token-specific representations---motivates our
+use of mean pooling in the probing setup.  However, they consider only the final layer and
+focus on hallucination detection rather than on which layer first encodes selection-relevant
+information.  We extend this analysis to all 12 layers of \gpttwo and distinguish between
+coarse category encoding and fine-grained tool position identification.
+
+\para{Mechanistic interpretability.}
+\citet{conmy2023acdc} introduced Automated Circuit Discovery (ACDC) for finding minimal
+faithful subgraphs in transformer networks responsible for specific behaviors.  Using edge
+attribution patching, \citet{tigges2024llm} show that circuit structures are consistent
+across model scale and training stages in the Pythia suite, justifying the use of small
+models such as \gpttwo for initial mechanistic analysis.  \citet{merullo2024circuit}
+demonstrate 78\% overlap between the Indirect Object Identification (IOI) and Colored
+Objects circuits in GPT-2 Medium, suggesting that transformers reuse attention heads for
+related relational tasks.  Our probing results suggest tool selection leverages the same
+middle-to-late layers involved in other relational computations.  \citet{sharkey2025open}
+survey open problems in \MI and identify probe-based analysis as a foundational method
+while cautioning that probes detect correlations rather than necessarily causal variables;
+we address this caveat by pairing probing with causal perturbation experiments.
+
+\para{Positional biases in LLMs.}
+Prior work on the ``lost in the middle'' phenomenon \citep{liu2024lost} shows that LLMs
+attend more strongly to the beginning and end of long contexts, which underlies the
+primacy bias we observe in tool selection.  Our controlled rotation experiment isolates
+this effect and quantifies it independently of semantic content.

@@ -1,0 +1,34 @@
+{
+  "created_at": "2026-03-11T19:01:21.667734",
+  "stages": {
+    "resource_finder": {
+      "status": "completed",
+      "started_at": "2026-03-11T19:01:21.668255",
+      "completed_at": "2026-03-11T19:21:57.063150",
+      "success": true,
+      "outputs": {
+        "literature_review": "/workspaces/mechanistic_interpretability_o_20260311_190115_579ac26d/literature_review.md",
+        "resources_catalog": "/workspaces/mechanistic_interpretability_o_20260311_190115_579ac26d/resources.md",
+        "papers_dir": "/workspaces/mechanistic_interpretability_o_20260311_190115_579ac26d/papers",
+        "datasets_dir": "/workspaces/mechanistic_interpretability_o_20260311_190115_579ac26d/datasets",
+        "code_dir": "/workspaces/mechanistic_interpretability_o_20260311_190115_579ac26d/code"
+      }
+    },
+    "experiment_runner": {
+      "status": "completed",
+      "started_at": "2026-03-11T19:21:57.066186",
+      "completed_at": "2026-03-11T19:52:10.078035",
+      "success": true,
+      "outputs": {
+        "success": true,
+        "return_code": 0,
+        "elapsed_time": 1812.9230415821075,
+        "log_file": "/workspaces/mechanistic_interpretability_o_20260311_190115_579ac26d/logs/execution_claude.log",
+        "transcript_file": "/workspaces/mechanistic_interpretability_o_20260311_190115_579ac26d/logs/execution_claude_transcript.jsonl"
+      }
+    }
+  },
+  "current_stage": null,
+  "completed": true,
+  "completed_at": "2026-03-11T19:52:10.106714"
+}

@@ -1,0 +1,1410 @@
+{
+  "prompts": [
+    "Select the best tool for this request.\n\nRequest: What's the temperature outside right now?\n\nAvailable tools:\nTool 1. weather_api: Access real-time weather data, forecasts, and meteorological conditions\nTool 2. calc_api: Mathematical computation and algebraic equation solving\nTool 3. search_api: Web search and information retrieval from internet\nTool 4. code_api: Execute programming code and software scripts\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Should I carry an umbrella today?\n\nAvailable tools:\nTool 1. weather_api: Access real-time weather data, forecasts, and meteorological conditions\nTool 2. calc_api: Mathematical computation and algebraic equation solving\nTool 3. search_api: Web search and information retrieval from internet\nTool 4. code_api: Execute programming code and software scripts\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: How cold will it be tomorrow?\n\nAvailable tools:\nTool 1. calc_api: Mathematical computation and algebraic equation solving\nTool 2. search_api: Web search and information retrieval from internet\nTool 3. weather_api: Access real-time weather data, forecasts, and meteorological conditions\nTool 4. code_api: Execute programming code and software scripts\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: What are outdoor conditions in Seattle?\n\nAvailable tools:\nTool 1. calc_api: Mathematical computation and algebraic equation solving\nTool 2. weather_api: Access real-time weather data, forecasts, and meteorological conditions\nTool 3. search_api: Web search and information retrieval from internet\nTool 4. code_api: Execute programming code and software scripts\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Will it be hot this afternoon?\n\nAvailable tools:\nTool 1. calc_api: Mathematical computation and algebraic equation solving\nTool 2. weather_api: Access real-time weather data, forecasts, and meteorological conditions\nTool 3. search_api: Web search and information retrieval from internet\nTool 4. code_api: Execute programming code and software scripts\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: What is the chance of precipitation today?\n\nAvailable tools:\nTool 1. calc_api: Mathematical computation and algebraic equation solving\nTool 2. weather_api: Access real-time weather data, forecasts, and meteorological conditions\nTool 3. search_api: Web search and information retrieval from internet\nTool 4. code_api: Execute programming code and software scripts\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: What weather should I dress for?\n\nAvailable tools:\nTool 1. weather_api: Access real-time weather data, forecasts, and meteorological conditions\nTool 2. calc_api: Mathematical computation and algebraic equation solving\nTool 3. search_api: Web search and information retrieval from internet\nTool 4. code_api: Execute programming code and software scripts\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: What atmospheric pressure is it outside?\n\nAvailable tools:\nTool 1. weather_api: Access real-time weather data, forecasts, and meteorological conditions\nTool 2. calc_api: Mathematical computation and algebraic equation solving\nTool 3. search_api: Web search and information retrieval from internet\nTool 4. code_api: Execute programming code and software scripts\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Is there a storm warning in my area?\n\nAvailable tools:\nTool 1. calc_api: Mathematical computation and algebraic equation solving\nTool 2. search_api: Web search and information retrieval from internet\nTool 3. code_api: Execute programming code and software scripts\nTool 4. weather_api: Access real-time weather data, forecasts, and meteorological conditions\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: What is the humidity level today?\n\nAvailable tools:\nTool 1. weather_api: Access real-time weather data, forecasts, and meteorological conditions\nTool 2. calc_api: Mathematical computation and algebraic equation solving\nTool 3. search_api: Web search and information retrieval from internet\nTool 4. code_api: Execute programming code and software scripts\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: What are wind speeds like right now?\n\nAvailable tools:\nTool 1. weather_api: Access real-time weather data, forecasts, and meteorological conditions\nTool 2. calc_api: Mathematical computation and algebraic equation solving\nTool 3. search_api: Web search and information retrieval from internet\nTool 4. code_api: Execute programming code and software scripts\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Will it be clear skies this evening?\n\nAvailable tools:\nTool 1. weather_api: Access real-time weather data, forecasts, and meteorological conditions\nTool 2. calc_api: Mathematical computation and algebraic equation solving\nTool 3. search_api: Web search and information retrieval from internet\nTool 4. code_api: Execute programming code and software scripts\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: What's the UV index today?\n\nAvailable tools:\nTool 1. calc_api: Mathematical computation and algebraic equation solving\nTool 2. weather_api: Access real-time weather data, forecasts, and meteorological conditions\nTool 3. search_api: Web search and information retrieval from internet\nTool 4. code_api: Execute programming code and software scripts\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Is it safe to fly a kite today?\n\nAvailable tools:\nTool 1. calc_api: Mathematical computation and algebraic equation solving\nTool 2. weather_api: Access real-time weather data, forecasts, and meteorological conditions\nTool 3. search_api: Web search and information retrieval from internet\nTool 4. code_api: Execute programming code and software scripts\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: What climate conditions are expected this weekend?\n\nAvailable tools:\nTool 1. weather_api: Access real-time weather data, forecasts, and meteorological conditions\nTool 2. calc_api: Mathematical computation and algebraic equation solving\nTool 3. search_api: Web search and information retrieval from internet\nTool 4. code_api: Execute programming code and software scripts\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: What temperature was it yesterday?\n\nAvailable tools:\nTool 1. calc_api: Mathematical computation and algebraic equation solving\nTool 2. weather_api: Access real-time weather data, forecasts, and meteorological conditions\nTool 3. search_api: Web search and information retrieval from internet\nTool 4. code_api: Execute programming code and software scripts\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Is there fog expected this morning?\n\nAvailable tools:\nTool 1. calc_api: Mathematical computation and algebraic equation solving\nTool 2. search_api: Web search and information retrieval from internet\nTool 3. code_api: Execute programming code and software scripts\nTool 4. weather_api: Access real-time weather data, forecasts, and meteorological conditions\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: What are today's morning conditions?\n\nAvailable tools:\nTool 1. calc_api: Mathematical computation and algebraic equation solving\nTool 2. weather_api: Access real-time weather data, forecasts, and meteorological conditions\nTool 3. search_api: Web search and information retrieval from internet\nTool 4. code_api: Execute programming code and software scripts\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Will it snow tonight?\n\nAvailable tools:\nTool 1. calc_api: Mathematical computation and algebraic equation solving\nTool 2. search_api: Web search and information retrieval from internet\nTool 3. code_api: Execute programming code and software scripts\nTool 4. weather_api: Access real-time weather data, forecasts, and meteorological conditions\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: What's the air quality like outside?\n\nAvailable tools:\nTool 1. calc_api: Mathematical computation and algebraic equation solving\nTool 2. search_api: Web search and information retrieval from internet\nTool 3. weather_api: Access real-time weather data, forecasts, and meteorological conditions\nTool 4. code_api: Execute programming code and software scripts\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: How warm will it get at midday?\n\nAvailable tools:\nTool 1. weather_api: Access real-time weather data, forecasts, and meteorological conditions\nTool 2. calc_api: Mathematical computation and algebraic equation solving\nTool 3. search_api: Web search and information retrieval from internet\nTool 4. code_api: Execute programming code and software scripts\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: What's the dew point right now?\n\nAvailable tools:\nTool 1. calc_api: Mathematical computation and algebraic equation solving\nTool 2. weather_api: Access real-time weather data, forecasts, and meteorological conditions\nTool 3. search_api: Web search and information retrieval from internet\nTool 4. code_api: Execute programming code and software scripts\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: What visibility is expected today?\n\nAvailable tools:\nTool 1. calc_api: Mathematical computation and algebraic equation solving\nTool 2. search_api: Web search and information retrieval from internet\nTool 3. code_api: Execute programming code and software scripts\nTool 4. weather_api: Access real-time weather data, forecasts, and meteorological conditions\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Is it safe to go hiking today weather-wise?\n\nAvailable tools:\nTool 1. calc_api: Mathematical computation and algebraic equation solving\nTool 2. search_api: Web search and information retrieval from internet\nTool 3. weather_api: Access real-time weather data, forecasts, and meteorological conditions\nTool 4. code_api: Execute programming code and software scripts\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: What are the overnight low temperatures?\n\nAvailable tools:\nTool 1. calc_api: Mathematical computation and algebraic equation solving\nTool 2. search_api: Web search and information retrieval from internet\nTool 3. weather_api: Access real-time weather data, forecasts, and meteorological conditions\nTool 4. code_api: Execute programming code and software scripts\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: What is the numerical answer to this equation?\n\nAvailable tools:\nTool 1. weather_api: Retrieve weather forecasts and atmospheric conditions\nTool 2. math_api: Evaluate mathematical expressions, solve equations, and compute numerical results\nTool 3. translate_api: Convert text between different languages and dialects\nTool 4. search_api: Find information and resources on the internet\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Help me figure out the result of this arithmetic\n\nAvailable tools:\nTool 1. weather_api: Retrieve weather forecasts and atmospheric conditions\nTool 2. math_api: Evaluate mathematical expressions, solve equations, and compute numerical results\nTool 3. translate_api: Convert text between different languages and dialects\nTool 4. search_api: Find information and resources on the internet\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: I need to find the value of this expression\n\nAvailable tools:\nTool 1. weather_api: Retrieve weather forecasts and atmospheric conditions\nTool 2. translate_api: Convert text between different languages and dialects\nTool 3. math_api: Evaluate mathematical expressions, solve equations, and compute numerical results\nTool 4. search_api: Find information and resources on the internet\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: What number do I get from this operation?\n\nAvailable tools:\nTool 1. math_api: Evaluate mathematical expressions, solve equations, and compute numerical results\nTool 2. weather_api: Retrieve weather forecasts and atmospheric conditions\nTool 3. translate_api: Convert text between different languages and dialects\nTool 4. search_api: Find information and resources on the internet\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Determine the output of this formula\n\nAvailable tools:\nTool 1. math_api: Evaluate mathematical expressions, solve equations, and compute numerical results\nTool 2. weather_api: Retrieve weather forecasts and atmospheric conditions\nTool 3. translate_api: Convert text between different languages and dialects\nTool 4. search_api: Find information and resources on the internet\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: I need to perform a quantitative computation\n\nAvailable tools:\nTool 1. weather_api: Retrieve weather forecasts and atmospheric conditions\nTool 2. translate_api: Convert text between different languages and dialects\nTool 3. search_api: Find information and resources on the internet\nTool 4. math_api: Evaluate mathematical expressions, solve equations, and compute numerical results\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: What is the solution to this numerical problem?\n\nAvailable tools:\nTool 1. math_api: Evaluate mathematical expressions, solve equations, and compute numerical results\nTool 2. weather_api: Retrieve weather forecasts and atmospheric conditions\nTool 3. translate_api: Convert text between different languages and dialects\nTool 4. search_api: Find information and resources on the internet\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Evaluate this expression for me\n\nAvailable tools:\nTool 1. weather_api: Retrieve weather forecasts and atmospheric conditions\nTool 2. translate_api: Convert text between different languages and dialects\nTool 3. math_api: Evaluate mathematical expressions, solve equations, and compute numerical results\nTool 4. search_api: Find information and resources on the internet\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Find the answer to this math problem\n\nAvailable tools:\nTool 1. weather_api: Retrieve weather forecasts and atmospheric conditions\nTool 2. translate_api: Convert text between different languages and dialects\nTool 3. math_api: Evaluate mathematical expressions, solve equations, and compute numerical results\nTool 4. search_api: Find information and resources on the internet\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: I need to compute a value from these numbers\n\nAvailable tools:\nTool 1. weather_api: Retrieve weather forecasts and atmospheric conditions\nTool 2. translate_api: Convert text between different languages and dialects\nTool 3. math_api: Evaluate mathematical expressions, solve equations, and compute numerical results\nTool 4. search_api: Find information and resources on the internet\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: What does this quantity equal?\n\nAvailable tools:\nTool 1. math_api: Evaluate mathematical expressions, solve equations, and compute numerical results\nTool 2. weather_api: Retrieve weather forecasts and atmospheric conditions\nTool 3. translate_api: Convert text between different languages and dialects\nTool 4. search_api: Find information and resources on the internet\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Resolve this number computation\n\nAvailable tools:\nTool 1. weather_api: Retrieve weather forecasts and atmospheric conditions\nTool 2. translate_api: Convert text between different languages and dialects\nTool 3. search_api: Find information and resources on the internet\nTool 4. math_api: Evaluate mathematical expressions, solve equations, and compute numerical results\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Get me the result of multiplying these values\n\nAvailable tools:\nTool 1. math_api: Evaluate mathematical expressions, solve equations, and compute numerical results\nTool 2. weather_api: Retrieve weather forecasts and atmospheric conditions\nTool 3. translate_api: Convert text between different languages and dialects\nTool 4. search_api: Find information and resources on the internet\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: What is the numerical output here?\n\nAvailable tools:\nTool 1. weather_api: Retrieve weather forecasts and atmospheric conditions\nTool 2. translate_api: Convert text between different languages and dialects\nTool 3. search_api: Find information and resources on the internet\nTool 4. math_api: Evaluate mathematical expressions, solve equations, and compute numerical results\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Determine the sum of these quantities\n\nAvailable tools:\nTool 1. math_api: Evaluate mathematical expressions, solve equations, and compute numerical results\nTool 2. weather_api: Retrieve weather forecasts and atmospheric conditions\nTool 3. translate_api: Convert text between different languages and dialects\nTool 4. search_api: Find information and resources on the internet\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: I need to divide these numbers and find the quotient\n\nAvailable tools:\nTool 1. weather_api: Retrieve weather forecasts and atmospheric conditions\nTool 2. translate_api: Convert text between different languages and dialects\nTool 3. math_api: Evaluate mathematical expressions, solve equations, and compute numerical results\nTool 4. search_api: Find information and resources on the internet\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: What's the final number after these operations?\n\nAvailable tools:\nTool 1. weather_api: Retrieve weather forecasts and atmospheric conditions\nTool 2. translate_api: Convert text between different languages and dialects\nTool 3. math_api: Evaluate mathematical expressions, solve equations, and compute numerical results\nTool 4. search_api: Find information and resources on the internet\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Give me the exact numerical value\n\nAvailable tools:\nTool 1. weather_api: Retrieve weather forecasts and atmospheric conditions\nTool 2. math_api: Evaluate mathematical expressions, solve equations, and compute numerical results\nTool 3. translate_api: Convert text between different languages and dialects\nTool 4. search_api: Find information and resources on the internet\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Compute this for me precisely\n\nAvailable tools:\nTool 1. math_api: Evaluate mathematical expressions, solve equations, and compute numerical results\nTool 2. weather_api: Retrieve weather forecasts and atmospheric conditions\nTool 3. translate_api: Convert text between different languages and dialects\nTool 4. search_api: Find information and resources on the internet\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: I need an exact numeric answer to this problem\n\nAvailable tools:\nTool 1. math_api: Evaluate mathematical expressions, solve equations, and compute numerical results\nTool 2. weather_api: Retrieve weather forecasts and atmospheric conditions\nTool 3. translate_api: Convert text between different languages and dialects\nTool 4. search_api: Find information and resources on the internet\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: What is the product of these two numbers?\n\nAvailable tools:\nTool 1. weather_api: Retrieve weather forecasts and atmospheric conditions\nTool 2. math_api: Evaluate mathematical expressions, solve equations, and compute numerical results\nTool 3. translate_api: Convert text between different languages and dialects\nTool 4. search_api: Find information and resources on the internet\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Find the difference between these values\n\nAvailable tools:\nTool 1. weather_api: Retrieve weather forecasts and atmospheric conditions\nTool 2. translate_api: Convert text between different languages and dialects\nTool 3. math_api: Evaluate mathematical expressions, solve equations, and compute numerical results\nTool 4. search_api: Find information and resources on the internet\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Determine the square root numerically\n\nAvailable tools:\nTool 1. math_api: Evaluate mathematical expressions, solve equations, and compute numerical results\nTool 2. weather_api: Retrieve weather forecasts and atmospheric conditions\nTool 3. translate_api: Convert text between different languages and dialects\nTool 4. search_api: Find information and resources on the internet\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: What percentage is one value of another?\n\nAvailable tools:\nTool 1. weather_api: Retrieve weather forecasts and atmospheric conditions\nTool 2. math_api: Evaluate mathematical expressions, solve equations, and compute numerical results\nTool 3. translate_api: Convert text between different languages and dialects\nTool 4. search_api: Find information and resources on the internet\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Solve this equation for its numerical solution\n\nAvailable tools:\nTool 1. math_api: Evaluate mathematical expressions, solve equations, and compute numerical results\nTool 2. weather_api: Retrieve weather forecasts and atmospheric conditions\nTool 3. translate_api: Convert text between different languages and dialects\nTool 4. search_api: Find information and resources on the internet\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: I need to find out what's known about this topic\n\nAvailable tools:\nTool 1. math_api: Compute numerical expressions and solve mathematical equations\nTool 2. weather_api: Access atmospheric conditions and meteorological forecasts\nTool 3. code_api: Run programming code in a sandboxed execution environment\nTool 4. web_search: Search the internet and retrieve information from web pages and databases\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Look up some information for me\n\nAvailable tools:\nTool 1. math_api: Compute numerical expressions and solve mathematical equations\nTool 2. weather_api: Access atmospheric conditions and meteorological forecasts\nTool 3. web_search: Search the internet and retrieve information from web pages and databases\nTool 4. code_api: Run programming code in a sandboxed execution environment\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Find relevant documents about this subject\n\nAvailable tools:\nTool 1. math_api: Compute numerical expressions and solve mathematical equations\nTool 2. weather_api: Access atmospheric conditions and meteorological forecasts\nTool 3. code_api: Run programming code in a sandboxed execution environment\nTool 4. web_search: Search the internet and retrieve information from web pages and databases\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: What do people know about this issue?\n\nAvailable tools:\nTool 1. math_api: Compute numerical expressions and solve mathematical equations\nTool 2. weather_api: Access atmospheric conditions and meteorological forecasts\nTool 3. web_search: Search the internet and retrieve information from web pages and databases\nTool 4. code_api: Run programming code in a sandboxed execution environment\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Gather information from available sources\n\nAvailable tools:\nTool 1. math_api: Compute numerical expressions and solve mathematical equations\nTool 2. web_search: Search the internet and retrieve information from web pages and databases\nTool 3. weather_api: Access atmospheric conditions and meteorological forecasts\nTool 4. code_api: Run programming code in a sandboxed execution environment\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: I need to research this topic thoroughly\n\nAvailable tools:\nTool 1. math_api: Compute numerical expressions and solve mathematical equations\nTool 2. weather_api: Access atmospheric conditions and meteorological forecasts\nTool 3. web_search: Search the internet and retrieve information from web pages and databases\nTool 4. code_api: Run programming code in a sandboxed execution environment\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Find out what has been published about this\n\nAvailable tools:\nTool 1. math_api: Compute numerical expressions and solve mathematical equations\nTool 2. weather_api: Access atmospheric conditions and meteorological forecasts\nTool 3. web_search: Search the internet and retrieve information from web pages and databases\nTool 4. code_api: Run programming code in a sandboxed execution environment\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: What are the latest facts on this matter?\n\nAvailable tools:\nTool 1. math_api: Compute numerical expressions and solve mathematical equations\nTool 2. web_search: Search the internet and retrieve information from web pages and databases\nTool 3. weather_api: Access atmospheric conditions and meteorological forecasts\nTool 4. code_api: Run programming code in a sandboxed execution environment\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Retrieve all available data on this subject\n\nAvailable tools:\nTool 1. math_api: Compute numerical expressions and solve mathematical equations\nTool 2. weather_api: Access atmospheric conditions and meteorological forecasts\nTool 3. web_search: Search the internet and retrieve information from web pages and databases\nTool 4. code_api: Run programming code in a sandboxed execution environment\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Help me discover what's out there about this\n\nAvailable tools:\nTool 1. web_search: Search the internet and retrieve information from web pages and databases\nTool 2. math_api: Compute numerical expressions and solve mathematical equations\nTool 3. weather_api: Access atmospheric conditions and meteorological forecasts\nTool 4. code_api: Run programming code in a sandboxed execution environment\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Look up the answer from public information\n\nAvailable tools:\nTool 1. math_api: Compute numerical expressions and solve mathematical equations\nTool 2. web_search: Search the internet and retrieve information from web pages and databases\nTool 3. weather_api: Access atmospheric conditions and meteorological forecasts\nTool 4. code_api: Run programming code in a sandboxed execution environment\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: What can you find about this topic online?\n\nAvailable tools:\nTool 1. math_api: Compute numerical expressions and solve mathematical equations\nTool 2. web_search: Search the internet and retrieve information from web pages and databases\nTool 3. weather_api: Access atmospheric conditions and meteorological forecasts\nTool 4. code_api: Run programming code in a sandboxed execution environment\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: I need to investigate this subject further\n\nAvailable tools:\nTool 1. math_api: Compute numerical expressions and solve mathematical equations\nTool 2. web_search: Search the internet and retrieve information from web pages and databases\nTool 3. weather_api: Access atmospheric conditions and meteorological forecasts\nTool 4. code_api: Run programming code in a sandboxed execution environment\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Find all the relevant material on this issue\n\nAvailable tools:\nTool 1. math_api: Compute numerical expressions and solve mathematical equations\nTool 2. weather_api: Access atmospheric conditions and meteorological forecasts\nTool 3. code_api: Run programming code in a sandboxed execution environment\nTool 4. web_search: Search the internet and retrieve information from web pages and databases\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: What do current sources say about this?\n\nAvailable tools:\nTool 1. math_api: Compute numerical expressions and solve mathematical equations\nTool 2. weather_api: Access atmospheric conditions and meteorological forecasts\nTool 3. code_api: Run programming code in a sandboxed execution environment\nTool 4. web_search: Search the internet and retrieve information from web pages and databases\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Explore information about this specific topic\n\nAvailable tools:\nTool 1. math_api: Compute numerical expressions and solve mathematical equations\nTool 2. weather_api: Access atmospheric conditions and meteorological forecasts\nTool 3. web_search: Search the internet and retrieve information from web pages and databases\nTool 4. code_api: Run programming code in a sandboxed execution environment\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Find out how others describe this concept\n\nAvailable tools:\nTool 1. math_api: Compute numerical expressions and solve mathematical equations\nTool 2. web_search: Search the internet and retrieve information from web pages and databases\nTool 3. weather_api: Access atmospheric conditions and meteorological forecasts\nTool 4. code_api: Run programming code in a sandboxed execution environment\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: I want to read about this from external sources\n\nAvailable tools:\nTool 1. math_api: Compute numerical expressions and solve mathematical equations\nTool 2. weather_api: Access atmospheric conditions and meteorological forecasts\nTool 3. web_search: Search the internet and retrieve information from web pages and databases\nTool 4. code_api: Run programming code in a sandboxed execution environment\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Search for documentation on this\n\nAvailable tools:\nTool 1. web_search: Search the internet and retrieve information from web pages and databases\nTool 2. math_api: Compute numerical expressions and solve mathematical equations\nTool 3. weather_api: Access atmospheric conditions and meteorological forecasts\nTool 4. code_api: Run programming code in a sandboxed execution environment\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: What information is available about this?\n\nAvailable tools:\nTool 1. math_api: Compute numerical expressions and solve mathematical equations\nTool 2. web_search: Search the internet and retrieve information from web pages and databases\nTool 3. weather_api: Access atmospheric conditions and meteorological forecasts\nTool 4. code_api: Run programming code in a sandboxed execution environment\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Look up recent developments on this issue\n\nAvailable tools:\nTool 1. web_search: Search the internet and retrieve information from web pages and databases\nTool 2. math_api: Compute numerical expressions and solve mathematical equations\nTool 3. weather_api: Access atmospheric conditions and meteorological forecasts\nTool 4. code_api: Run programming code in a sandboxed execution environment\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Find background information on this subject\n\nAvailable tools:\nTool 1. math_api: Compute numerical expressions and solve mathematical equations\nTool 2. weather_api: Access atmospheric conditions and meteorological forecasts\nTool 3. web_search: Search the internet and retrieve information from web pages and databases\nTool 4. code_api: Run programming code in a sandboxed execution environment\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: What does the public record say about this?\n\nAvailable tools:\nTool 1. math_api: Compute numerical expressions and solve mathematical equations\nTool 2. weather_api: Access atmospheric conditions and meteorological forecasts\nTool 3. code_api: Run programming code in a sandboxed execution environment\nTool 4. web_search: Search the internet and retrieve information from web pages and databases\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Discover information from the world wide web\n\nAvailable tools:\nTool 1. math_api: Compute numerical expressions and solve mathematical equations\nTool 2. weather_api: Access atmospheric conditions and meteorological forecasts\nTool 3. web_search: Search the internet and retrieve information from web pages and databases\nTool 4. code_api: Run programming code in a sandboxed execution environment\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: I need to check facts about this claim\n\nAvailable tools:\nTool 1. web_search: Search the internet and retrieve information from web pages and databases\nTool 2. math_api: Compute numerical expressions and solve mathematical equations\nTool 3. weather_api: Access atmospheric conditions and meteorological forecasts\nTool 4. code_api: Run programming code in a sandboxed execution environment\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Help me express this in another tongue\n\nAvailable tools:\nTool 1. weather_api: Get current weather conditions and climate forecasts\nTool 2. translate_api: Convert text and documents between different languages using neural translation\nTool 3. math_api: Solve mathematical problems and perform calculations\nTool 4. search_api: Search the web to find information on any topic\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: I need this text in a different linguistic form\n\nAvailable tools:\nTool 1. weather_api: Get current weather conditions and climate forecasts\nTool 2. math_api: Solve mathematical problems and perform calculations\nTool 3. translate_api: Convert text and documents between different languages using neural translation\nTool 4. search_api: Search the web to find information on any topic\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Convert this message to another idiom\n\nAvailable tools:\nTool 1. weather_api: Get current weather conditions and climate forecasts\nTool 2. translate_api: Convert text and documents between different languages using neural translation\nTool 3. math_api: Solve mathematical problems and perform calculations\nTool 4. search_api: Search the web to find information on any topic\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Make this readable in a foreign dialect\n\nAvailable tools:\nTool 1. weather_api: Get current weather conditions and climate forecasts\nTool 2. math_api: Solve mathematical problems and perform calculations\nTool 3. search_api: Search the web to find information on any topic\nTool 4. translate_api: Convert text and documents between different languages using neural translation\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Render this phrase in an alternate vernacular\n\nAvailable tools:\nTool 1. weather_api: Get current weather conditions and climate forecasts\nTool 2. math_api: Solve mathematical problems and perform calculations\nTool 3. search_api: Search the web to find information on any topic\nTool 4. translate_api: Convert text and documents between different languages using neural translation\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: I need this document in a different script\n\nAvailable tools:\nTool 1. weather_api: Get current weather conditions and climate forecasts\nTool 2. math_api: Solve mathematical problems and perform calculations\nTool 3. search_api: Search the web to find information on any topic\nTool 4. translate_api: Convert text and documents between different languages using neural translation\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Adapt this text for a different language speaker\n\nAvailable tools:\nTool 1. weather_api: Get current weather conditions and climate forecasts\nTool 2. translate_api: Convert text and documents between different languages using neural translation\nTool 3. math_api: Solve mathematical problems and perform calculations\nTool 4. search_api: Search the web to find information on any topic\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Put this into the right words for another country\n\nAvailable tools:\nTool 1. weather_api: Get current weather conditions and climate forecasts\nTool 2. math_api: Solve mathematical problems and perform calculations\nTool 3. translate_api: Convert text and documents between different languages using neural translation\nTool 4. search_api: Search the web to find information on any topic\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: I need this understood by people who speak differently\n\nAvailable tools:\nTool 1. weather_api: Get current weather conditions and climate forecasts\nTool 2. translate_api: Convert text and documents between different languages using neural translation\nTool 3. math_api: Solve mathematical problems and perform calculations\nTool 4. search_api: Search the web to find information on any topic\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Convert the meaning of this into another language\n\nAvailable tools:\nTool 1. weather_api: Get current weather conditions and climate forecasts\nTool 2. translate_api: Convert text and documents between different languages using neural translation\nTool 3. math_api: Solve mathematical problems and perform calculations\nTool 4. search_api: Search the web to find information on any topic\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: How do people in another culture say this?\n\nAvailable tools:\nTool 1. weather_api: Get current weather conditions and climate forecasts\nTool 2. math_api: Solve mathematical problems and perform calculations\nTool 3. translate_api: Convert text and documents between different languages using neural translation\nTool 4. search_api: Search the web to find information on any topic\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Encode this message in a foreign linguistic system\n\nAvailable tools:\nTool 1. weather_api: Get current weather conditions and climate forecasts\nTool 2. math_api: Solve mathematical problems and perform calculations\nTool 3. search_api: Search the web to find information on any topic\nTool 4. translate_api: Convert text and documents between different languages using neural translation\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: I need a multilingual version of this text\n\nAvailable tools:\nTool 1. weather_api: Get current weather conditions and climate forecasts\nTool 2. math_api: Solve mathematical problems and perform calculations\nTool 3. search_api: Search the web to find information on any topic\nTool 4. translate_api: Convert text and documents between different languages using neural translation\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Help non-English speakers understand this\n\nAvailable tools:\nTool 1. weather_api: Get current weather conditions and climate forecasts\nTool 2. math_api: Solve mathematical problems and perform calculations\nTool 3. translate_api: Convert text and documents between different languages using neural translation\nTool 4. search_api: Search the web to find information on any topic\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Transform this into words from another land\n\nAvailable tools:\nTool 1. weather_api: Get current weather conditions and climate forecasts\nTool 2. translate_api: Convert text and documents between different languages using neural translation\nTool 3. math_api: Solve mathematical problems and perform calculations\nTool 4. search_api: Search the web to find information on any topic\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Represent this idea in a different language\n\nAvailable tools:\nTool 1. weather_api: Get current weather conditions and climate forecasts\nTool 2. translate_api: Convert text and documents between different languages using neural translation\nTool 3. math_api: Solve mathematical problems and perform calculations\nTool 4. search_api: Search the web to find information on any topic\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: I need this localized for a foreign audience\n\nAvailable tools:\nTool 1. weather_api: Get current weather conditions and climate forecasts\nTool 2. math_api: Solve mathematical problems and perform calculations\nTool 3. search_api: Search the web to find information on any topic\nTool 4. translate_api: Convert text and documents between different languages using neural translation\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Express this concept in a different tongue\n\nAvailable tools:\nTool 1. translate_api: Convert text and documents between different languages using neural translation\nTool 2. weather_api: Get current weather conditions and climate forecasts\nTool 3. math_api: Solve mathematical problems and perform calculations\nTool 4. search_api: Search the web to find information on any topic\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Make this meaningful in another linguistic context\n\nAvailable tools:\nTool 1. translate_api: Convert text and documents between different languages using neural translation\nTool 2. weather_api: Get current weather conditions and climate forecasts\nTool 3. math_api: Solve mathematical problems and perform calculations\nTool 4. search_api: Search the web to find information on any topic\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Render this in the native language of another country\n\nAvailable tools:\nTool 1. translate_api: Convert text and documents between different languages using neural translation\nTool 2. weather_api: Get current weather conditions and climate forecasts\nTool 3. math_api: Solve mathematical problems and perform calculations\nTool 4. search_api: Search the web to find information on any topic\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: I need to cross the language barrier with this text\n\nAvailable tools:\nTool 1. weather_api: Get current weather conditions and climate forecasts\nTool 2. translate_api: Convert text and documents between different languages using neural translation\nTool 3. math_api: Solve mathematical problems and perform calculations\nTool 4. search_api: Search the web to find information on any topic\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Adapt this statement for speakers of another language\n\nAvailable tools:\nTool 1. weather_api: Get current weather conditions and climate forecasts\nTool 2. translate_api: Convert text and documents between different languages using neural translation\nTool 3. math_api: Solve mathematical problems and perform calculations\nTool 4. search_api: Search the web to find information on any topic\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Provide an equivalent in a foreign language\n\nAvailable tools:\nTool 1. weather_api: Get current weather conditions and climate forecasts\nTool 2. math_api: Solve mathematical problems and perform calculations\nTool 3. search_api: Search the web to find information on any topic\nTool 4. translate_api: Convert text and documents between different languages using neural translation\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Help me communicate this across languages\n\nAvailable tools:\nTool 1. translate_api: Convert text and documents between different languages using neural translation\nTool 2. weather_api: Get current weather conditions and climate forecasts\nTool 3. math_api: Solve mathematical problems and perform calculations\nTool 4. search_api: Search the web to find information on any topic\n\nBest tool:",
+    "Select the best tool for this request.\n\nRequest: Convert these words for a different language speaker\n\nAvailable tools:\nTool 1. weather_api: Get current weather conditions and climate forecasts\nTool 2. math_api: Solve mathematical problems and perform calculations\nTool 3. search_api: Search the web to find information on any topic\nTool 4. translate_api: Convert text and documents between different languages using neural translation\n\nBest tool:"
+  ],
+  "categories": [
+    "weather",
+    "weather",
+    "weather",
+    "weather",
+    "weather",
+    "weather",
+    "weather",
+    "weather",
+    "weather",
+    "weather",
+    "weather",
+    "weather",
+    "weather",
+    "weather",
+    "weather",
+    "weather",
+    "weather",
+    "weather",
+    "weather",
+    "weather",
+    "weather",
+    "weather",
+    "weather",
+    "weather",
+    "weather",
+    "calculator",
+    "calculator",
+    "calculator",
+    "calculator",
+    "calculator",
+    "calculator",
+    "calculator",
+    "calculator",
+    "calculator",
+    "calculator",
+    "calculator",
+    "calculator",
+    "calculator",
+    "calculator",
+    "calculator",
+    "calculator",
+    "calculator",
+    "calculator",
+    "calculator",
+    "calculator",
+    "calculator",
+    "calculator",
+    "calculator",
+    "calculator",
+    "calculator",
+    "search",
+    "search",
+    "search",
+    "search",
+    "search",
+    "search",
+    "search",
+    "search",
+    "search",
+    "search",
+    "search",
+    "search",
+    "search",
+    "search",
+    "search",
+    "search",
+    "search",
+    "search",
+    "search",
+    "search",
+    "search",
+    "search",
+    "search",
+    "search",
+    "search",
+    "translation",
+    "translation",
+    "translation",
+    "translation",
+    "translation",
+    "translation",
+    "translation",
+    "translation",
+    "translation",
+    "translation",
+    "translation",
+    "translation",
+    "translation",
+    "translation",
+    "translation",
+    "translation",
+    "translation",
+    "translation",
+    "translation",
+    "translation",
+    "translation",
+    "translation",
+    "translation",
+    "translation",
+    "translation"
+  ],
+  "positions": [
+    0,
+    0,
+    2,
+    1,
+    1,
+    1,
+    0,
+    0,
+    3,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    1,
+    3,
+    1,
+    3,
+    2,
+    0,
+    1,
+    3,
+    2,
+    2,
+    1,
+    1,
+    2,
+    0,
+    0,
+    3,
+    0,
+    2,
+    2,
+    2,
+    0,
+    3,
+    0,
+    3,
+    0,
+    2,
+    2,
+    1,
+    0,
+    0,
+    1,
+    2,
+    0,
+    1,
+    0,
+    3,
+    2,
+    3,
+    2,
+    1,
+    2,
+    2,
+    1,
+    2,
+    0,
+    1,
+    1,
+    1,
+    3,
+    3,
+    2,
+    1,
+    2,
+    0,
+    1,
+    0,
+    2,
+    3,
+    2,
+    0,
+    1,
+    2,
+    1,
+    3,
+    3,
+    3,
+    1,
+    2,
+    1,
+    1,
+    2,
+    3,
+    3,
+    2,
+    1,
+    1,
+    3,
+    0,
+    0,
+    0,
+    1,
+    1,
+    3,
+    0,
+    3
+  ],
+  "metadata": [
+    {
+      "category": "weather",
+      "query": "What's the temperature outside right now?",
+      "correct_position": 0,
+      "tool_order": [
+        "weather_api",
+        "calc_api",
+        "search_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "weather",
+      "query": "Should I carry an umbrella today?",
+      "correct_position": 0,
+      "tool_order": [
+        "weather_api",
+        "calc_api",
+        "search_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "weather",
+      "query": "How cold will it be tomorrow?",
+      "correct_position": 2,
+      "tool_order": [
+        "calc_api",
+        "search_api",
+        "weather_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "weather",
+      "query": "What are outdoor conditions in Seattle?",
+      "correct_position": 1,
+      "tool_order": [
+        "calc_api",
+        "weather_api",
+        "search_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "weather",
+      "query": "Will it be hot this afternoon?",
+      "correct_position": 1,
+      "tool_order": [
+        "calc_api",
+        "weather_api",
+        "search_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "weather",
+      "query": "What is the chance of precipitation today?",
+      "correct_position": 1,
+      "tool_order": [
+        "calc_api",
+        "weather_api",
+        "search_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "weather",
+      "query": "What weather should I dress for?",
+      "correct_position": 0,
+      "tool_order": [
+        "weather_api",
+        "calc_api",
+        "search_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "weather",
+      "query": "What atmospheric pressure is it outside?",
+      "correct_position": 0,
+      "tool_order": [
+        "weather_api",
+        "calc_api",
+        "search_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "weather",
+      "query": "Is there a storm warning in my area?",
+      "correct_position": 3,
+      "tool_order": [
+        "calc_api",
+        "search_api",
+        "code_api",
+        "weather_api"
+      ]
+    },
+    {
+      "category": "weather",
+      "query": "What is the humidity level today?",
+      "correct_position": 0,
+      "tool_order": [
+        "weather_api",
+        "calc_api",
+        "search_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "weather",
+      "query": "What are wind speeds like right now?",
+      "correct_position": 0,
+      "tool_order": [
+        "weather_api",
+        "calc_api",
+        "search_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "weather",
+      "query": "Will it be clear skies this evening?",
+      "correct_position": 0,
+      "tool_order": [
+        "weather_api",
+        "calc_api",
+        "search_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "weather",
+      "query": "What's the UV index today?",
+      "correct_position": 1,
+      "tool_order": [
+        "calc_api",
+        "weather_api",
+        "search_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "weather",
+      "query": "Is it safe to fly a kite today?",
+      "correct_position": 1,
+      "tool_order": [
+        "calc_api",
+        "weather_api",
+        "search_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "weather",
+      "query": "What climate conditions are expected this weekend?",
+      "correct_position": 0,
+      "tool_order": [
+        "weather_api",
+        "calc_api",
+        "search_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "weather",
+      "query": "What temperature was it yesterday?",
+      "correct_position": 1,
+      "tool_order": [
+        "calc_api",
+        "weather_api",
+        "search_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "weather",
+      "query": "Is there fog expected this morning?",
+      "correct_position": 3,
+      "tool_order": [
+        "calc_api",
+        "search_api",
+        "code_api",
+        "weather_api"
+      ]
+    },
+    {
+      "category": "weather",
+      "query": "What are today's morning conditions?",
+      "correct_position": 1,
+      "tool_order": [
+        "calc_api",
+        "weather_api",
+        "search_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "weather",
+      "query": "Will it snow tonight?",
+      "correct_position": 3,
+      "tool_order": [
+        "calc_api",
+        "search_api",
+        "code_api",
+        "weather_api"
+      ]
+    },
+    {
+      "category": "weather",
+      "query": "What's the air quality like outside?",
+      "correct_position": 2,
+      "tool_order": [
+        "calc_api",
+        "search_api",
+        "weather_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "weather",
+      "query": "How warm will it get at midday?",
+      "correct_position": 0,
+      "tool_order": [
+        "weather_api",
+        "calc_api",
+        "search_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "weather",
+      "query": "What's the dew point right now?",
+      "correct_position": 1,
+      "tool_order": [
+        "calc_api",
+        "weather_api",
+        "search_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "weather",
+      "query": "What visibility is expected today?",
+      "correct_position": 3,
+      "tool_order": [
+        "calc_api",
+        "search_api",
+        "code_api",
+        "weather_api"
+      ]
+    },
+    {
+      "category": "weather",
+      "query": "Is it safe to go hiking today weather-wise?",
+      "correct_position": 2,
+      "tool_order": [
+        "calc_api",
+        "search_api",
+        "weather_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "weather",
+      "query": "What are the overnight low temperatures?",
+      "correct_position": 2,
+      "tool_order": [
+        "calc_api",
+        "search_api",
+        "weather_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "calculator",
+      "query": "What is the numerical answer to this equation?",
+      "correct_position": 1,
+      "tool_order": [
+        "weather_api",
+        "math_api",
+        "translate_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "calculator",
+      "query": "Help me figure out the result of this arithmetic",
+      "correct_position": 1,
+      "tool_order": [
+        "weather_api",
+        "math_api",
+        "translate_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "calculator",
+      "query": "I need to find the value of this expression",
+      "correct_position": 2,
+      "tool_order": [
+        "weather_api",
+        "translate_api",
+        "math_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "calculator",
+      "query": "What number do I get from this operation?",
+      "correct_position": 0,
+      "tool_order": [
+        "math_api",
+        "weather_api",
+        "translate_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "calculator",
+      "query": "Determine the output of this formula",
+      "correct_position": 0,
+      "tool_order": [
+        "math_api",
+        "weather_api",
+        "translate_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "calculator",
+      "query": "I need to perform a quantitative computation",
+      "correct_position": 3,
+      "tool_order": [
+        "weather_api",
+        "translate_api",
+        "search_api",
+        "math_api"
+      ]
+    },
+    {
+      "category": "calculator",
+      "query": "What is the solution to this numerical problem?",
+      "correct_position": 0,
+      "tool_order": [
+        "math_api",
+        "weather_api",
+        "translate_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "calculator",
+      "query": "Evaluate this expression for me",
+      "correct_position": 2,
+      "tool_order": [
+        "weather_api",
+        "translate_api",
+        "math_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "calculator",
+      "query": "Find the answer to this math problem",
+      "correct_position": 2,
+      "tool_order": [
+        "weather_api",
+        "translate_api",
+        "math_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "calculator",
+      "query": "I need to compute a value from these numbers",
+      "correct_position": 2,
+      "tool_order": [
+        "weather_api",
+        "translate_api",
+        "math_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "calculator",
+      "query": "What does this quantity equal?",
+      "correct_position": 0,
+      "tool_order": [
+        "math_api",
+        "weather_api",
+        "translate_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "calculator",
+      "query": "Resolve this number computation",
+      "correct_position": 3,
+      "tool_order": [
+        "weather_api",
+        "translate_api",
+        "search_api",
+        "math_api"
+      ]
+    },
+    {
+      "category": "calculator",
+      "query": "Get me the result of multiplying these values",
+      "correct_position": 0,
+      "tool_order": [
+        "math_api",
+        "weather_api",
+        "translate_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "calculator",
+      "query": "What is the numerical output here?",
+      "correct_position": 3,
+      "tool_order": [
+        "weather_api",
+        "translate_api",
+        "search_api",
+        "math_api"
+      ]
+    },
+    {
+      "category": "calculator",
+      "query": "Determine the sum of these quantities",
+      "correct_position": 0,
+      "tool_order": [
+        "math_api",
+        "weather_api",
+        "translate_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "calculator",
+      "query": "I need to divide these numbers and find the quotient",
+      "correct_position": 2,
+      "tool_order": [
+        "weather_api",
+        "translate_api",
+        "math_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "calculator",
+      "query": "What's the final number after these operations?",
+      "correct_position": 2,
+      "tool_order": [
+        "weather_api",
+        "translate_api",
+        "math_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "calculator",
+      "query": "Give me the exact numerical value",
+      "correct_position": 1,
+      "tool_order": [
+        "weather_api",
+        "math_api",
+        "translate_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "calculator",
+      "query": "Compute this for me precisely",
+      "correct_position": 0,
+      "tool_order": [
+        "math_api",
+        "weather_api",
+        "translate_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "calculator",
+      "query": "I need an exact numeric answer to this problem",
+      "correct_position": 0,
+      "tool_order": [
+        "math_api",
+        "weather_api",
+        "translate_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "calculator",
+      "query": "What is the product of these two numbers?",
+      "correct_position": 1,
+      "tool_order": [
+        "weather_api",
+        "math_api",
+        "translate_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "calculator",
+      "query": "Find the difference between these values",
+      "correct_position": 2,
+      "tool_order": [
+        "weather_api",
+        "translate_api",
+        "math_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "calculator",
+      "query": "Determine the square root numerically",
+      "correct_position": 0,
+      "tool_order": [
+        "math_api",
+        "weather_api",
+        "translate_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "calculator",
+      "query": "What percentage is one value of another?",
+      "correct_position": 1,
+      "tool_order": [
+        "weather_api",
+        "math_api",
+        "translate_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "calculator",
+      "query": "Solve this equation for its numerical solution",
+      "correct_position": 0,
+      "tool_order": [
+        "math_api",
+        "weather_api",
+        "translate_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "search",
+      "query": "I need to find out what's known about this topic",
+      "correct_position": 3,
+      "tool_order": [
+        "math_api",
+        "weather_api",
+        "code_api",
+        "web_search"
+      ]
+    },
+    {
+      "category": "search",
+      "query": "Look up some information for me",
+      "correct_position": 2,
+      "tool_order": [
+        "math_api",
+        "weather_api",
+        "web_search",
+        "code_api"
+      ]
+    },
+    {
+      "category": "search",
+      "query": "Find relevant documents about this subject",
+      "correct_position": 3,
+      "tool_order": [
+        "math_api",
+        "weather_api",
+        "code_api",
+        "web_search"
+      ]
+    },
+    {
+      "category": "search",
+      "query": "What do people know about this issue?",
+      "correct_position": 2,
+      "tool_order": [
+        "math_api",
+        "weather_api",
+        "web_search",
+        "code_api"
+      ]
+    },
+    {
+      "category": "search",
+      "query": "Gather information from available sources",
+      "correct_position": 1,
+      "tool_order": [
+        "math_api",
+        "web_search",
+        "weather_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "search",
+      "query": "I need to research this topic thoroughly",
+      "correct_position": 2,
+      "tool_order": [
+        "math_api",
+        "weather_api",
+        "web_search",
+        "code_api"
+      ]
+    },
+    {
+      "category": "search",
+      "query": "Find out what has been published about this",
+      "correct_position": 2,
+      "tool_order": [
+        "math_api",
+        "weather_api",
+        "web_search",
+        "code_api"
+      ]
+    },
+    {
+      "category": "search",
+      "query": "What are the latest facts on this matter?",
+      "correct_position": 1,
+      "tool_order": [
+        "math_api",
+        "web_search",
+        "weather_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "search",
+      "query": "Retrieve all available data on this subject",
+      "correct_position": 2,
+      "tool_order": [
+        "math_api",
+        "weather_api",
+        "web_search",
+        "code_api"
+      ]
+    },
+    {
+      "category": "search",
+      "query": "Help me discover what's out there about this",
+      "correct_position": 0,
+      "tool_order": [
+        "web_search",
+        "math_api",
+        "weather_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "search",
+      "query": "Look up the answer from public information",
+      "correct_position": 1,
+      "tool_order": [
+        "math_api",
+        "web_search",
+        "weather_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "search",
+      "query": "What can you find about this topic online?",
+      "correct_position": 1,
+      "tool_order": [
+        "math_api",
+        "web_search",
+        "weather_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "search",
+      "query": "I need to investigate this subject further",
+      "correct_position": 1,
+      "tool_order": [
+        "math_api",
+        "web_search",
+        "weather_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "search",
+      "query": "Find all the relevant material on this issue",
+      "correct_position": 3,
+      "tool_order": [
+        "math_api",
+        "weather_api",
+        "code_api",
+        "web_search"
+      ]
+    },
+    {
+      "category": "search",
+      "query": "What do current sources say about this?",
+      "correct_position": 3,
+      "tool_order": [
+        "math_api",
+        "weather_api",
+        "code_api",
+        "web_search"
+      ]
+    },
+    {
+      "category": "search",
+      "query": "Explore information about this specific topic",
+      "correct_position": 2,
+      "tool_order": [
+        "math_api",
+        "weather_api",
+        "web_search",
+        "code_api"
+      ]
+    },
+    {
+      "category": "search",
+      "query": "Find out how others describe this concept",
+      "correct_position": 1,
+      "tool_order": [
+        "math_api",
+        "web_search",
+        "weather_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "search",
+      "query": "I want to read about this from external sources",
+      "correct_position": 2,
+      "tool_order": [
+        "math_api",
+        "weather_api",
+        "web_search",
+        "code_api"
+      ]
+    },
+    {
+      "category": "search",
+      "query": "Search for documentation on this",
+      "correct_position": 0,
+      "tool_order": [
+        "web_search",
+        "math_api",
+        "weather_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "search",
+      "query": "What information is available about this?",
+      "correct_position": 1,
+      "tool_order": [
+        "math_api",
+        "web_search",
+        "weather_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "search",
+      "query": "Look up recent developments on this issue",
+      "correct_position": 0,
+      "tool_order": [
+        "web_search",
+        "math_api",
+        "weather_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "search",
+      "query": "Find background information on this subject",
+      "correct_position": 2,
+      "tool_order": [
+        "math_api",
+        "weather_api",
+        "web_search",
+        "code_api"
+      ]
+    },
+    {
+      "category": "search",
+      "query": "What does the public record say about this?",
+      "correct_position": 3,
+      "tool_order": [
+        "math_api",
+        "weather_api",
+        "code_api",
+        "web_search"
+      ]
+    },
+    {
+      "category": "search",
+      "query": "Discover information from the world wide web",
+      "correct_position": 2,
+      "tool_order": [
+        "math_api",
+        "weather_api",
+        "web_search",
+        "code_api"
+      ]
+    },
+    {
+      "category": "search",
+      "query": "I need to check facts about this claim",
+      "correct_position": 0,
+      "tool_order": [
+        "web_search",
+        "math_api",
+        "weather_api",
+        "code_api"
+      ]
+    },
+    {
+      "category": "translation",
+      "query": "Help me express this in another tongue",
+      "correct_position": 1,
+      "tool_order": [
+        "weather_api",
+        "translate_api",
+        "math_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "translation",
+      "query": "I need this text in a different linguistic form",
+      "correct_position": 2,
+      "tool_order": [
+        "weather_api",
+        "math_api",
+        "translate_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "translation",
+      "query": "Convert this message to another idiom",
+      "correct_position": 1,
+      "tool_order": [
+        "weather_api",
+        "translate_api",
+        "math_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "translation",
+      "query": "Make this readable in a foreign dialect",
+      "correct_position": 3,
+      "tool_order": [
+        "weather_api",
+        "math_api",
+        "search_api",
+        "translate_api"
+      ]
+    },
+    {
+      "category": "translation",
+      "query": "Render this phrase in an alternate vernacular",
+      "correct_position": 3,
+      "tool_order": [
+        "weather_api",
+        "math_api",
+        "search_api",
+        "translate_api"
+      ]
+    },
+    {
+      "category": "translation",
+      "query": "I need this document in a different script",
+      "correct_position": 3,
+      "tool_order": [
+        "weather_api",
+        "math_api",
+        "search_api",
+        "translate_api"
+      ]
+    },
+    {
+      "category": "translation",
+      "query": "Adapt this text for a different language speaker",
+      "correct_position": 1,
+      "tool_order": [
+        "weather_api",
+        "translate_api",
+        "math_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "translation",
+      "query": "Put this into the right words for another country",
+      "correct_position": 2,
+      "tool_order": [
+        "weather_api",
+        "math_api",
+        "translate_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "translation",
+      "query": "I need this understood by people who speak differently",
+      "correct_position": 1,
+      "tool_order": [
+        "weather_api",
+        "translate_api",
+        "math_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "translation",
+      "query": "Convert the meaning of this into another language",
+      "correct_position": 1,
+      "tool_order": [
+        "weather_api",
+        "translate_api",
+        "math_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "translation",
+      "query": "How do people in another culture say this?",
+      "correct_position": 2,
+      "tool_order": [
+        "weather_api",
+        "math_api",
+        "translate_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "translation",
+      "query": "Encode this message in a foreign linguistic system",
+      "correct_position": 3,
+      "tool_order": [
+        "weather_api",
+        "math_api",
+        "search_api",
+        "translate_api"
+      ]
+    },
+    {
+      "category": "translation",
+      "query": "I need a multilingual version of this text",
+      "correct_position": 3,
+      "tool_order": [
+        "weather_api",
+        "math_api",
+        "search_api",
+        "translate_api"
+      ]
+    },
+    {
+      "category": "translation",
+      "query": "Help non-English speakers understand this",
+      "correct_position": 2,
+      "tool_order": [
+        "weather_api",
+        "math_api",
+        "translate_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "translation",
+      "query": "Transform this into words from another land",
+      "correct_position": 1,
+      "tool_order": [
+        "weather_api",
+        "translate_api",
+        "math_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "translation",
+      "query": "Represent this idea in a different language",
+      "correct_position": 1,
+      "tool_order": [
+        "weather_api",
+        "translate_api",
+        "math_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "translation",
+      "query": "I need this localized for a foreign audience",
+      "correct_position": 3,
+      "tool_order": [
+        "weather_api",
+        "math_api",
+        "search_api",
+        "translate_api"
+      ]
+    },
+    {
+      "category": "translation",
+      "query": "Express this concept in a different tongue",
+      "correct_position": 0,
+      "tool_order": [
+        "translate_api",
+        "weather_api",
+        "math_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "translation",
+      "query": "Make this meaningful in another linguistic context",
+      "correct_position": 0,
+      "tool_order": [
+        "translate_api",
+        "weather_api",
+        "math_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "translation",
+      "query": "Render this in the native language of another country",
+      "correct_position": 0,
+      "tool_order": [
+        "translate_api",
+        "weather_api",
+        "math_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "translation",
+      "query": "I need to cross the language barrier with this text",
+      "correct_position": 1,
+      "tool_order": [
+        "weather_api",
+        "translate_api",
+        "math_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "translation",
+      "query": "Adapt this statement for speakers of another language",
+      "correct_position": 1,
+      "tool_order": [
+        "weather_api",
+        "translate_api",
+        "math_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "translation",
+      "query": "Provide an equivalent in a foreign language",
+      "correct_position": 3,
+      "tool_order": [
+        "weather_api",
+        "math_api",
+        "search_api",
+        "translate_api"
+      ]
+    },
+    {
+      "category": "translation",
+      "query": "Help me communicate this across languages",
+      "correct_position": 0,
+      "tool_order": [
+        "translate_api",
+        "weather_api",
+        "math_api",
+        "search_api"
+      ]
+    },
+    {
+      "category": "translation",
+      "query": "Convert these words for a different language speaker",
+      "correct_position": 3,
+      "tool_order": [
+        "weather_api",
+        "math_api",
+        "search_api",
+        "translate_api"
+      ]
+    }
+  ]
+}

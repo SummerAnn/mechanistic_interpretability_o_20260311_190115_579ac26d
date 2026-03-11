@@ -1,0 +1,86 @@
+\section{Introduction}
+\label{sec:intro}
+
+Autonomous agents built on \LLMs now select and invoke tools---calculators, search
+engines, code interpreters, translation services---to answer questions that exceed their
+parametric knowledge.  A single wrong tool call cascades: it produces inputs unsuited to
+the downstream task, forcing re-planning or causing outright failure.  As agent
+deployments reach high-stakes settings in finance, healthcare, and software engineering,
+understanding \emph{why} a model picks one tool over another is no longer optional.
+
+\para{What do we currently know?}  Behavioral benchmarks such as \toolbench
+\citep{qin2023toolllm} and Berkeley Function Calling Leaderboard \citep{berkeleyfcl2023}
+measure selection accuracy, but treat the model as a black box.  \citet{blankenstein2025biasbust}
+show that semantic alignment between a query and a tool's description is the strongest
+behavioral predictor of selection, and that positional biases also operate---yet neither
+work explains the internal computation that produces these patterns.  Closest to our
+goals, \citet{healy2026internal} demonstrate that the \emph{final-layer} hidden state of
+a model encodes information sufficient to detect hallucinated tool calls, confirming that
+internal representations carry tool-selection-relevant signal.  However, no prior work
+identifies \emph{which layers} perform the computation, \emph{whether} it differs from
+coarse category routing, or \emph{how much} semantic content versus positional order
+drives the decision.
+
+\para{Our approach.}  We address these gaps with four empirical experiments designed to
+characterize tool selection from behavioral and mechanistic angles
+(see \figref{fig:overview}).  \Figref{fig:overview} provides an overview of all key
+metrics.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.95\linewidth]{fig7_summary.png}
+    \caption{Summary of all experimental results.  Semantic similarity achieves 40\%
+             top-1 accuracy (vs.\ 25\% chance), selection is stable across 90\% of
+             orderings, and the correct tool position is decodable from layer 9 with
+             68\% probe accuracy---all pointing to a semantic-content-driven but
+             multi-layer computation.}
+    \label{fig:overview}
+\end{figure}
+
+\begin{enumerate}[leftmargin=*,itemsep=0pt,topsep=2pt]
+    \item \textbf{Semantic similarity analysis}: We use \minilm sentence embeddings to
+          measure how well cosine similarity between a query and each tool's description
+          predicts actual \gptmini selections.
+    \item \textbf{Positional bias testing}: We rotate the order of tool candidates across
+          four cyclic shifts and measure whether the model's selection follows semantic
+          content or list position.
+    \item \textbf{Causal description perturbation}: We swap tool descriptions
+          adversarially and test whether the model's selection tracks the description
+          (semantics) or the tool name (identity).
+    \item \textbf{Layer-wise representational probing}: We extract hidden states from
+          every layer of \gpttwo on tool-selection prompts and train linear classifiers
+          to probe (a) tool category and (b) which tool position is semantically correct.
+\end{enumerate}
+
+\para{Key findings.}  Semantic similarity predicts 40\% of LLM selections
+(vs.~25\% chance), while selection remains stable across 90\% of tool orderings---showing
+content dominates position.  Mechanistically, tool category is \emph{immediately} encoded
+at layer~1 with 100\% probe accuracy, but identification of the \emph{correct tool
+position} rises from 35\% at layer~1 to 68\% at layer~9 and then decreases in the final
+layer.  This dissociation between trivial category routing and gradual semantic matching
+is the paper's central mechanistic finding.
+
+\para{Contributions.}
+\begin{itemize}[leftmargin=*,itemsep=0pt,topsep=0pt]
+    \item We construct a controlled tool selection dataset with 55 scenarios across five
+          categories, including positional-bias and adversarial-perturbation variants,
+          enabling precise behavioral and mechanistic analyses.
+    \item We establish that semantic cosine similarity is a significant but incomplete
+          predictor of LLM tool selection (40\% top-1 accuracy vs.\ 25\% chance), and
+          that selection stability under rotation (90\%) demonstrates content dominates
+          position.
+    \item We provide causal evidence that tool \emph{description} content---not tool
+          name---is the primary selection driver: adversarially swapping descriptions
+          changes selection in 67\% of cases.
+    \item We present the first layer-wise probing analysis of tool selection, revealing a
+          clean dissociation: category is encoded from layer~1 (100\%), while
+          within-category tool identification emerges progressively, peaking at layer~9
+          (68\%), consistent with semantic matching as a multi-layer relational
+          computation.
+\end{itemize}
+
+The remainder of this paper is organized as follows.  \Secref{sec:related} reviews
+related work.  \Secref{sec:method} describes datasets and experimental methods.
+\Secref{sec:results} presents all results.  \Secref{sec:discussion} interprets findings
+and discusses limitations.  \Secref{sec:conclusion} concludes with directions for future
+work.

@@ -1,0 +1,100 @@
+\section{Methodology}
+\label{sec:method}
+
+\subsection{Dataset Construction}
+\label{sec:data}
+
+We construct four purpose-built experimental datasets to enable precise behavioral and
+mechanistic analyses.  All datasets use five tool categories: weather forecasting,
+mathematical calculation, web search, code execution, and translation.  Every example
+presents a query alongside four candidate tools, each described with a realistic name and
+description drawn from real API documentation (OpenWeatherMap, WolframAlpha, Google
+APIs, etc.).  Queries are designed to be semantically clear but not to contain exact tool
+names, preventing trivial lexical matching.
+
+\para{Main tool selection dataset (55 examples).}
+The primary dataset contains 40 same-category examples and 5 mixed-category examples
+(10 queries $\times$ 5 categories, plus 5 cross-category scenarios).  Same-category
+examples present four tools from the same functional domain, requiring fine-grained
+semantic matching; mixed-category examples present one tool per domain, testing coarse
+routing.  The position of the ground-truth tool is randomized uniformly across the four
+slots.
+
+\para{Positional bias dataset (40 variants).}
+We create four cyclic rotations of the tool list for each of 10 base examples, yielding
+40 variants total.  The same query is paired with the same four tools in four different
+orderings, allowing us to isolate order effects from content effects.
+
+\para{Description perturbation dataset (7 examples).}
+We test three conditions for each query: \emph{original} (real descriptions),
+\emph{generic} (all descriptions replaced with ``An API service that processes requests
+and returns data''), and \emph{adversarial} (descriptions swapped between tools, so the
+semantically correct tool carries a misleading description).  Three distinct query types
+are covered (weather, calculation, translation), yielding 7 prompts.
+
+\para{Probing dataset (100 examples).}
+We construct 100 tool-selection prompts with 25 examples per category (4 categories used
+in probing) to obtain balanced hidden-state representations for the linear probing
+experiments.
+
+\subsection{Behavioral Analysis with \gptmini}
+\label{sec:llm_expts}
+
+We collect tool selections from \gptmini via the OpenRouter API with temperature~$= 0$
+(deterministic) and a 50-token output budget.  Each example is run three times to measure
+consistency; we use the majority-vote selection as ground truth.  All API calls follow a
+structured prompt format that presents the query and asks the model to name the most
+appropriate tool.
+
+\subsection{Semantic Similarity Analysis}
+\label{sec:semsim}
+
+We embed each query and each tool description using \minilm (22M parameters,
+sentence-transformers library).  For each example we rank the four tools by cosine
+similarity to the query and record whether the highest-ranked tool matches the \gptmini
+selection (top-1 accuracy).  We also record the mean rank of the LLM's selected tool in
+the similarity ranking (chance rank $= 2.5$) and the mean cosine similarity of selected
+vs.\ top-similar tools.
+
+\subsection{Positional Bias Analysis}
+\label{sec:pos}
+
+For the rotation dataset, we compute the empirical selection rate at each of the four
+positions (0--3) and test the null hypothesis of uniform selection (25\% each) using a
+chi-square test.  We define \emph{selection stability} as the fraction of base examples
+for which the same tool is chosen across all four rotations.  The total variation distance
+from the uniform distribution serves as a summary statistic for position preference.
+
+\subsection{Description Perturbation}
+\label{sec:perturb}
+
+For each of the three query types, we collect \gptmini selections under all three
+conditions (original, generic, adversarial) and record whether the selection changes
+relative to the original.  Under the adversarial condition, we further check whether the
+model follows the swapped description (selecting the tool that received the correct tool's
+description) or the tool name.
+
+\subsection{Layer-wise Probing with \gpttwo}
+\label{sec:probing}
+
+We extract hidden states from all 12 transformer layers of \gpttwo (117M parameters,
+768-dimensional hidden states) on the 100 probing prompts.  Prompts are formatted to fit
+within 512 tokens.  We study two probing targets:
+
+\begin{enumerate}[leftmargin=*,itemsep=0pt,topsep=2pt]
+    \item \textbf{Tool category} (5-class): predicts which of the five tool categories is
+          relevant for the given query.
+    \item \textbf{Correct tool position} (4-class): predicts which of the four tool slots
+          contains the semantically correct tool.
+\end{enumerate}
+
+For each target we train a logistic regression probe with $L_2$ regularization
+($C = 1.0$, max iterations $= 2000$) on each layer's representations, evaluated with
+5-fold stratified cross-validation (seed~42).  We study two representation aggregations:
+(a)~\emph{mean pooling} over all token positions, and (b)~\emph{last-token}
+representation, which corresponds to the position at which the model would generate its
+answer in autoregressive decoding.  Chance accuracy is 20\% for the category probe and
+25\% for the position probe.
+
+All experiments run on CPU only (no GPU required); LLM experiments take approximately
+15 minutes and probing approximately 8 minutes.

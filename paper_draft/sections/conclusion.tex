@@ -1,0 +1,32 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+We presented the first empirical mechanistic characterization of tool selection in \LLMs,
+combining behavioral analysis, semantic probing, causal perturbation, and layer-wise
+representational probing.  Our four experiments converge on a coherent picture.
+
+At the behavioral level, tool selection is driven primarily by semantic description
+content: cosine similarity predicts 40\% of selections (vs.\ 25\% chance), selection
+stability across orderings is 90\%, and adversaially swapping descriptions changes
+selection in 67\% of cases.  Positional bias exists in uncontrolled settings but is not
+significant in controlled rotation experiments, indicating that high position-0 rates
+observed in prior work partly reflect correlated description quality.  Tool names carry
+an independent prior that can override description content for highly distinctive names.
+
+At the mechanistic level, we uncover a clear dissociation within the \gpttwo transformer:
+tool category is fully encoded from layer~1 (100\% probe accuracy), consistent with
+lexical encoding in token embeddings.  In contrast, the identification of which specific
+tool position is semantically correct emerges progressively, rising from 35\% at layer~1
+to 68\% at layer~9, before declining.  This gradient establishes that semantic matching
+is a non-trivial multi-layer computation concentrated in the middle-to-late transformer
+layers.
+
+\para{Future work.}  The most important next step is applying ACDC circuit discovery
+\citep{conmy2023acdc} to identify the specific attention heads responsible for cross-tool
+comparison in layers 7--9 of GPT-2-small.  Extending layer-wise probing to instruction-tuned
+models (LLaMA-3.1-8B-Instruct, GPT-4.1-mini) would test whether tool-use fine-tuning
+creates specialized selection circuits or reuses the same mid-layer comparison mechanism.
+Sparse autoencoder (SAE) analysis \citep{sharkey2025open} could identify monosemantic
+features that activate for tool-relevant concepts, enabling targeted activation steering
+to correct selection errors without weight updates.  We release all datasets, code, and
+experimental results to support replication and extension of this work.

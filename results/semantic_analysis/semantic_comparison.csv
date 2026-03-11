@@ -1,0 +1,46 @@
+id,scenario_type,category,query,llm_selected,sim_predicted,sim_matches_llm,sim_top1_similarity,llm_selected_similarity,sim_rank_of_llm_choice,llm_selected_position,llm_consistency,n_tools
+same_000,same_category,weather,What's the weather like in Paris today?,openweathermap_api,weatherapi_com,False,0.42388492822647095,0.3877164125442505,2,3,0.6666666666666666,4
+same_001,same_category,weather,Will it rain in New York this weekend?,openweathermap_api,weather_gov_api,False,0.4049092233181,0.2929011285305023,4,2,1.0,4
+same_002,same_category,weather,What temperature should I expect in Tokyo tomorrow?,weatherapi_com,weatherapi_com,True,0.32861852645874023,0.32861852645874023,1,0,1.0,4
+same_003,same_category,weather,Is it going to be sunny in London next week?,weatherapi_com,weatherapi_com,True,0.35836291313171387,0.35836291313171387,1,0,1.0,4
+same_004,same_category,weather,What are the weather conditions in Sydney right now?,openweathermap_api,weatherapi_com,False,0.5087977647781372,0.43858712911605835,2,3,1.0,4
+same_005,same_category,weather,Should I bring an umbrella to Chicago today?,weatherapi_com,weather_gov_api,False,0.22147123515605927,0.15425610542297363,2,0,1.0,4
+same_006,same_category,weather,What's the forecast for Los Angeles this week?,weatherapi_com,weatherapi_com,True,0.4505188763141632,0.4505188763141632,1,1,1.0,4
+same_007,same_category,weather,How cold will it be in Moscow tomorrow morning?,weatherapi_com,weatherapi_com,True,0.35211214423179626,0.35211214423179626,1,0,0.6666666666666666,4
+same_010,same_category,calculator,What is 15% of 240?,calculator_api,calculator_api,True,0.20587171614170074,0.20587171614170074,1,0,1.0,4
+same_011,same_category,calculator,Calculate the area of a circle with radius 7cm,calculator_api,calculator_api,True,0.19965128600597382,0.19965128600597382,1,1,1.0,4
+same_012,same_category,calculator,Solve x^2 - 5x + 6 = 0,sympy_api,sympy_api,True,0.19406655430793762,0.19406655430793762,1,0,1.0,4
+same_013,same_category,calculator,What is 2^32?,calculator_api,calculator_api,True,0.26621609926223755,0.26621609926223755,1,0,1.0,4
+same_014,same_category,calculator,Convert 100 Fahrenheit to Celsius,wolfram_alpha_api,calculator_api,False,0.16488271951675415,0.1307971179485321,2,0,1.0,4
+same_015,same_category,calculator,What is the square root of 144?,calculator_api,calculator_api,True,0.1489863097667694,0.1489863097667694,1,2,1.0,4
+same_016,same_category,calculator,Calculate 15 factorial,mathjs_api,calculator_api,False,0.1955692172050476,0.10672029852867126,2,0,1.0,4
+same_017,same_category,calculator,What is the derivative of sin(x)?,sympy_api,mathjs_api,False,0.18209128081798553,0.17418019473552704,2,1,1.0,4
+same_020,same_category,search,Find information about the history of the Roman Empire,google_search_api,google_search_api,True,0.2595565617084503,0.2595565617084503,1,0,1.0,4
+same_021,same_category,search,Search for recent news about artificial intelligence,bing_search_api,bing_search_api,True,0.4127156734466553,0.4127156734466553,1,3,1.0,4
+same_022,same_category,search,Look up recipes for chocolate chip cookies,google_search_api,serper_api,False,0.20870095491409302,0.19271749258041382,3,3,0.6666666666666666,4
+same_023,same_category,search,Find the latest research papers on climate change,serper_api,bing_search_api,False,0.20606370270252228,0.1424277126789093,3,1,1.0,4
+same_024,same_category,search,Search for information about Python programming best practices,google_search_api,serper_api,False,0.24331329762935638,0.24285311996936798,2,1,1.0,4
+same_025,same_category,search,Look up the population of Brazil,bing_search_api,google_search_api,False,0.1437833458185196,0.030770502984523773,3,0,1.0,4
+same_026,same_category,search,Find reviews of the latest iPhone model,serper_api,google_search_api,False,0.1502874195575714,0.05684953182935715,4,0,1.0,4
+same_027,same_category,search,Search for travel guides to Japan,bing_search_api,google_search_api,False,0.25975698232650757,0.2025831937789917,3,0,0.6666666666666666,4
+same_030,same_category,code_execution,Run this Python script to analyze data,e2b_code_interpreter,jupyter_kernel_api,False,0.35898885130882263,0.1882697343826294,3,2,1.0,4
+same_031,same_category,code_execution,Execute this code to generate a matplotlib plot,jupyter_kernel_api,jupyter_kernel_api,True,0.43105223774909973,0.43105223774909973,1,0,1.0,4
+same_032,same_category,code_execution,Test this function with unit tests,e2b_code_interpreter,e2b_code_interpreter,True,0.04410067945718765,0.04410067945718765,1,3,1.0,4
+same_033,same_category,code_execution,Run this data processing pipeline,replit_api,colab_runtime_api,False,0.29498520493507385,0.25860780477523804,2,0,1.0,4
+same_034,same_category,code_execution,Execute this machine learning training script,colab_runtime_api,jupyter_kernel_api,False,0.3006206452846527,0.2292567938566208,3,1,0.6666666666666666,4
+same_035,same_category,code_execution,Run this web scraping code,replit_api,e2b_code_interpreter,False,0.19820693135261536,0.10806018114089966,4,0,1.0,4
+same_036,same_category,code_execution,Execute this SQL query against a database,replit_api,replit_api,True,0.12188971042633057,0.12188971042633057,1,0,1.0,4
+same_037,same_category,code_execution,Test this API integration code,e2b_code_interpreter,replit_api,False,0.17307621240615845,0.14177009463310242,2,3,1.0,4
+same_040,same_category,translation,"Translate 'Hello, how are you?' from English to French",google_translate_api,deepl_api,False,0.28428328037261963,0.2518153786659241,3,2,1.0,4
+same_041,same_category,translation,What does 'Bonjour' mean in English?,microsoft_translator,libretranslate_api,False,0.16634996235370636,0.09292802214622498,3,0,1.0,4
+same_042,same_category,translation,Translate this paragraph from Spanish to English,google_translate_api,google_translate_api,True,0.15063150227069855,0.15063150227069855,1,3,1.0,4
+same_043,same_category,translation,How do you say 'Thank you' in Japanese?,libretranslate_api,google_translate_api,False,0.253110408782959,0.21687425673007965,3,0,0.6666666666666666,4
+same_044,same_category,translation,Translate this business email to German,deepl_api,google_translate_api,False,0.3168833255767822,0.24085800349712372,4,0,1.0,4
+same_045,same_category,translation,What is the Chinese translation of 'apple'?,microsoft_translator,google_translate_api,False,0.29270362854003906,0.2673850655555725,2,0,1.0,4
+same_046,same_category,translation,Convert this text from Portuguese to Italian,deepl_api,libretranslate_api,False,0.3581327795982361,0.273276150226593,4,1,1.0,4
+same_047,same_category,translation,Translate this technical document from English to Russian,deepl_api,google_translate_api,False,0.3337595462799072,0.22131474316120148,4,0,1.0,4
+mixed_001,mixed_category,weather,What will the temperature be in Berlin tomorrow?,openweathermap_api,openweathermap_api,True,0.3576880097389221,0.3576880097389221,1,0,1.0,4
+mixed_002,mixed_category,calculator,Compute the integral of x^3 from 0 to 5,wolfram_alpha_api,wolfram_alpha_api,True,0.1391240507364273,0.1391240507364273,1,0,1.0,4
+mixed_003,mixed_category,ambiguous_search_translation,Find information about French language idioms,google_search_api,google_translate_api,False,0.22854730486869812,0.20622006058692932,2,0,1.0,4
+mixed_004,mixed_category,ambiguous_code_calculator,Calculate the Fibonacci sequence up to the 50th number,jupyter_kernel_api,wolfram_alpha_api,False,0.08821767568588257,0.007782442960888147,3,1,1.0,4
+mixed_005,mixed_category,translation,Translate this legal document from English to Spanish,deepl_api,deepl_api,True,0.16721111536026,0.16721111536026,1,0,1.0,4

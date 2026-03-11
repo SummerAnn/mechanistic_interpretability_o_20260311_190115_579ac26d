@@ -1,0 +1,15 @@
+Resource finding phase completed successfully.
+Timestamp: 2026-03-11T19:15:00+00:00
+Papers downloaded: 13
+Datasets downloaded: 6
+Repositories cloned: 4
+
+Summary:
+- Papers cover: mechanistic interpretability foundations (ACDC, Open Problems, Circuit Reuse, Circuit Consistency), tool use (ToolLLM, Toolformer, StableToolBench), tool selection analysis (Internal Representations 2601.05214, BiasBusters 2510.00307), and LLM routing (FrugalGPT, AutoTool)
+- Datasets: Glaive Function Calling V2 (raw + extracted), Hermes Function Calling V1, Berkeley FCL, IOI circuit dataset (synthetic), Tool Selection MI dataset (custom synthetic)
+- Code: TransformerLens (core MI library), ACDC (circuit discovery), ToolBench (dataset/eval), dictionary_learning (SAE)
+
+Key finding from literature:
+- Internal representations (final layer) DO encode tool selection information with 86.4% accuracy (arXiv 2601.05214)
+- Semantic alignment between query and tool description is the strongest predictor of tool choice (arXiv 2510.00307)
+- No existing circuit-level mechanistic analysis of tool selection exists — this is the primary research gap

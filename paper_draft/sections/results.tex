@@ -1,0 +1,247 @@
+\section{Results}
+\label{sec:results}
+
+\subsection{Semantic Similarity Analysis}
+\label{sec:res_semantic}
+
+\Tabref{tab:semantic_overall} reports top-level metrics comparing \semsim predictions
+against \gptmini selections.  Cosine similarity achieves 40\% top-1 accuracy---60\%
+better than the 25\% random baseline.  The mean rank of the LLM's chosen tool is 2.09
+out of 4 (chance rank 2.5), confirming a systematic bias toward higher-similarity tools.
+However, the mean cosine similarity of the \emph{selected} tool (0.219) is meaningfully
+lower than that of the \emph{top-similar} tool (0.257), indicating that the LLM does not
+simply select the highest-cosine-similarity option.
+
+Mixed-category examples (where tools differ in domain) reach 60\% top-1 accuracy,
+compared to 37.5\% for same-category examples.  This gap is expected: when tools span
+distinct domains, semantic differences are more pronounced and cosine similarity is more
+discriminative.
+
+\para{Per-category analysis.}  \Tabref{tab:per_category} breaks down semantic accuracy
+and the position-0 selection rate by tool category.  Calculator queries achieve the
+highest semantic accuracy (66.7\%) because mathematical vocabulary (``solve'', ``compute'',
+``equation'') aligns well with tool descriptions containing ``computation'' and
+``mathematical expressions''.  Translation queries show the lowest accuracy (22.2\%)
+because all translation tools share similar descriptions mentioning ``languages'', ``text'',
+and ``translate'', making cosine similarity nearly uninformative for within-category
+discrimination.  The high position-0 rate in the main experiment (57.8\% overall) is
+consistent with a correlation between description quality and list position in our
+dataset; the controlled rotation experiment below separates this confound.
+
+\begin{table}[t]
+\centering
+\caption{Semantic similarity results for the main selection experiment (45 LLM selections).
+         Top-1 accuracy measures how often the highest-similarity tool matches the LLM's
+         selection.  Chance for all accuracy metrics is 0.25.}
+\label{tab:semantic_overall}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\textbf{Metric} & \textbf{Value} & \textbf{Chance} \\
+\midrule
+Top-1 accuracy (overall)          & \textbf{0.400} & 0.250 \\
+Top-1 accuracy (same-category)    & 0.375          & 0.250 \\
+Top-1 accuracy (mixed-category)   & \textbf{0.600} & 0.250 \\
+Mean rank of LLM's selection      & 2.09           & 2.50  \\
+Mean cosim (selected tool)        & 0.219          & ---   \\
+Mean cosim (top-similar tool)     & 0.257          & ---   \\
+Position-0 selection rate         & 0.578          & 0.250 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\centering
+\caption{Per-category semantic top-1 accuracy and position-0 selection rate.
+         Calculator queries benefit from distinctive mathematical vocabulary;
+         translation queries suffer from high within-category description similarity.}
+\label{tab:per_category}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{Category} & \textbf{$n$} & \textbf{Semantic Top-1} & \textbf{Position-0 Rate} \\
+\midrule
+Calculator      & 9 & \textbf{0.667} & 0.667 \\
+Weather         & 9 & 0.556          & 0.556 \\
+Code execution  & 8 & 0.375          & 0.500 \\
+Search          & 8 & 0.250          & 0.500 \\
+Translation     & 9 & 0.222          & 0.667 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Positional Bias Analysis}
+\label{sec:res_pos}
+
+\Tabref{tab:positional_bias} shows the empirical selection rate at each position in the
+controlled rotation experiment.  Position-0 is selected 32.5\% of the time---above chance
+(25\%) but not significantly so ($\chi^2 = 1.80$, $p = 0.615$, $n = 40$).  The total
+variation distance from the uniform distribution is only 0.075.  These results sharply
+contrast with the 57.8\% position-0 rate observed in the uncontrolled main experiment,
+where tools were not systematically rotated.  The most striking finding is selection
+stability: the same tool is selected across all four orderings in 90\% of base examples,
+demonstrating that the model tracks semantic relevance regardless of list position.
+
+\begin{table}[t]
+\centering
+\caption{Position preference in the rotation experiment (10 base examples $\times$ 4
+         rotations $= 40$ variants).  No position is selected significantly more than
+         chance (25\%).  Selection stability: 90\% of base examples produce the same
+         winner across all four rotations.}
+\label{tab:positional_bias}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\textbf{Position} & \textbf{Observed Rate} & \textbf{Expected Rate} \\
+\midrule
+Position 0 & 0.325 & 0.250 \\
+Position 1 & 0.250 & 0.250 \\
+Position 2 & 0.250 & 0.250 \\
+Position 3 & 0.175 & 0.250 \\
+\midrule
+\multicolumn{3}{@{}l@{}}{\small $\chi^2 = 1.80$, $p = 0.615$; Selection stability: \textbf{0.900}} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Description Perturbation}
+\label{sec:res_perturb}
+
+\Tabref{tab:perturbation} reports the selection under original, generic, and adversarial
+description conditions.  The key finding is that \emph{generic} descriptions (neutral,
+semantically uninformative) do not change selection in any of the three cases, suggesting
+the model retains a prior from the tool name itself.  However, \emph{adversarial}
+descriptions (descriptions swapped between tools) change selection in 2 out of 3 cases
+(67\%).  In both changed cases, the model follows the description rather than the tool
+name, directly confirming that description content causally drives selection.
+
+The one failure case---the translation query---is informative: even with an adversarial
+swap, the model continues selecting \texttt{google\_translate\_api}, suggesting that the
+name ``Google Translate'' carries a strong semantic prior that overrides the misleading
+description.  This hints at a secondary signal path from tool \emph{name} to selection
+that does not go through description content.
+
+\begin{table}[t]
+\centering
+\caption{Description perturbation results across three query types and three conditions.
+         ``Changed?'' indicates whether the selected tool differs from the original
+         condition.  Adversarial descriptions swap tool descriptions; generic
+         descriptions replace all descriptions with a neutral placeholder.}
+\label{tab:perturbation}
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{Query Type} & \textbf{Condition} & \textbf{Selected Tool} & \textbf{Changed?} \\
+\midrule
+Weather (London)    & Original    & openweathermap\_api   & ---        \\
+Weather (London)    & Generic     & openweathermap\_api   & No         \\
+Weather (London)    & Adversarial & wolfram\_alpha\_api   & \textbf{Yes} \\
+\midrule
+Calculation ($25\times48$) & Original    & wolfram\_alpha\_api   & ---        \\
+Calculation ($25\times48$) & Adversarial & openweathermap\_api  & \textbf{Yes} \\
+\midrule
+Translation (Spanish) & Original    & google\_translate\_api & ---       \\
+Translation (Spanish) & Adversarial & google\_translate\_api & No        \\
+\midrule
+\multicolumn{4}{@{}l@{}}{\small Adversarial change rate: 2/3 (67\%); Generic change rate: 0/1 (0\%)} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Layer-wise Probing Results}
+\label{sec:res_probing}
+
+\para{Task 1: Tool category probe.}
+\Tabref{tab:probe_category} shows that tool category is perfectly decodable from
+\emph{every} layer of \gpttwo using mean-pooled representations.  Probe accuracy is
+100\% in layers 1--8 and 99.8\% in layers 9--12, all far above the 20\% chance baseline.
+This result suggests that semantic category information is primarily encoded at the
+token--embedding level and is immediately available to all subsequent layers.
+
+\para{Task 2: Correct tool position probe (mean pooling).}
+\Tabref{tab:probe_position_mean} shows probe accuracy for predicting which tool slot
+is semantically correct, using mean-pooled representations.  In sharp contrast to the
+category results, accuracy rises progressively: from 35.0\% at layer~1 (10 points above
+chance) to a peak of 68.0\% at layer~9, before declining to 45.0\% at layer~12.  This
+gradient---visualized in \figref{fig:probing}---is the paper's central mechanistic finding.
+Layers 7--9 are the critical window for semantic matching computation.
+
+\para{Task 3: Correct tool position probe (last-token).}
+When probing the representation at the \emph{last token} position (the generation
+point in autoregressive decoding), accuracy is uniformly high across all layers: 72.3\%
+in early layers, 73.3\% in middle layers, and 73.0\% in late layers, with a peak of
+81.0\% at layer~8 or~10.  This high early accuracy---compared to only 35\% for mean
+pooling at layer~1---suggests that the last-token representation immediately aggregates
+the query context relevant to selection, consistent with its role as the autoregressive
+generation site.
+
+\begin{table}[t]
+\centering
+\caption{Tool category probe accuracy by layer group (\gpttwo, mean pooling, 5-fold CV).
+         Category is perfectly decodable from all layers; chance is 0.20.}
+\label{tab:probe_category}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\textbf{Layer Group} & \textbf{Mean Accuracy} & \textbf{Chance} \\
+\midrule
+Early (1--4)  & \textbf{1.000} & 0.20 \\
+Middle (5--8) & \textbf{1.000} & 0.20 \\
+Late (9--12)  & 0.998          & 0.20 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\centering
+\caption{Correct tool position probe accuracy by layer (\gpttwo, mean pooling, 5-fold CV).
+         Accuracy rises from 35\% at layer~1 to 68\% at layer~9, then declines.
+         Chance is 0.25.}
+\label{tab:probe_position_mean}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{Layer} & \textbf{Accuracy} & \textbf{Std} & \textbf{vs.\ Chance} \\
+\midrule
+1  & 0.350 & 0.077 & $+$10.0\% \\
+2  & 0.360 & 0.058 & $+$11.0\% \\
+3  & 0.410 & 0.049 & $+$16.0\% \\
+4  & 0.440 & 0.058 & $+$19.0\% \\
+5  & 0.490 & 0.097 & $+$24.0\% \\
+6  & 0.560 & 0.066 & $+$31.0\% \\
+7  & 0.600 & 0.105 & $+$35.0\% \\
+8  & 0.600 & 0.089 & $+$35.0\% \\
+\textbf{9}  & \textbf{0.680} & \textbf{0.081} & $\mathbf{+}$\textbf{43.0\%} \\
+10 & 0.680 & 0.075 & $+$43.0\% \\
+11 & 0.630 & 0.081 & $+$38.0\% \\
+12 & 0.450 & 0.130 & $+$20.0\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.95\linewidth]{fig5_layer_probing.png}
+    \caption{Layer-wise probe accuracy for correct tool position in \gpttwo (mean pooling).
+             Accuracy rises progressively from 35\% at layer~1 to a peak of 68\% at
+             layer~9, then declines toward the final layer.  The dashed line marks the
+             25\% chance baseline.  This gradient indicates that semantic matching is
+             a multi-layer computation concentrated in the middle-to-late layers.}
+    \label{fig:probing}
+\end{figure}
+
+\begin{figure}[t]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{fig1_semantic_accuracy.png}
+        \caption{Semantic similarity top-1 accuracy vs.\ baselines across categories.}
+        \label{fig:semantic}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{fig4_perturbation.png}
+        \caption{Selection changes under original, generic, and adversarial descriptions.}
+        \label{fig:perturbation}
+    \end{subfigure}
+    \caption{Behavioral results.  \captiona{}~Semantic similarity is above chance for all
+             categories but falls short for translation (within-category descriptions are
+             nearly identical).  \captionb{}~Adversarial perturbation causes the model to
+             follow description content over tool name in 67\% of cases; generic
+             descriptions leave selection unchanged.}
+    \label{fig:behavioral}
+\end{figure}

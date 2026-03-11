@@ -1,0 +1,97 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Interpretation of Findings}
+
+\para{Semantic matching is necessary but not sufficient.}
+The 40\% top-1 accuracy of cosine similarity confirms that semantic content is a genuine
+driver of tool selection, but the substantial gap to the LLM's actual accuracy (and the
+gap between selected vs.\ top-similar tool cosim) shows that the model's internal semantic
+matching is more discriminating than simple embedding distance.  The LLM likely incorporates
+joint reasoning over query intent and tool capability that embedding similarity
+cannot capture.  This is consistent with the BiasBusters finding \citep{blankenstein2025biasbust}
+that semantic alignment is the ``strongest predictor'' while not being deterministic.
+
+\para{The category vs.\ position dissociation reveals a processing hierarchy.}
+The most striking mechanistic finding is the clean separation between category encoding
+and position selection in \gpttwo.  Category is fully encoded from layer~1---suggesting
+it is a largely lexical property, encoded in the token embedding or the first
+self-attention layer, and does not require deep processing.  This aligns with the
+``E-step hypothesis'' in the MI literature \citep{sharkey2025open}: early layers handle
+lexical and syntactic features, while later layers handle compositional and relational
+computations.  Within-category tool identification, by contrast, requires comparing the
+query against each tool description---a relational computation that reaches maximum
+discriminability only at layer~9.  The subsequent drop at layer~12 may reflect the final
+layer specializing for next-token prediction rather than maintaining a discriminative
+comparison representation.
+
+\para{Tool name as a secondary selection signal.}
+The generic-description experiment (no change to selection) and the translation
+adversarial case (no change despite description swap) both reveal that tool \emph{name}
+carries its own strong prior.  ``Google Translate'' is a distinctive, highly familiar
+name; its prior overwhelms the adversarial description.  In contrast, ``WolframAlpha'' and
+``OpenWeatherMap'' are less unambiguously associated with their categories in natural
+language, so description content dominates for those tools.  This suggests a two-path
+selection mechanism: a fast name-based prior and a slower description-based semantic
+matching process, similar to dual-process models in cognitive science.
+
+\para{Last-token as selection buffer.}
+The high and consistent last-token probe accuracy (73--81\% across all layers) versus the
+gradual rise in mean-pooling accuracy suggests that the last-token representation
+functions as an active selection buffer.  In autoregressive generation, the last token
+must carry the information needed to generate the tool name; the residual stream at that
+position aggregates relevant context from the very first layer.  This is mechanistically
+consistent with the ``copy mechanism'' in IOI circuits \citep{merullo2024circuit}, where
+the final token representation aggregates identity information about the target entity.
+
+\subsection{Limitations}
+
+\para{Small sample size.}
+The main behavioral analysis uses 45 LLM selections (15 per run $\times$ 3 runs), which
+limits statistical power.  Per-category analyses have at most $n = 9$ examples;
+the chi-square test for positional bias has 40 observations.  Larger datasets ($n \geq
+500$) would enable Bonferroni-corrected per-category comparisons and tighter confidence
+intervals.
+
+\para{GPT-2-small is not an instruction-tuned tool-calling model.}
+Our mechanistic findings come from \gpttwo, a base language model without tool-use
+training.  The representations we probe reflect general language model processing, not
+specialized tool-selection circuits.  Instruction-tuned models fine-tuned on function
+calling (e.g., LLaMA-3.1-8B-Instruct, GPT-4.1-mini) may develop qualitatively different
+representations or dedicate specific heads to tool routing.  The \citet{tigges2024llm}
+finding that circuit structures are consistent across model scale provides \emph{some}
+justification for the \gpttwo results, but direct probing of larger instruction-tuned
+models is essential future work.
+
+\para{Probing detects correlation, not causality.}
+Linear probes measure the decodability of information from representations, but high
+probe accuracy does not prove that the probed information is causally used for the
+behavior \citep{sharkey2025open}.  The perturbation experiments provide complementary
+causal evidence at the behavioral level, but activation patching on specific attention
+heads---the method used in circuit-level ACDC analysis \citep{conmy2023acdc}---would be
+needed to establish causal responsibility at the circuit level.
+
+\para{No circuit-level analysis.}
+This work identifies \emph{where} information is encoded but not \emph{which} circuits
+compute it.  ACDC circuit discovery \citep{conmy2023acdc} was not applied; applying it
+to \gpttwo tool-selection prompts would require GPU resources and would identify the
+specific attention heads performing cross-tool comparison in layers 7--9.
+
+\para{Fixed tool descriptions.}
+Our curated descriptions are drawn from real API documentation but are fixed in length
+and style.  Real-world tool registries vary enormously in description quality.  Systems
+with short, vague, or redundant descriptions would likely show lower semantic accuracy
+and higher position bias than reported here.
+
+\subsection{Broader Implications}
+
+These findings have direct engineering implications.  First, within-category tool
+selection is the hardest case (37.5\% semantic accuracy)---yet it is the most common
+scenario in multi-tool agents that register many tools with overlapping functions.
+Practitioners should prioritize making within-category descriptions maximally distinctive.
+Second, tool names carry independent priors: agents deploying tools with highly
+recognizable names (e.g., Google-branded APIs) may find that description content is
+partially overridden.  Third, the layer~9 peak in position probing suggests that
+interpretability interventions---such as activation steering---applied at that layer
+could potentially redirect tool selection without modifying the model's weights, an
+exciting direction for robust tool-routing systems.
