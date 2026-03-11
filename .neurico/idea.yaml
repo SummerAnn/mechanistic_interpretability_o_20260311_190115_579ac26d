@@ -1,0 +1,31 @@
+idea:
+  title: Mechanistic Interpretability of Tool Selection in LLMs
+  domain: artificial_intelligence
+  hypothesis: 'LLMs increasingly use tools (search, code execution, APIs), but we
+    have no mechanistic understanding of how they decide which tool to call. Existing
+    agent benchmarks treat selection as a black box, measuring success/failure without
+    explaining the decision.
+
+    What representations drive tool choice? Is it semantic matching between tool descriptions
+    and queries, or learned heuristics? Do models have dedicated "routing" circuits,
+    or is selection distributed? Understanding this seems important as to...'
+  background:
+    description: 'LLMs increasingly use tools (search, code execution, APIs), but
+      we have no mechanistic understanding of how they decide which tool to call.
+      Existing agent benchmarks treat selection as a black box, measuring success/failure
+      without explaining the decision.
+
+      What representations drive tool choice? Is it semantic matching between tool
+      descriptions and queries, or learned heuristics? Do models have dedicated "routing"
+      circuits, or is selection distributed? Understanding this seems important as
+      tool-using agents become more prevalent since selection errors cause cascading
+      failures and we currently can''t predict or debug them.'
+  metadata:
+    source: IdeaHub
+    source_url: https://hypogenic.ai/ideahub/idea/w0WV6HB3ztAkjTZtxLcW
+    author: Alex Baumgartner
+    idea_id: mechanistic_interpretability_o_20260311_190115_579ac26d
+    created_at: '2026-03-11T19:01:15.566819'
+    status: submitted
+    github_repo_name: mechanistic_interpretability_o_20260311_190115_579ac26d
+    github_repo_url: https://github.com/SummerAnn/mechanistic_interpretability_o_20260311_190115_579ac26d
